@@ -5,7 +5,7 @@
  */
 package model;
 
-import java.util.List;
+import java.sql.Date;
 
 /**
  *
@@ -23,14 +23,11 @@ public class Utilisateur {
     private String ville;
     private String password;
     private String typeCompte;
-    private String adressMac;
+    private int code;
+    private int ban;
+    private Date banexpiration;
 
-    public Utilisateur() {
-
-    }
-
-    public Utilisateur(String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, String adressMac) {
-
+    public Utilisateur(String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, int code, int ban, Date banexpiration) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -40,10 +37,39 @@ public class Utilisateur {
         this.ville = ville;
         this.password = password;
         this.typeCompte = typeCompte;
-        this.adressMac = adressMac;
+        this.code = code;
+        this.ban = ban;
+        this.banexpiration = banexpiration;
     }
 
-   
+    public Utilisateur(int id_user, String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, int code, int ban, Date banexpiration) {
+        this.id_user = id_user;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+        this.image = image;
+        this.pays = pays;
+        this.ville = ville;
+        this.password = password;
+        this.typeCompte = typeCompte;
+        this.code = code;
+        this.ban = ban;
+        this.banexpiration = banexpiration;
+    }
+
+    public Utilisateur(String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+        this.image = image;
+        this.pays = pays;
+        this.ville = ville;
+        this.password = password;
+        this.typeCompte = typeCompte;
+    }
+    
 
     public int getId_user() {
         return id_user;
@@ -125,18 +151,28 @@ public class Utilisateur {
         this.typeCompte = typeCompte;
     }
 
-    public String getAdressMac() {
-        return adressMac;
+    public int getCode() {
+        return code;
     }
 
-    public void setAdressMac(String adressMac) {
-        this.adressMac = adressMac;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    @Override
-    public String toString() {
-        return "Utilisateur{" + "id_user=" + id_user + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", telephone=" + telephone
-                + ", image=" + image + ", pays=" + pays + ", ville=" + ville + ", password=" + password + ", typeCompte=" + typeCompte + ", adressMac=" + adressMac + '}';
+    public int getBan() {
+        return ban;
+    }
+
+    public void setBan(int ban) {
+        this.ban = ban;
+    }
+
+    public Date getBanexpiration() {
+        return banexpiration;
+    }
+
+    public void setBanexpiration(Date banexpiration) {
+        this.banexpiration = banexpiration;
     }
 
 }

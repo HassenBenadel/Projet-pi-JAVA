@@ -13,14 +13,13 @@ public class Fournisseur extends Utilisateur {
 
     private int id_fournisseur;
 
-    public Fournisseur(String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, String adressMac) {
-        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte, adressMac);
+    public Fournisseur(String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte) {
+        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte);
     }
 
-    public Fournisseur(int id_fournisseur ,String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, String adressMac) {
-        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte, adressMac);
+    public Fournisseur(int id_fournisseur, String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte) {
+        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte);
         this.id_fournisseur = id_fournisseur;
-
     }
 
     public int getId_fournisseur() {

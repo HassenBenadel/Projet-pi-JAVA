@@ -14,17 +14,16 @@ public class Livreur extends Utilisateur {
     private int id_livreur;
     private String secteur_activite;
 
-    public Livreur(String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, String adressMac,String secteur_activite) {
-        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte, adressMac);
-        this.secteur_activite=secteur_activite;
-    }
-    
-        public Livreur(int id_livreur,String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, String adressMac,String secteur_activite) {
-        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte, adressMac);
-        this.secteur_activite=secteur_activite;
-        this.id_livreur=id_livreur;
+    public Livreur(String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, String secteur_activite) {
+        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte);
+        this.secteur_activite = secteur_activite;
     }
 
+    public Livreur(int id_livreur, String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, String secteur_activite) {
+        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte);
+        this.id_livreur = id_livreur;
+        this.secteur_activite = secteur_activite;
+    }
 
     public int getId_livreur() {
         return id_livreur;
@@ -46,8 +45,5 @@ public class Livreur extends Utilisateur {
     public String toString() {
         return "Livreur{" + "id_livreur=" + id_livreur + ", secteur_activite=" + secteur_activite + '}';
     }
-    
-
-
 
 }

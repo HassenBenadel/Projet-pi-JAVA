@@ -5,9 +5,7 @@
  */
 package model;
 
-import java.sql.Connection;
-import java.sql.Statement;
-import util.MaConnexion;
+import java.sql.Date;
 
 /**
  *
@@ -16,31 +14,36 @@ import util.MaConnexion;
 public class Client extends Utilisateur {
 
     private int id_client;
-    private int id_user;
 
-    public Client(String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, String adressMac) {
-        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte, adressMac);
-        this.id_user = super.getId_user();
-    }
-
-    public Client(int id_client, String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, String adressMac) {
-        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte, adressMac);
+    public Client(int id_client, String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, int code, int ban, Date banexpiration) {
+        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte, code, ban, banexpiration);
         this.id_client = id_client;
-        this.id_user = super.getId_user();
     }
+
+    public Client(int id_client, int id_user, String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, int code, int ban, Date banexpiration) {
+        super(id_user, nom, prenom, email, telephone, image, pays, ville, password, typeCompte, code, ban, banexpiration);
+        this.id_client = id_client;
+    }
+
+    public Client(String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, int code, int ban, Date banexpiration) {
+        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte, code, ban, banexpiration);
+    }
+
+    public Client(String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte) {
+        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte);
+    }   //used to insert a  client in database 
+
+    public Client(int id_client, String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte) {
+        super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte);
+        this.id_client = id_client;
+    }   //used to modify  a clinet in database using his ID
 
     public int getId_client() {
-
         return id_client;
     }
 
     public void setId_client(int id_client) {
         this.id_client = id_client;
-    }
-
-    @Override
-    public String toString() {
-        return "Client{" + "id_client=" + id_client + '}';
     }
 
 }
