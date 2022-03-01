@@ -4,21 +4,72 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="842.0" prefWidth="998.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="GUI.PostFXajouterController">
+<AnchorPane id="AnchorPane" prefHeight="914.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PostFXajouterController">
    <children>
-      <Label layoutX="243.0" layoutY="295.0" text="Titre :" />
-      <Label layoutX="225.0" layoutY="355.0" text="Description :" />
-      <Label layoutX="232.0" layoutY="500.0" text="Contenu :" />
-      <Label layoutX="239.0" layoutY="734.0" text="Image :" />
-      <TextField fx:id="titre" layoutX="425.0" layoutY="291.0" />
-      <TextArea fx:id="description" layoutX="425.0" layoutY="355.0" prefHeight="103.0" prefWidth="359.0" />
-      <TextArea fx:id="contenu" layoutX="425.0" layoutY="509.0" prefHeight="103.0" prefWidth="359.0" />
-      <Button fx:id="browseImage" layoutX="425.0" layoutY="730.0" mnemonicParsing="false" onAction="#browseImage" text="Borwse" />
-      <ImageView fx:id="imageBrowsed" fitHeight="150.0" fitWidth="200.0" layoutX="584.0" layoutY="667.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="validerPost" layoutX="732.0" layoutY="206.0" mnemonicParsing="false" onAction="#validerAjout" text="Valider" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="274.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1315.0" />
+      <ImageView fitHeight="641.0" fitWidth="1309.0" layoutX="6.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="4.0" layoutY="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1315.0" />
+      <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="1244.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Pics/Ps/Me.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="95.0" fitWidth="95.0" layoutX="613.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Pics/blogLogo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="601.0" layoutY="209.0" text="Blogs" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="43.0" />
+         </font>
+      </Label>
+      <Label layoutX="1075.0" layoutY="29.0" text="Nom Utilisateur" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="82.0" fitWidth="86.0" layoutX="11.0" layoutY="1.0">
+         <image>
+            <Image url="@../Pics/logoSmall.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="854.0" layoutY="26.0" mnemonicParsing="false" styleClass="blogList-navBar-btn" stylesheets="@styleSheet.css" text="Magasin" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="51.0" layoutX="1054.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="5.0" />
+      <Button layoutX="976.0" layoutY="26.0" mnemonicParsing="false" styleClass="blogList-navBar-btn" stylesheets="@styleSheet.css" text="Blogs" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Circle fill="WHITE" layoutX="963.0" layoutY="46.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Label layoutX="244.0" layoutY="369.0" text="Titre :" />
+      <Label layoutX="226.0" layoutY="429.0" text="Description :" />
+      <Label layoutX="233.0" layoutY="574.0" text="Contenu :" />
+      <Label layoutX="240.0" layoutY="808.0" text="Image :" />
+      <TextField fx:id="titre" layoutX="426.0" layoutY="365.0" />
+      <TextArea fx:id="description" layoutX="426.0" layoutY="429.0" prefHeight="103.0" prefWidth="359.0" />
+      <TextArea fx:id="contenu" layoutX="426.0" layoutY="583.0" prefHeight="103.0" prefWidth="359.0" />
+      <ImageView fx:id="imageBrowsed" fitHeight="150.0" fitWidth="200.0" layoutX="585.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="validerPost" layoutX="733.0" layoutY="280.0" mnemonicParsing="false" onAction="#validerAjout" text="Valider" />
+      <AnchorPane layoutX="293.0" layoutY="797.0" onMousePressed="#browseImage" prefHeight="39.0" prefWidth="41.0" AnchorPane.topAnchor="797.0">
+         <children>
+            <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../Pics/imageIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

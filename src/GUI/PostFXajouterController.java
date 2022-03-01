@@ -19,6 +19,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -57,7 +58,7 @@ public class PostFXajouterController implements Initializable {
     
     String path;
     @FXML
-    private void browseImage(ActionEvent event) throws FileNotFoundException {
+    private void browseImage(MouseEvent mouseEvent) throws FileNotFoundException {
         File file = fc.showOpenDialog(null);
         path = file.getAbsolutePath();
         FileInputStream input = new FileInputStream(path);
