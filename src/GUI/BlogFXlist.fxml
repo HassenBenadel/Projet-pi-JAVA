@@ -9,13 +9,17 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="914.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BlogFXlistController">
    <children>
-      <ImageView fitHeight="204.0" fitWidth="1309.0" layoutY="77.0" pickOnBounds="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="274.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1309.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <ImageView fitHeight="641.0" fitWidth="1309.0" layoutX="6.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="4.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1309.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="1238.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Pics/3.jpg" />
+            <Image url="@../Pics/Ps/Me.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="95.0" fitWidth="95.0" layoutX="607.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
@@ -26,12 +30,6 @@
       <Label layoutX="595.0" layoutY="209.0" text="Blogs" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="43.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="633.0" fitWidth="1309.0" layoutX="6.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Label layoutX="571.0" layoutY="17.0" text="Fazet nena">
-         <font>
-            <Font size="35.0" />
          </font>
       </Label>
       <HBox alignment="CENTER" layoutX="295.0" layoutY="281.0" prefHeight="633.0" prefWidth="719.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="295.0" AnchorPane.rightAnchor="295.0">
@@ -52,5 +50,15 @@
             <Font size="17.0" />
          </font>
       </Button>
+      <Label layoutX="1072.0" layoutY="26.0" text="Nom Utilisateur" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="82.0" fitWidth="86.0" layoutX="11.0" layoutY="1.0">
+         <image>
+            <Image url="@../Pics/logoSmall.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

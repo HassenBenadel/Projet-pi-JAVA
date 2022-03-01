@@ -43,7 +43,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c7b9a" height="339.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="8.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4ac7f0" height="339.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="8.0" />
                   <ImageView fx:id="image" fitHeight="339.0" fitWidth="656.0" pickOnBounds="true" />
                </children>
             </HBox>

@@ -56,6 +56,7 @@ public class BlogItemController implements Initializable {
     public void setData(Post post, clickListener myListener) throws FileNotFoundException {
         this.post = post;
         this.myListener = myListener;
+        description.setText(post.getDescription());
         titre.setText(post.getTitre());
         // Image : Begin
         String path = post.getImage();
@@ -63,6 +64,5 @@ public class BlogItemController implements Initializable {
         Image images = new Image(input);
         image.setImage(images);
         // Image : End
-        description.setText(post.getDescription());
     }
 }

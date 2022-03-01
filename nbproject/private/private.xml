@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/El%20Ghali%20Omar/Documents/esprit/3.2/Projet_Web%20Java/PI/Blog/src/GUI/BlogItem.fxml</file>
             <file>file:/C:/Users/El%20Ghali%20Omar/Documents/esprit/3.2/Projet_Web%20Java/PI/Blog/src/GUI/styleSheet.css</file>
+            <file>file:/C:/Users/El%20Ghali%20Omar/Documents/esprit/3.2/Projet_Web%20Java/PI/Blog/src/GUI/BlogFXlistController.java</file>
+            <file>file:/C:/Users/El%20Ghali%20Omar/Documents/esprit/3.2/Projet_Web%20Java/PI/Blog/src/GUI/PostFXajouterController.java</file>
             <file>file:/C:/Users/El%20Ghali%20Omar/Documents/esprit/3.2/Projet_Web%20Java/PI/Blog/src/GUI/BlogFXmain.java</file>
+            <file>file:/C:/Users/El%20Ghali%20Omar/Documents/esprit/3.2/Projet_Web%20Java/PI/Blog/src/GUI/BlogItemController.java</file>
         </group>
     </open-files>
 </project-private>
