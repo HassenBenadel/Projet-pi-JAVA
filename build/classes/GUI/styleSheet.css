@@ -1,0 +1,19 @@
+.post-item {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 10px;
+    -fx-border-color: grey;
+    -fx-border-width: 0.5px;
+}
+
+.post-item-btn {
+    -fx-background-color: transparent;
+}
+
+.blogList-mesBlogs-btn {
+    -fx-background-color: #2c7b9a;
+    -fx-border-radius: 30px;
+}
+
+.post-item-scrollPane {
+    -fx-background-color: rgba(0,0,0,0);
+}

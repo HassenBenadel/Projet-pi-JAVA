@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" onMousePressed="#click" prefHeight="445.0" prefWidth="669.0" styleClass="post-item" stylesheets="@styleSheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BlogItemController">
+    <children>
+      <VBox layoutX="2.5" layoutY="2.5" prefHeight="498.0" prefWidth="667.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+         <children>
+            <HBox prefHeight="40.0" prefWidth="656.0">
+               <children>
+                  <Label fx:id="titre" prefHeight="49.0" prefWidth="391.0" text="Titre" textFill="#515151">
+                     <font>
+                        <Font name="System Bold" size="33.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="titre1" alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="196.0" text="Nom Utilisateur" textFill="#808080">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="titre11" prefHeight="49.0" prefWidth="3.0" text="•" textFill="#808080">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="titre12" prefHeight="49.0" prefWidth="114.0" text="Date" textFill="#808080">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c7b9a" height="339.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="8.0" />
+                  <ImageView fx:id="image" fitHeight="339.0" fitWidth="656.0" pickOnBounds="true" />
+               </children>
+            </HBox>
+            <Label fx:id="description" alignment="TOP_LEFT" prefHeight="31.0" prefWidth="656.0" text="Description" textFill="#515151">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <AnchorPane prefHeight="48.0" prefWidth="666.0">
+               <children>
+                  <Button fx:id="viewMore" alignment="CENTER" layoutX="528.0" layoutY="24.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="122.0" styleClass="post-item-btn" stylesheets="@styleSheet.css" text="LIRE LA SUITE..." textFill="#05a9ff">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <Rectangle fill="DODGERBLUE" height="15.0" layoutX="-4.0" layoutY="482.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="665.0" />
+   </children>
+</AnchorPane>
