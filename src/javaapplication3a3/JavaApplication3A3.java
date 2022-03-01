@@ -25,7 +25,7 @@ public class JavaApplication3A3 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         IFavorieService FS= new FavorieService();
         ProduitService Ps= new ProduitService();
         ICategorieService Cs= new categorieService();
@@ -56,14 +56,14 @@ public class JavaApplication3A3 {
         
         //favorie
         
-        favorie F= new favorie(12,4);
-        FS.ajouterFavorie(F);
+        //favorie F= new favorie(12,2);
+        //FS.ajouterFavorie(F);
         
-        //System.out.println(FS.afficherFavorie(2));
-        
-        
+        System.out.println(FS.afficherFavorie(2));
         
         
-    }
+        
+        
+    }*/
     
 }

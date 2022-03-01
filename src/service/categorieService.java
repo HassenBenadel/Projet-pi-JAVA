@@ -24,7 +24,7 @@ public class categorieService implements ICategorieService {
 Connection cnx = Maconnexion.getInstance().getCnx();
     @Override
     public void ajouterCategorie(Categorie C) {
-        String req="INSERT INTO `Categorie`(`type`) VALUES ('"+C.getType()+"')";
+        String req="INSERT INTO `Categorie`(`type`,`imageC`) VALUES ('"+C.getType()+"','"+C.getImageC()+"')";
         try {
             Statement st=cnx.createStatement();
             st.executeUpdate(req);
@@ -42,7 +42,7 @@ Connection cnx = Maconnexion.getInstance().getCnx();
             Statement st=cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()) {
-                Categories.add(new Categorie(rs.getInt("idC"), rs.getString("type")));
+                Categories.add(new Categorie(rs.getInt("idC"), rs.getString("type"),rs.getString("image")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

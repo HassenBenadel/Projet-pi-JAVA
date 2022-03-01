@@ -12,9 +12,18 @@ package model;
 public class Categorie {
     private int idC;
     private  String type;
+    private String imageC;
 
     public Categorie( String type) {
         this.type = type;
+    }
+
+    public String getImageC() {
+        return imageC;
+    }
+
+    public void setImageC(String imageC) {
+        this.imageC = imageC;
     }
 
 
@@ -36,12 +45,25 @@ public class Categorie {
 
     @Override
     public String toString() {
-        return "Categorie{" + "idC=" + idC +  ", type=" + type + '}';
+        return "Categorie{" + "idC=" + idC + ", type=" + type + ", imageC=" + imageC + '}';
     }
+
+   
 
     public Categorie(int idC, String type) {
         this.idC = idC;
         this.type = type;
+    }
+
+    public Categorie(String type, String imageC) {
+        this.type = type;
+        this.imageC = imageC;
+    }
+
+    public Categorie(int idC, String type, String imageC) {
+        this.idC = idC;
+        this.type = type;
+        this.imageC = imageC;
     }
     
     

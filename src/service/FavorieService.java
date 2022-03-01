@@ -29,11 +29,13 @@ public class FavorieService implements IFavorieService{
         try {
             Statement st= cnx.createStatement();
             ResultSet rs = st.executeQuery(prereq);
-            if (rs.next())
+            if (rs.next()){
                 st.executeUpdate(sup);
-            else
+                        System.out.println("favorie supprimer avec succes");
+
+            }else
                 st.executeUpdate(aj);
-            System.out.println("favorie ajouter/supprimer avec succes");
+            System.out.println("favorie ajouter avec succes");
         } catch (SQLException ex) {
            ex.printStackTrace();
         }
@@ -42,12 +44,15 @@ public class FavorieService implements IFavorieService{
     @Override
     public List<favorie> afficherFavorie(int user) {
         List<favorie>favories = new ArrayList<>();
-      String req= "SELECT produit.idP,(SELECT type FROM categorie WHERE produit.reference=categorie.idC) as categorie,produit.nomProduit,produit.Quantite,produit.prix FROM produit INNER JOIN favorie ON produit.idP=favorie.idP WHERE favorie.idUser="+user+"";
+      //String req= "SELECT produit.idP,(SELECT type FROM categorie WHERE produit.reference=categorie.idC) as categorie,produit.nomProduit,produit.Quantite,produit.prix FROM produit INNER JOIN favorie ON produit.idP=favorie.idP WHERE favorie.idUser="+user+"";
+            String req= "SELECT * from favorie where idUser="+user;
+
       try {
             Statement st=cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()) {
-                favories.add(new favorie(rs.getInt("idP"), rs.getString("categorie"),rs.getString("nomProduit"),rs.getInt("Quantite"),rs.getInt("prix")));
+                //favories.add(new favorie(rs.getInt("idP"), rs.getString("categorie"),rs.getString("nomProduit"),rs.getInt("Quantite"),rs.getInt("prix")));
+                System.err.println(rs.toString());
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

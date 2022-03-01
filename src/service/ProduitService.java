@@ -24,7 +24,7 @@ public class ProduitService implements IProduitService {
     Connection cnx = Maconnexion.getInstance().getCnx();
     @Override
     public void ajouterProduit(Produit p) {
-        String req="INSERT INTO `produit`(`reference`, `nomProduit`, `Quantite`, `prix`) VALUES ("+p.getReference()+",'"+p.getNomProduit()+"',"+p.getQuantite()+","+p.getPrix()+")";
+        String req="INSERT INTO `produit`(`reference`, `nomProduit`, `Quantite`, `prix`,`image`) VALUES ("+p.getReference()+",'"+p.getNomProduit()+"',"+p.getQuantite()+","+p.getPrix()+",'"+p.getImage()+"')";
         try {
             Statement st= cnx.createStatement();
             st.executeUpdate(req);
@@ -43,7 +43,7 @@ public class ProduitService implements IProduitService {
             Statement st=cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()) {
-                produits.add(new Produit(rs.getInt("reference"), rs.getString("nomProduit"), rs.getInt("Quantite"), rs.getInt("prix")));
+                produits.add(new Produit(rs.getInt("idP"),rs.getInt("reference"), rs.getString("nomProduit"), rs.getInt("Quantite"), rs.getInt("prix"), rs.getString("image")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -68,7 +68,7 @@ public class ProduitService implements IProduitService {
 
     @Override
     public void modifierProduit(Produit p) {
-        String req="UPDATE Produit set Quantite="+p.getQuantite()+",prix="+p.getPrix()+" where idP="+p.getIdP()+"";
+        String req="UPDATE Produit set Quantite="+p.getQuantite()+",prix="+p.getPrix()+",image='"+p.getImage()+"' where idP="+p.getIdP()+"";
         try {
             Statement st = cnx.createStatement();
             int rowsUpdated = st.executeUpdate(req);
