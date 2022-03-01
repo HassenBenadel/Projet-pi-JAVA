@@ -1,3 +1,4 @@
+/* BlogItem : BEGIN */
 .post-item {
     -fx-background-color: #FFFFFF;
     -fx-border-radius: 10px;
@@ -8,12 +9,24 @@
 .post-item-btn {
     -fx-background-color: transparent;
 }
+/* END */
 
+/* BlogFXlist : BEGIN */
 .blogList-mesBlogs-btn {
     -fx-background-color: #000E12;
-    -fx-border-radius: 30px;
+    -fx-border-radius: 20px;
 }
 
 .post-item-scrollPane {
     -fx-background-color: rgba(0,0,0,0);
 }
+
+.blogList-navBar-btn {
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-border-radius: 20px;
+}
+
+.blog-search-Background {
+    -fx-background-color: #B9B9B9;
+}
+/* END */
