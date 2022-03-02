@@ -18,7 +18,10 @@
 <AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="914.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BlogFXlistController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="274.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1309.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <ImageView fitHeight="641.0" fitWidth="1309.0" layoutX="6.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <ImageView fitHeight="357.0" fitWidth="644.0" layoutX="665.0" layoutY="409.0" pickOnBounds="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="665.0" AnchorPane.rightAnchor="0.0">
+         <image>
+            <Image url="@../Pics/Background.jpg" />
+         </image></ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="4.0" layoutY="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1309.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="1238.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
