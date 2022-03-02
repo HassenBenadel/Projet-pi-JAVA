@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="223.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MyBlogItemController">
+   <children>
+      <VBox layoutX="265.0" layoutY="35.0" prefHeight="287.0" prefWidth="309.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="titre" prefHeight="40.0" prefWidth="291.0" text="Titre">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <HBox prefHeight="144.0" prefWidth="257.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4ac7f0" height="143.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="8.0" />
+                  <ImageView fx:id="image" fitHeight="144.0" fitWidth="272.0" pickOnBounds="true" />
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="39.0" prefWidth="289.0">
+               <children>
+                  <Button fx:id="viewMore" alignment="CENTER" layoutX="174.0" layoutY="6.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="106.0" styleClass="post-item-btn" stylesheets="@styleSheet.css" text="MODIFIER" textFill="#05a9ff">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

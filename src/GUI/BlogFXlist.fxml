@@ -40,7 +40,7 @@
       </Label>
       <HBox alignment="CENTER" layoutX="295.0" layoutY="281.0" prefHeight="633.0" prefWidth="719.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="295.0" AnchorPane.rightAnchor="295.0">
          <children>
-            <ScrollPane prefHeight="633.0" prefWidth="705.0" styleClass="post-item-scrollPane" stylesheets="@styleSheet.css">
+            <ScrollPane prefHeight="633.0" prefWidth="711.0" styleClass="post-item-scrollPane" stylesheets="@styleSheet.css">
                <content>
                   <GridPane fx:id="grid" prefHeight="19.0" prefWidth="97.0">
                     <rowConstraints>

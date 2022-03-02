@@ -42,10 +42,6 @@ import util.ConnectionDB;
  * @author El Ghali Omar
  */
 public class BlogFXlistController implements Initializable {
-    final FileChooser fc = new FileChooser();
-    List<Post> p = new ArrayList<>();
-    private clickListener myListener;
-    String path;
     
     @FXML
     private GridPane grid;
@@ -64,6 +60,50 @@ public class BlogFXlistController implements Initializable {
     @FXML
     private AnchorPane anchor;
     
+    final FileChooser fc = new FileChooser();
+    List<Post> posts = new ArrayList<>();
+    private clickListener myListener;
+    String path;
+    
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        posts.addAll(getData());
+        /*if(posts.size() > 0) {
+            myListener = new clickListener() {
+                @Override
+                public void onClickListener(Post post) {
+                    try {
+                        setChosenPost(post);
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(BlogFXlistController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
+        }*/
+        int column = 0;
+        int row = 1;
+        try {
+            for(int i = 0; i < posts.size()/2; i++) {
+                FXMLLoader fxmlloader = new FXMLLoader();
+                fxmlloader.setLocation(getClass().getResource("/GUI/BlogItem.fxml"));
+                AnchorPane anchorPane = fxmlloader.load();
+                BlogItemController itemController = fxmlloader.getController();
+                itemController.setData(posts.get(i), myListener);
+                if(column == 1) {
+                    column = 0;
+                    row++;
+                }
+                grid.add(anchorPane, column++, row);
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(BlogFXlistController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private List<Post> getData(){
         Post post;
         /*SPost sp = new SPost();
@@ -75,51 +115,12 @@ public class BlogFXlistController implements Initializable {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()) {
-                p.add(new Post(rs.getInt("id"), rs.getInt("userId"), rs.getString("titre"), rs.getString("image"), rs.getString("description"), rs.getString("contenu"), rs.getInt("nombreVues")));
+                posts.add(new Post(rs.getInt("id"), rs.getInt("userId"), rs.getString("titre"), rs.getString("image"), rs.getString("description"), rs.getString("contenu"), rs.getInt("nombreVues")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return p;
-    }
-    
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        p.addAll(getData());
-        if(p.size() > 0) {
-            myListener = new clickListener() {
-                @Override
-                public void onClickListener(Post post) {
-                    try {
-                        setChosenPost(post);
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(BlogFXlistController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            };
-        }
-        int column = 0;
-        int row = 1;
-        try {
-            for(int i = 0; i < p.size()/2; i++) {
-                FXMLLoader fxmlloader = new FXMLLoader();
-                fxmlloader.setLocation(getClass().getResource("/GUI/BlogItem.fxml"));
-                AnchorPane anchorPane = fxmlloader.load();
-                BlogItemController itemController = fxmlloader.getController();
-                itemController.setData(p.get(i), myListener);
-                if(column == 1) {
-                    column = 0;
-                    row++;
-                }
-                grid.add(anchorPane, column++, row);
-                GridPane.setMargin(anchorPane, new Insets(10));
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(BlogFXlistController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        return posts;
     }
     
     private void setChosenPost(Post p) throws FileNotFoundException{
@@ -135,29 +136,12 @@ public class BlogFXlistController implements Initializable {
         // Image : End
     }
     
-    private Post getChosenPost(Post p) {
-        String cTitre = p.getTitre();
-        return p;
-    }
-    
-    @FXML
-    private void browseImage(ActionEvent event) throws FileNotFoundException {
-        File file = fc.showOpenDialog(null);
-        path = file.getAbsolutePath();
-        FileInputStream input = new FileInputStream(path);
-        Image image = new Image(input);
-        imageBrowsed.setImage(image);
-        imagePath.setText(path);
-    }
-
-    @FXML
-    private void supprimerPost(ActionEvent event) {
+    /*private void supprimerPost(ActionEvent event) {
         SPost sp = new SPost();
         sp.supprimer(Integer.parseInt(id.getText()));
-    }
+    }*/
 
-    @FXML
-    private void modifierPost(ActionEvent event) {
+    /*private void modifierPost(ActionEvent event) {
         SPost sp = new SPost();
         path = imagePath.getText();
         String sPath = path;
@@ -165,7 +149,7 @@ public class BlogFXlistController implements Initializable {
         sPath = sPath.replace("\\", "\\\\");
         Post post = new Post(Integer.parseInt(id.getText()), 3, titre.getText(), sPath, desc.getText(), contenu.getText(), 3);
         sp.modifier(post);
-    }
+    }*/
     
     
 }

@@ -18,7 +18,7 @@
                <children>
                   <Label fx:id="titre" prefHeight="49.0" prefWidth="391.0" text="Titre" textFill="#515151">
                      <font>
-                        <Font name="System Bold" size="33.0" />
+                        <Font name="System Bold" size="27.0" />
                      </font>
                      <padding>
                         <Insets left="10.0" />
@@ -43,7 +43,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4ac7f0" height="339.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="8.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4ac7f0" height="339.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="12.0" />
                   <ImageView fx:id="image" fitHeight="339.0" fitWidth="656.0" pickOnBounds="true" />
                </children>
             </HBox>
@@ -52,7 +52,7 @@
                   <Insets />
                </VBox.margin>
                <font>
-                  <Font name="System Bold" size="25.0" />
+                  <Font name="System Bold" size="28.0" />
                </font>
                <padding>
                   <Insets left="10.0" top="10.0" />
@@ -60,7 +60,7 @@
             </Label>
             <AnchorPane prefHeight="48.0" prefWidth="666.0">
                <children>
-                  <Button fx:id="viewMore" alignment="CENTER" layoutX="528.0" layoutY="24.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="122.0" styleClass="post-item-btn" stylesheets="@styleSheet.css" text="LIRE LA SUITE..." textFill="#05a9ff">
+                  <Button fx:id="viewMore" alignment="CENTER" layoutX="528.0" layoutY="20.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="122.0" styleClass="post-item-btn" stylesheets="@styleSheet.css" text="LIRE LA SUITE..." textFill="#05a9ff">
                      <font>
                         <Font size="15.0" />
                      </font></Button>

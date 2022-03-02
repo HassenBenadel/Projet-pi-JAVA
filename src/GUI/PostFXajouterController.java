@@ -33,8 +33,6 @@ import service.SPost;
  */
 public class PostFXajouterController implements Initializable {
     
-    final FileChooser fc = new FileChooser();
-    
     @FXML
     private TextField titre;
     @FXML
@@ -48,6 +46,9 @@ public class PostFXajouterController implements Initializable {
     @FXML
     private Button validerPost;
 
+    final FileChooser fc = new FileChooser();
+    String path;
+        
     /**
      * Initializes the controller class.
      */
@@ -56,7 +57,6 @@ public class PostFXajouterController implements Initializable {
         // TODO
     }    
     
-    String path;
     @FXML
     private void browseImage(MouseEvent mouseEvent) throws FileNotFoundException {
         File file = fc.showOpenDialog(null);
