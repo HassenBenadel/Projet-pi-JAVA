@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="914.0" prefWidth="1039.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.FXMLModifierSupprimerProduitController">
+<AnchorPane id="AnchorPane" fx:id="modifierProduit" prefHeight="914.0" prefWidth="1039.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.FXMLModifierSupprimerProduitController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="182.0" stroke="BLACK" strokeType="INSIDE" width="1039.0" />
       <ImageView fitHeight="147.0" fitWidth="167.0" layoutX="29.0" layoutY="18.0">
@@ -33,13 +33,12 @@
       <Text layoutX="282.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite" />
       <Text layoutX="275.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom du produit" />
       <Text layoutX="277.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type du produit" />
-      <Text layoutX="281.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id" />
       <TextField fx:id="fxId" layoutX="434.0" layoutY="283.0" />
       <TextField fx:id="FxPrix" layoutX="436.0" layoutY="533.0" />
       <TextField fx:id="FxQuantite" layoutX="436.0" layoutY="465.0" />
-      <TextField fx:id="FxNomProduit" layoutX="436.0" layoutY="403.0" />
-      <TextField fx:id="FxReference" layoutX="436.0" layoutY="343.0" />
-      <Button fx:id="FxModifier" blendMode="COLOR_BURN" layoutX="574.0" layoutY="657.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="122.0" text="modifier">
+      <TextField fx:id="FxNomProduit" editable="false" layoutX="436.0" layoutY="403.0" />
+      <TextField fx:id="FxReference" editable="false" layoutX="436.0" layoutY="343.0" />
+      <Button fx:id="FxModifier" blendMode="COLOR_BURN" layoutX="574.0" layoutY="657.0" mnemonicParsing="false" onAction="#modifier" prefHeight="41.0" prefWidth="122.0" text="modifier">
          <graphic>
             <ImageView>
                <image>
@@ -48,8 +47,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="FxAddPhoto" layoutX="436.0" layoutY="594.0" mnemonicParsing="false" text="..." />
-      <Button blendMode="COLOR_BURN" layoutX="423.0" layoutY="656.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="113.0" text="annuler">
+      <Button fx:id="annulerModif" blendMode="COLOR_BURN" layoutX="423.0" layoutY="656.0" mnemonicParsing="false" onAction="#annulerModif" prefHeight="41.0" prefWidth="113.0" text="annuler">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
@@ -58,7 +56,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button blendMode="COLOR_BURN" layoutX="740.0" layoutY="656.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="122.0" text="supprimer">
+      <Button blendMode="COLOR_BURN" layoutX="740.0" layoutY="656.0" mnemonicParsing="false" onAction="#supprimerProduit" prefHeight="41.0" prefWidth="122.0" text="supprimer">
          <graphic>
             <ImageView>
                <image>
@@ -69,5 +67,14 @@
       </Button>
       <ImageView fx:id="FxPhoto" fitHeight="191.0" fitWidth="236.0" layoutX="704.0" layoutY="318.0" pickOnBounds="true" />
       <TextField fx:id="FxImagePath" layoutX="737.0" layoutY="533.0" />
+      <AnchorPane layoutX="436.0" layoutY="579.0" onMousePressed="#ajouterPhoto" prefHeight="56.0" prefWidth="55.0">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="55.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/add-image-icon-png-14.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

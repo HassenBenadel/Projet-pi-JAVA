@@ -19,7 +19,7 @@
    <children>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="238.0" prefHeight="674.0" prefWidth="1031.0">
          <children>
-            <ScrollPane fx:id="scroll" prefHeight="674.0" prefWidth="806.0">
+            <ScrollPane fx:id="scroll" prefHeight="674.0" prefWidth="902.0">
                <content>
                   <GridPane fx:id="grid" prefHeight="15.0" prefWidth="80.0">
                      <rowConstraints>
@@ -34,7 +34,6 @@
          </children>
       </HBox>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="182.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="1053.0" />
-      <ImageView fx:id="FxPhoto" fitHeight="121.0" fitWidth="154.0" layoutX="56.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="169.0" fitWidth="176.0" layoutX="14.0" layoutY="4.0">
          <image>
             <Image url="@../image/272071956_646555749798327_1095942025241001948_n%20(1).png" />

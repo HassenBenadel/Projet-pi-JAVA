@@ -13,7 +13,7 @@
       <VBox layoutX="110.0" layoutY="29.0" prefHeight="349.0" prefWidth="320.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TextField fx:id="idProduit" />
-            <ImageView fx:id="idPhoto" fitHeight="140.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="idPhoto" fitHeight="140.0" fitWidth="227.0" pickOnBounds="true">
                <VBox.margin>
                   <Insets left="40.0" top="25.0" />
                </VBox.margin>

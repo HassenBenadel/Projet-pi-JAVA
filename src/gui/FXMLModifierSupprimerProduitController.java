@@ -6,21 +6,29 @@
 package gui;
 
 import interfaces.clickListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import model.Produit;
+import service.ProduitService;
 import util.Maconnexion;
 
 /**
@@ -29,6 +37,8 @@ import util.Maconnexion;
  * @author hadir
  */
 public class FXMLModifierSupprimerProduitController implements Initializable {
+    final FileChooser fc = new FileChooser();
+    String path;
 
     @FXML
     private TextField fxId;
@@ -43,13 +53,15 @@ public class FXMLModifierSupprimerProduitController implements Initializable {
     @FXML
     private Button FxModifier;
     @FXML
-    private Button FxAddPhoto;
-    @FXML
     private ImageView FxPhoto;
     private Produit produit;
     private clickListener myListener;
     @FXML
     private TextField FxImagePath;
+    @FXML
+    private AnchorPane modifierProduit;
+    @FXML
+    private Button annulerModif;
     /**
      * Initializes the controller class.
      */
@@ -87,6 +99,73 @@ public class FXMLModifierSupprimerProduitController implements Initializable {
         Image images = new Image(input);
         FxPhoto.setImage(images);
         // Image : End
+    }
+
+    @FXML
+    private void modifier(ActionEvent event) {
+       Produit produit = new Produit();
+       produit.setIdP(Integer.parseInt(fxId.getText()));
+        produit.setQuantite(Integer.parseInt(FxQuantite.getText()));
+        produit.setPrix(Integer.parseInt(FxPrix.getText()));
+        path = FxImagePath.getText();
+        String sPath = path;
+        sPath = sPath.replace("\\", "\\\\");
+        produit.setImage(sPath);
+        ProduitService sp = new ProduitService();
+        sp.modifierProduit(produit);
+        
+        /* Redirect to myList : BEGIN */
+        AnchorPane cp;
+        try {
+            cp = FXMLLoader.load(getClass().getResource("ProduitFxInterface.fxml"));
+            modifierProduit.getChildren().removeAll();
+            modifierProduit.getChildren().setAll(cp);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        /* END */
+             
+    }
+
+    @FXML
+    private void ajouterPhoto(MouseEvent event) throws FileNotFoundException {
+        File file = fc.showOpenDialog(null);
+        path = file.getAbsolutePath();
+        FileInputStream input = new FileInputStream(path);
+        Image image = new Image(input);
+        FxPhoto.setImage(image);
+        FxImagePath.setText(path);
+    }
+
+    @FXML
+    private void annulerModif(ActionEvent event) {
+           /* Redirect to myList : BEGIN */
+        AnchorPane cp;
+        try {
+            cp = FXMLLoader.load(getClass().getResource("ProduitFxInterface.fxml"));
+            modifierProduit.getChildren().removeAll();
+            modifierProduit.getChildren().setAll(cp);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        /* END */
+    }
+
+    @FXML
+    private void supprimerProduit(ActionEvent event) {
+        ProduitService ps = new ProduitService();
+        ps.suprimerProduit(Integer.parseInt(fxId.getText()));
+           /* Redirect to myList : BEGIN */
+        AnchorPane cp;
+        try {
+            cp = FXMLLoader.load(getClass().getResource("ProduitFxInterface.fxml"));
+            modifierProduit.getChildren().removeAll();
+            modifierProduit.getChildren().setAll(cp);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        /* END */
+
     }
     
 }
