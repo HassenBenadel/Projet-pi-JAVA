@@ -37,6 +37,9 @@ import service.SPost;
  */
 public class PostFXajouterController implements Initializable {
     
+    final FileChooser fc = new FileChooser();
+    String path;
+    
     @FXML
     private TextField titre;
     @FXML
@@ -51,9 +54,6 @@ public class PostFXajouterController implements Initializable {
     private Label choisirImageLabel;
     @FXML
     private AnchorPane anchor;
-    
-    final FileChooser fc = new FileChooser();
-    String path;
         
     /**
      * Initializes the controller class.

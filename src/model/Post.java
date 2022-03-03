@@ -39,6 +39,15 @@ public class Post {
         this.contenu = contenu;
         this.nombreVues = nombreVues;
     }
+    
+    public Post(String titre, String image, String description, String contenu, int id) {
+        this.id = id;
+        this.titre = titre;
+        this.image = image;
+        this.description = description;
+        this.contenu = contenu;
+        this.nombreVues = nombreVues;
+    }
 
     public int getId() {
         return id;

@@ -66,7 +66,7 @@ public class SPost implements IPost{
 
     @Override
     public void modifier(Post p) {
-        String req = "UPDATE post SET userId = "+p.getUserId()+" , titre = '"+p.getTitre()+"', image = '"+p.getImage()+"', description = '"+p.getDescription()+"', contenu = '"+p.getContenu()+"', nombreVues = "+p.getNombreVues()+" WHERE id = "+p.getId()+"";
+        String req = "UPDATE post SET titre = '"+p.getTitre()+"', image = '"+p.getImage()+"', description = '"+p.getDescription()+"', contenu = '"+p.getContenu()+"' WHERE id = "+p.getId()+"";
         try {
             Statement st = cnx.createStatement();
             int rowsUpdated = st.executeUpdate(req);

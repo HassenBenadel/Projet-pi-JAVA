@@ -6,8 +6,10 @@
 package GUI;
 
 import interfaces.clickListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,6 +29,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import model.Post;
 import service.SPost;
 import util.ConnectionDB;
@@ -37,6 +42,8 @@ import util.ConnectionDB;
  */
 public class PostFXmodifierController implements Initializable {
     
+    final FileChooser fc = new FileChooser();
+    String path;
     private Post post;
     private clickListener myListener;
 
@@ -56,6 +63,8 @@ public class PostFXmodifierController implements Initializable {
     private TextField hiddenId;
     @FXML
     private TextField hiddenPath;
+    @FXML
+    private AnchorPane anchor;
     
     /**
      * Initializes the controller class.
@@ -67,18 +76,71 @@ public class PostFXmodifierController implements Initializable {
 
     @FXML
     private void validerModification(ActionEvent event) {
+        Post post = new Post();
+        post.setId(Integer.parseInt(hiddenId.getText()));
+        post.setTitre(titre.getText());
+        post.setDescription(description.getText());
+        post.setContenu(contenu.getText());
+        path = hiddenPath.getText();
+        String sPath = path;
+        sPath = sPath.replace("\\", "\\\\");
+        post.setImage(sPath);
+        SPost sp = new SPost();
+        sp.modifier(post);
+        
+        /* Redirect to myList : BEGIN */
+        AnchorPane cp;
+        try {
+            cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
+            anchor.getChildren().removeAll();
+            anchor.getChildren().setAll(cp);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        /* END */
     }
 
     @FXML
-    private void browseImage(MouseEvent event) {
+    private void browseImage(MouseEvent event) throws FileNotFoundException {
+        File file = fc.showOpenDialog(null);
+        path = file.getAbsolutePath();
+        FileInputStream input = new FileInputStream(path);
+        Image image = new Image(input);
+        imageBrowsed.setImage(image);
+        hiddenPath.setText(path);
     }
 
     @FXML
     private void annulerModificationPost(ActionEvent event) {
+        /* Redirect to myList : BEGIN */
+        AnchorPane cp;
+        try {
+            cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
+            anchor.getChildren().removeAll();
+            anchor.getChildren().setAll(cp);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        /* END */
     }
     
     @FXML
     private void supprimerPost(ActionEvent event) {
+        Post post = new Post();
+        post.setId(Integer.parseInt(hiddenId.getText()));
+        SPost sp = new SPost();
+        sp.supprimer(post.getId());
+        
+        /* Redirect to myList : BEGIN */
+        AnchorPane cp;
+        try {
+            cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
+            anchor.getChildren().removeAll();
+            anchor.getChildren().setAll(cp);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        /* END */
     }
     
     public void setData(Post post, clickListener myListener) throws FileNotFoundException {
