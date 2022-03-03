@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author hasse
@@ -24,6 +26,17 @@ public class Livreur extends Utilisateur {
         this.id_livreur = id_livreur;
         this.secteur_activite = secteur_activite;
     }
+
+    public Livreur(int id_livreur, int id_user, String email, int admin, int ban, Date banexpiration) {
+        super(id_user, email, admin, ban, banexpiration);
+        this.id_livreur = id_livreur;
+    }
+
+    public Livreur(int id_user, String email, int admin, int ban, Date banexpiration) {
+        super(id_user, email, admin, ban, banexpiration);
+    }
+    
+    
 
     public int getId_livreur() {
         return id_livreur;

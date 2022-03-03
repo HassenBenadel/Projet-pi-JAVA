@@ -37,6 +37,6 @@
       <Label layoutX="108.0" layoutY="329.0" text="Photo De Profil " />
       <Button fx:id="retour" layoutY="-2.0" mnemonicParsing="false" onAction="#goback" prefHeight="40.0" prefWidth="176.0" text="Retour" />
       <ImageView fx:id="fximg" fitHeight="105.0" fitWidth="142.0" layoutX="272.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="browse" layoutX="477.0" layoutY="335.0" mnemonicParsing="false" onAction="#uploadImage" text="Upload" />
+      <Button fx:id="browse" layoutX="477.0" layoutY="335.0" mnemonicParsing="false" onAction="#uploadImage" text="Button" />
    </children>
 </AnchorPane>

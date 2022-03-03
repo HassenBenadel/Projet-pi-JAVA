@@ -16,11 +16,12 @@ import util.MaConnexion;
  * @author hasse
  */
 public class Connect {
+    PasswordService ps = new PasswordService();
 
     public boolean verify(String email, String password) {
         boolean bool = false;
 
-        String sql = "Select email , password from utilisateur where email='" + email + "' and password='" + password + "'";
+        String sql = "Select email , password from utilisateur where email='" + email + "' and password='" + ps.passwordEncryption(password) + "'";
 
         try {
 

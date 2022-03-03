@@ -28,10 +28,10 @@ public class NewFXMain extends Application {
             sc.setMin(0);
             sc.setMax(100);
             sc.setValue(50);
-            
+
             root = FXMLLoader.load(getClass().getResource("Connect.fxml"));
 
-            Scene scene = new Scene(root,900,900);
+            Scene scene = new Scene(root, 1309, 914);
 
             primaryStage.setTitle("Se connecter");
             primaryStage.setScene(scene);

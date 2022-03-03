@@ -4,48 +4,42 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="profilescene" prefHeight="848.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.ProfileController">
    <children>
-      <Label layoutX="136.0" layoutY="109.0" text="Nom" />
-      <Label layoutX="126.0" layoutY="222.0" text="Prenom" />
-      <Label layoutX="134.0" layoutY="345.0" text="Email" />
-      <Label layoutX="138.0" layoutY="456.0" text="Ville" />
-      <Label layoutX="136.0" layoutY="564.0" text="Pays " />
+      <Label layoutX="139.0" layoutY="273.0" text="Nom" />
+      <Label layoutX="129.0" layoutY="364.0" text="Prenom" />
+      <Label layoutX="134.0" layoutY="445.0" text="Email" />
+      <Label layoutX="138.0" layoutY="527.0" text="Ville" />
+      <Label layoutX="138.0" layoutY="603.0" text="Pays " />
       <Label layoutX="135.0" layoutY="688.0" text="Telephone" />
-      <TextArea fx:id="nom" layoutX="315.0" layoutY="96.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextArea fx:id="ville" layoutX="315.0" layoutY="442.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextArea fx:id="email" layoutX="315.0" layoutY="331.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextArea fx:id="pays" layoutX="315.0" layoutY="550.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextArea fx:id="telephone" layoutX="315.0" layoutY="674.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextArea fx:id="prenom" layoutX="315.0" layoutY="208.0" prefHeight="27.0" prefWidth="200.0" />
       <Pane layoutX="515.0" layoutY="166.0" prefHeight="47.0" prefWidth="200.0" />
-      <Separator layoutX="5.0" layoutY="175.0" prefHeight="0.0" prefWidth="765.0" />
-      <Separator layoutX="5.0" layoutY="298.0" prefHeight="3.0" prefWidth="765.0" />
-      <Separator layoutX="12.0" layoutY="403.0" prefHeight="3.0" prefWidth="765.0" />
-      <Separator layoutX="24.0" layoutY="515.0" prefHeight="3.0" prefWidth="765.0" />
-      <Separator layoutX="5.0" layoutY="639.0" prefHeight="3.0" prefWidth="765.0" />
-      <Hyperlink layoutX="542.0" layoutY="105.0" onAction="#changerNom" onMouseClicked="#changerNom" text="Modifier" />
+      <Separator layoutX="14.0" layoutY="329.0" prefHeight="0.0" prefWidth="765.0" />
+      <Separator layoutX="3.0" layoutY="411.0" prefHeight="3.0" prefWidth="765.0" />
+      <Separator layoutX="-3.0" layoutY="493.0" prefHeight="3.0" prefWidth="842.0" />
+      <Separator layoutX="6.0" layoutY="575.0" prefHeight="3.0" prefWidth="824.0" />
+      <Separator layoutX="5.0" layoutY="663.0" prefHeight="3.0" prefWidth="842.0" />
+      <Hyperlink layoutX="542.0" layoutY="269.0" onAction="#changerNom" onMouseClicked="#changerNom" text="Modifier" />
       <Hyperlink layoutX="542.0" layoutY="684.0" onAction="#changerTelephone" text="Modifier" />
-      <Hyperlink layoutX="542.0" layoutY="560.0" onAction="#changerPays" text="Modifier" />
-      <Hyperlink layoutX="542.0" layoutY="452.0" onAction="#changerVille" text="Modifier" />
-      <Hyperlink layoutX="542.0" layoutY="341.0" onAction="#changerEmail" text="Modifier" />
-      <Hyperlink layoutX="542.0" layoutY="218.0" onAction="#changerPrenom" text="Modifier" />
-      <Button layoutX="529.0" layoutY="14.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="164.0" text="Aide" />
-      <Button layoutX="5.0" layoutY="14.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="172.0" text="Accueil" />
-      <Button layoutX="185.0" layoutY="14.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="164.0" text="Magasins" />
-      <Button layoutX="360.0" layoutY="14.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="153.0" text="Forum" />
-      <ImageView fitHeight="47.0" fitWidth="65.0" layoutX="747.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Pi%20Projet/images.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="user" layoutX="662.0" layoutY="75.0" prefHeight="21.0" prefWidth="179.0" text="Label" />
-      <Button fx:id="supprimer" layoutX="679.0" layoutY="793.0" mnemonicParsing="false" onAction="#deleteAccount" text="Supprimer Compte" />
+      <Hyperlink layoutX="542.0" layoutY="599.0" onAction="#changerPays" text="Modifier" />
+      <Hyperlink layoutX="542.0" layoutY="523.0" onAction="#changerVille" text="Modifier" />
+      <Hyperlink layoutX="542.0" layoutY="441.0" onAction="#changerEmail" text="Modifier" />
+      <Hyperlink layoutX="542.0" layoutY="360.0" onAction="#changerPrenom" text="Modifier" />
+      <Label fx:id="user" layoutX="448.0" layoutY="125.0" prefHeight="21.0" prefWidth="200.0" text="Label" />
+      <Button fx:id="supprimer" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="340.0" layoutY="804.0" mnemonicParsing="false" onAction="#deleteAccount" text="Supprimer Compte" textAlignment="JUSTIFY" textFill="RED">
+         <font>
+            <Font name="System Italic" size="17.0" />
+         </font></Button>
+      <Label fx:id="name" layoutX="350.0" layoutY="273.0" text="Label" />
+      <Label fx:id="surname" layoutX="350.0" layoutY="364.0" text="Label" />
+      <Label fx:id="mail" layoutX="350.0" layoutY="445.0" text="Label" />
+      <Label fx:id="town" layoutX="350.0" layoutY="527.0" text="Label" />
+      <Label fx:id="country" layoutX="350.0" layoutY="603.0" text="Label" />
+      <Label fx:id="phone" layoutX="350.0" layoutY="688.0" text="Label" />
+      <ImageView fx:id="userimg" fitHeight="161.0" fitWidth="173.0" layoutX="172.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

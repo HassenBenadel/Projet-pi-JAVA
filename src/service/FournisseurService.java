@@ -62,9 +62,9 @@ public class FournisseurService {
         return 0;
     }*/
     public Fournisseur selectFournisseurByEmail(String email) {
-        String sql = " Select u.nom , u.prenom ,u.email , u.telephone ,u.image ,u.pays ,u.ville ,u.password , u.typecompte , f.id_fournisseur "
-                + "from utilisateur as u , fournisseur as f "
-                + "where u.email='" + email + "' and u.id_user=(Select id_user from utilisateur where email='" + email + "')";
+
+        String sql = " Select f.id_fournisseur, u.id_user , u.nom , u.prenom ,u.email , u.telephone ,u.image ,u.pays ,u.ville ,u.password , u.typecompte from utilisateur  u , fournisseur f "
+                + "where email='" + email + "' and f.id_user=u.id_user";
 
         try {
 
@@ -73,8 +73,9 @@ public class FournisseurService {
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
+                System.out.println(rs.getInt(1)+" "+rs.getInt(2));
 
-                Fournisseur fr = new Fournisseur(rs.getInt(10), rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+                Fournisseur fr = new Fournisseur(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11));
                 return fr;
             }
 
@@ -149,9 +150,11 @@ public class FournisseurService {
     }
 
     public void modifierFournisseur(Fournisseur fr) {
+        String img = fr.getImage();
+        String image = img.replace("\\", "\\\\");
 
         String sql = "UPDATE utilisateur SET nom = '" + fr.getNom() + "', prenom = '" + fr.getPrenom() + "', email = '" + fr.getEmail() + "', telephone = " + fr.getTelephone()
-                + ", image = '" + fr.getImage() + "', pays = '" + fr.getPays() + "', password = '" + ps.passwordEncryption(fr.getPassword())
+                + ", image = '" + image + "', pays = '" + fr.getPays() + "', password = '" + fr.getPassword()
                 + " 'Where id_user = ( Select id_user FROM fournisseur WHERE id_fournisseur =" + fr.getId_fournisseur() + ")";
 
         try {

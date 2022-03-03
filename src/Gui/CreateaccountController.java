@@ -5,12 +5,14 @@
  */
 package Gui;
 
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.scene.image.Image;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,13 +26,16 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import model.Client;
 import model.Fournisseur;
 import model.Livreur;
 import service.ClientService;
 import service.FournisseurService;
 import service.LivreurService;
+import service.UtilisateurService;
 
 /**
  * FXML Controller class
@@ -65,7 +70,6 @@ public class CreateaccountController implements Initializable {
     private Hyperlink conditions;
     @FXML
     private Button btnannuler;
-    @FXML
     private TextField profilepic;
     @FXML
     private AnchorPane scenecreateaccount;
@@ -73,6 +77,18 @@ public class CreateaccountController implements Initializable {
     String[] typecompte = {"client", "fournisseur", "livreur"};
     @FXML
     private Button retour;
+    @FXML
+    private ImageView fximg;
+    @FXML
+    private Button browse;
+
+    String sPath;
+    public static Client client;
+    public static Fournisseur fournisseur;
+    public static Livreur livreur;
+    public static String username;
+
+    UtilisateurService us = new UtilisateurService();
 
     /**
      * Initializes the controller class.
@@ -90,6 +106,24 @@ public class CreateaccountController implements Initializable {
     }
 
     @FXML
+    private void uploadImage(ActionEvent event) {
+        final FileChooser fc = new FileChooser();
+        try {
+            String path;
+            File file = fc.showOpenDialog(null);
+            path = file.getAbsolutePath();
+            FileInputStream input = new FileInputStream(path);
+            Image image = new Image(input);
+            fximg.setImage(image);
+            sPath = path;
+            sPath = sPath.replace("\\", "\\\\");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
     private void createaccount(ActionEvent event) {
         String type = typecomptelist.getSelectionModel().getSelectedItems().toString();
 
@@ -100,7 +134,6 @@ public class CreateaccountController implements Initializable {
         String surname = prenom.getText();
         String mail = email.getText();
         int phone = Integer.parseInt(telephone.getText());
-        String image = profilepic.getText();
         String country = pays.getText();
         String town = ville.getText();
         String pass1 = password1.getText();
@@ -128,18 +161,47 @@ public class CreateaccountController implements Initializable {
         if (type.equals("[client]")) {
 
             if ((passwordCompatible == true) && (checkboxticked == true)) {
-                Client cl = new Client(name, surname, mail, phone, image, country, town, pass1, "client");
+                client = new Client(name, surname, mail, phone, sPath, country, town, pass1, "client");
+                System.out.println(client.getPassword());
                 ClientService cs = new ClientService();
-                cs.ajouterClient(cl);
+                cs.ajouterClient(client);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Compte créé");
+                alert.setContentText("Votre compte a été créé avec succés");
+                alert.showAndWait();
+
+                try {
+                    AnchorPane connect = FXMLLoader.load(getClass().getResource("Connect.fxml"));
+                    scenecreateaccount.getChildren().removeAll();
+                    scenecreateaccount.getChildren().setAll(connect);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
             }
 
         } else if (type.equals("[fournisseur]")) {
 
             if ((passwordCompatible == true) && (checkboxticked == true)) {
 
-                Fournisseur fr = new Fournisseur(name, surname, mail, phone, image, country, town, pass1, "fournisseur");
+                fournisseur = new Fournisseur(name, surname, mail, phone, sPath, country, town, pass1, "fournisseur");
                 FournisseurService fs = new FournisseurService();
-                fs.ajouterFournisseur(fr);
+                fs.ajouterFournisseur(fournisseur);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Compte créé");
+                alert.setContentText("Votre compte a été créé avec succés");
+                alert.showAndWait();
+
+                try {
+                    AnchorPane connect = FXMLLoader.load(getClass().getResource("Connect.fxml"));
+                    scenecreateaccount.getChildren().removeAll();
+                    scenecreateaccount.getChildren().setAll(connect);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
             }
 
         } else if (type.equals("[livreur]")) {
@@ -152,15 +214,25 @@ public class CreateaccountController implements Initializable {
                 Optional<String> result = dialog.showAndWait();
                 String secteur = result.get();
 
-                Livreur lv = new Livreur(name, surname, mail, phone, image, country, town, pass1, "livreur", secteur);
+                livreur = new Livreur(name, surname, mail, phone, sPath, country, town, pass1, "livreur", secteur);
                 LivreurService ls = new LivreurService();
-                ls.ajouterLivreur(lv);
+                ls.ajouterLivreur(livreur);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Compte créé");
+                alert.setContentText("Votre compte a été créé avec succés");
+                alert.showAndWait();
+
+                try {
+                    AnchorPane connect = FXMLLoader.load(getClass().getResource("Connect.fxml"));
+                    scenecreateaccount.getChildren().removeAll();
+                    scenecreateaccount.getChildren().setAll(connect);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
             }
         }
-
-    }
-
-    private void getselected(ActionEvent event) {
 
     }
 
@@ -179,9 +251,8 @@ public class CreateaccountController implements Initializable {
     @FXML
     private void goback(ActionEvent event) {
 
-        AnchorPane connect;
         try {
-            connect = FXMLLoader.load(getClass().getResource("Connect.fxml"));
+            AnchorPane connect = FXMLLoader.load(getClass().getResource("Connect.fxml"));
             scenecreateaccount.getChildren().removeAll();
             scenecreateaccount.getChildren().setAll(connect);
         } catch (IOException ex) {

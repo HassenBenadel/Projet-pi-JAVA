@@ -58,7 +58,7 @@ public class ClientService {
         return 0;
     }*/
 
-    /*  public int getIdUserbymail(String email ) {
+ /*  public int getIdUserbymail(String email ) {
         
         String sql = "Select id_user from utilisateur where email='" + email+"'";
         
@@ -79,10 +79,8 @@ public class ClientService {
     }
      */
     public Client selectClientByEmail(String email) {
-        String sql = " Select u.nom , u.prenom ,u.email , u.telephone ,u.image ,u.pays ,u.ville ,u.password , u.typecompte , c.id_client "
-                + "from utilisateur as u , client as c "
-                + "where u.email='" + email + "' and u.id_user=(Select id_user from utilisateur where email='" + email + "')";
-        
+        String sql = " Select c.id_client, u.id_user , u.nom , u.prenom ,u.email , u.telephone ,u.image ,u.pays ,u.ville ,u.password , u.typecompte from utilisateur  u , client c "
+                + "where email='" + email + "' and c.id_user=u.id_user";
 
         try {
 
@@ -92,15 +90,14 @@ public class ClientService {
 
             while (rs.next()) {
 
-                
-                Client cl = new Client(rs.getInt(10), rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6),rs.getString(7), rs.getString(8), rs.getString(9));
-                return cl ;
+                Client cl = new Client(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11));
+                return cl;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null ;
+        return null;
 
     }
 
@@ -167,11 +164,32 @@ public class ClientService {
 
     }
 
+    /* public void mailmodify(Client cl) {
+
+        String sql = "Update utilisateur set email ='" + cl.getEmail() + "'Where id_user = ( Select id_user FROM client WHERE id_client =" + cl.getId_client() + ")";
+        try {
+            Connection cnx = MaConnexion.getInstance().getCnx();
+            Statement st = cnx.createStatement();
+            int rs = st.executeUpdate(sql);
+            if (rs > 0) {
+                System.out.println("modfication mail avec succes");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }*/
     public void modifierClient(Client cl) {
 
-        String sql = "UPDATE utilisateur SET nom = '" + cl.getNom() + "', prenom = '" + cl.getPrenom() + "', email = '" + cl.getEmail() + "', telephone = " + cl.getTelephone()
-                + ", image = '" + cl.getImage() + "', pays = '" + cl.getPays() + "', password = '" + ps.passwordEncryption(cl.getPassword())
+        String img = cl.getImage();
+        String image = img.replace("\\", "\\\\");
+
+        String sql = "UPDATE utilisateur SET nom='" + cl.getNom() + "', prenom= '" + cl.getPrenom() + "',email='" + cl.getEmail() + "', telephone = " + cl.getTelephone()
+                + ", image = '" + image + "', pays = '" + cl.getPays() + "', ville ='" + cl.getVille() + "', password = '" + cl.getPassword()
                 + " 'Where id_user = ( Select id_user FROM client WHERE id_client =" + cl.getId_client() + ")";
+
+        System.out.println(sql);
 
         try {
             Connection cnx = MaConnexion.getInstance().getCnx();

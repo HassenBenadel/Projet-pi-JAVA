@@ -38,6 +38,17 @@ public class Client extends Utilisateur {
         this.id_client = id_client;
     }   //used to modify  a clinet in database using his ID
 
+    public Client(int id_client, int id_user, String email, int admin, int ban, Date banexpiration) {
+        super(id_user, email, admin, ban, banexpiration);
+        this.id_client = id_client;
+    }
+
+    public Client(int id_user, String email, int admin, int ban, Date banexpiration) {
+        super(id_user, email, admin, ban, banexpiration);
+    }
+    
+    
+
     public int getId_client() {
         return id_client;
     }

@@ -24,8 +24,10 @@ public class Utilisateur {
     private String password;
     private String typeCompte;
     private int code;
+    private int admin ;
     private int ban;
     private Date banexpiration;
+    
 
     public Utilisateur(String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, int code, int ban, Date banexpiration) {
         this.nom = nom;
@@ -41,6 +43,33 @@ public class Utilisateur {
         this.ban = ban;
         this.banexpiration = banexpiration;
     }
+
+    public Utilisateur(int id_user, String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, int code, int admin, int ban, Date banexpiration) {
+        this.id_user = id_user;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+        this.image = image;
+        this.pays = pays;
+        this.ville = ville;
+        this.password = password;
+        this.typeCompte = typeCompte;
+        this.code = code;
+        this.admin = admin;
+        this.ban = ban;
+        this.banexpiration = banexpiration;
+    }
+
+    public Utilisateur(int id_user, String email, int admin, int ban, Date banexpiration) {
+        this.id_user = id_user;
+        this.email = email;
+        this.admin = admin;
+        this.ban = ban;
+        this.banexpiration = banexpiration;
+    }
+    
+    
 
     public Utilisateur(int id_user, String nom, String prenom, String email, int telephone, String image, String pays, String ville, String password, String typeCompte, int code, int ban, Date banexpiration) {
         this.id_user = id_user;
@@ -157,6 +186,14 @@ public class Utilisateur {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public int getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(int admin) {
+        this.admin = admin;
     }
 
     public int getBan() {

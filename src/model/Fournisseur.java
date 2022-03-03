@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author hasse
@@ -21,6 +23,17 @@ public class Fournisseur extends Utilisateur {
         super(nom, prenom, email, telephone, image, pays, ville, password, typeCompte);
         this.id_fournisseur = id_fournisseur;
     }
+
+    public Fournisseur(int id_fournisseur, int id_user, String email, int admin, int ban, Date banexpiration) {
+        super(id_user, email, admin, ban, banexpiration);
+        this.id_fournisseur = id_fournisseur;
+    }
+
+    public Fournisseur(int id_user, String email, int admin, int ban, Date banexpiration) {
+        super(id_user, email, admin, ban, banexpiration);
+    }
+    
+    
 
     public int getId_fournisseur() {
         return id_fournisseur;

@@ -75,7 +75,7 @@ public class ConnectController implements Initializable {
 
         boolean verify;
         Connect m = new Connect();
-        verify = m.verify(email.getText(), ps.passwordEncryption(password.getText()));
+        verify = m.verify(email.getText(), password.getText());
 
         if (verify == false) {
 
@@ -91,14 +91,16 @@ public class ConnectController implements Initializable {
                 username = us.getNomByEmail(email.getText()) + " " + us.getPreomByEmail(email.getText());
                 typecompte = us.getTypecompteByEmail(email.getText());
 
-                if (us.getTypecompteByEmail(email.getText()).equals("client")) {
+                if (typecompte.equals("client")) {
                     ClientService cs = new ClientService();
                     client = cs.selectClientByEmail(email.getText());
-                } else if (us.getTypecompteByEmail(email.getText()).equals("fournisseur")) {
+                    System.out.println(client.getId_client());
+
+                } else if (typecompte.equals("fournisseur")) {
                     FournisseurService fs = new FournisseurService();
                     fournisseur = fs.selectFournisseurByEmail(email.getText());
 
-                } else if (us.getTypecompteByEmail(email.getText()).equals("livreur ")) {
+                } else if (typecompte.equals("livreur")) {
                     LivreurService ls = new LivreurService();
                     livreur = ls.selectLivreurByEmail(email.getText());
                 }
