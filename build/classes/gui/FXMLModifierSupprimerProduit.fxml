@@ -33,7 +33,7 @@
       <Text layoutX="282.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite" />
       <Text layoutX="275.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom du produit" />
       <Text layoutX="277.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type du produit" />
-      <TextField fx:id="fxId" layoutX="434.0" layoutY="283.0" />
+      <TextField fx:id="fxId" editable="false" layoutX="434.0" layoutY="283.0" visible="false" />
       <TextField fx:id="FxPrix" layoutX="436.0" layoutY="533.0" />
       <TextField fx:id="FxQuantite" layoutX="436.0" layoutY="465.0" />
       <TextField fx:id="FxNomProduit" editable="false" layoutX="436.0" layoutY="403.0" />
@@ -66,7 +66,7 @@
          </graphic>
       </Button>
       <ImageView fx:id="FxPhoto" fitHeight="191.0" fitWidth="236.0" layoutX="704.0" layoutY="318.0" pickOnBounds="true" />
-      <TextField fx:id="FxImagePath" layoutX="737.0" layoutY="533.0" />
+      <TextField fx:id="FxImagePath" editable="false" layoutX="737.0" layoutY="533.0" visible="false" />
       <AnchorPane layoutX="436.0" layoutY="579.0" onMousePressed="#ajouterPhoto" prefHeight="56.0" prefWidth="55.0">
          <children>
             <ImageView fitHeight="50.0" fitWidth="55.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
