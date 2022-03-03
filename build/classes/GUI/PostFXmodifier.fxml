@@ -120,7 +120,8 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <TextField fx:id="idPostModifier" layoutX="27.0" layoutY="21.0" />
+                  <TextField fx:id="hiddenId" layoutX="142.0" layoutY="21.0" />
+                  <TextField fx:id="hiddenPath" layoutX="316.0" layoutY="21.0" />
                </children>
             </AnchorPane>
          </content>

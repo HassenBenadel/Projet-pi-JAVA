@@ -39,6 +39,12 @@ import util.ConnectionDB;
  */
 public class BlogFXmyListController implements Initializable {
     
+    final FileChooser fc = new FileChooser();
+    List<Post> posts = new ArrayList<>();
+    Post post = new Post();
+    private clickListener myListener;
+    String path;
+    
     @FXML
     private GridPane grid;
     @FXML
@@ -46,19 +52,12 @@ public class BlogFXmyListController implements Initializable {
     @FXML
     private Label lilWarningLabel;
     
-    final FileChooser fc = new FileChooser();
-    List<Post> posts = new ArrayList<>();
-    Post post = new Post();
-    private clickListener myListener;
-    String path;
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         posts.addAll(getData(2));
-        System.out.println(posts.size());
         if(posts.size() == 0) {
             lilWarningLabel.setVisible(true);
         } else {

@@ -93,4 +93,20 @@ public class SPost implements IPost{
         }
         return p;
     }
+    
+    @Override
+    public Post afficherParId(int id) {
+        Post post = new Post();
+        String req = "SELECT * FROM post WHERE id = "+id+"";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()) {
+                post = (new Post(rs.getInt("id"), rs.getInt("userId"), rs.getString("titre"), rs.getString("image"), rs.getString("description"), rs.getString("contenu"), rs.getInt("nombreVues")));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+       return post;
+    }
 }

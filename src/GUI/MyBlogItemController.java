@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -25,6 +26,9 @@ import model.Post;
  * @author El Ghali Omar
  */
 public class MyBlogItemController implements Initializable {
+    
+    private Post post;
+    private clickListener myListener;
 
     @FXML
     private Label titre;
@@ -32,9 +36,9 @@ public class MyBlogItemController implements Initializable {
     private ImageView image;
     @FXML
     private Button viewMore;
-
-    private Post post;
-    private clickListener myListener;
+    @FXML
+    private TextField hiddenId;
+ 
  
     /**
      * Initializes the controller class.
@@ -52,6 +56,7 @@ public class MyBlogItemController implements Initializable {
     public void setData(Post post, clickListener myListener) throws FileNotFoundException {
         this.post = post;
         this.myListener = myListener;
+        hiddenId.setText(""+post.getId());
         titre.setText(post.getTitre());
         // Image : Begin
         String path = post.getImage();

@@ -18,4 +18,5 @@ public interface IPost {
     public void ajouter(Post p);
     public void supprimer(int id);
     public void modifier(Post p);
+    public Post afficherParId(int id);
 }

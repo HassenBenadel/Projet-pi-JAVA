@@ -9,7 +9,13 @@ import interfaces.clickListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +27,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import model.Post;
+import service.SPost;
+import util.ConnectionDB;
 
 /**
  * FXML Controller class
@@ -28,6 +36,9 @@ import model.Post;
  * @author El Ghali Omar
  */
 public class PostFXmodifierController implements Initializable {
+    
+    private Post post;
+    private clickListener myListener;
 
     @FXML
     private TextField titre;
@@ -42,17 +53,16 @@ public class PostFXmodifierController implements Initializable {
     @FXML
     private Label choisirImageLabel;
     @FXML
-    private TextField idPostModifier;
-    
-    private Post post;
-    private clickListener myListener;
+    private TextField hiddenId;
+    @FXML
+    private TextField hiddenPath;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
 
     @FXML
@@ -74,7 +84,18 @@ public class PostFXmodifierController implements Initializable {
     public void setData(Post post, clickListener myListener) throws FileNotFoundException {
         this.post = post;
         this.myListener = myListener;
+        hiddenId.setText(""+post.getId());
+        setNewData();
+    }
+    
+    private void setNewData() throws FileNotFoundException {
+        Post post = new Post();
+        SPost sp = new SPost();
+        post = sp.afficherParId(Integer.parseInt(hiddenId.getText()));
         titre.setText(post.getTitre());
+        description.setText(post.getDescription());
+        contenu.setText(post.getContenu());
+        hiddenPath.setText(post.getImage());
         // Image : Begin
         String path = post.getImage();
         FileInputStream input = new FileInputStream(path);
@@ -82,19 +103,4 @@ public class PostFXmodifierController implements Initializable {
         imageBrowsed.setImage(images);
         // Image : End
     }
-    
-    /*private void setChosenPost(Post p) throws FileNotFoundException{
-        id.setText(""+p.getId());
-        titre.setText(p.getTitre());
-        desc.setText(p.getDescription());
-        contenu.setText(p.getContenu());
-        // Image : Begin
-        String path = p.getImage();
-        FileInputStream input = new FileInputStream(path);
-        Image images = new Image(input);
-        imageBrowsed.setImage(images);
-        // Image : End
-    }*/
-
-    
 }
