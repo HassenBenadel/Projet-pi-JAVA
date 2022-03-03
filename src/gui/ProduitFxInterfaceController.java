@@ -97,12 +97,7 @@ public class ProduitFxInterfaceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         p.addAll(getData());
-        if(p.size() > 0) {
-            try {
-                setChosenPost(p.get(0));
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(ProduitFxInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        /*if(p.size() > 0) {
            myListener = new clickListener() {
                 @Override
                 public void onClickListener(Produit produit) {
@@ -113,7 +108,7 @@ public class ProduitFxInterfaceController implements Initializable {
                     }
                 }
             };
-        }
+        }*/
         int column = 0;
         int row = 1;
         try {
@@ -123,7 +118,7 @@ public class ProduitFxInterfaceController implements Initializable {
                 AnchorPane anchorPane = fxmlloader.load();
                 ProduitItemController itemController = fxmlloader.getController();
                 itemController.setData(p.get(i),myListener);
-                if(column == 2) {
+                if(column == 3) {
                     column = 0;
                     row++;
                 }
