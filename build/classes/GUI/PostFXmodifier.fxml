@@ -12,26 +12,27 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="914.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PostFXajouterController">
+
+<AnchorPane id="AnchorPane" prefHeight="914.0" prefWidth="1309.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="GUI.PostFXmodifierController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="274.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1315.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="4.0" layoutY="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1315.0" />
-      <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="1244.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="274.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1309.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="4.0" layoutY="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1309.0" />
+      <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="1238.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Pics/Ps/Me.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="95.0" fitWidth="95.0" layoutX="613.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="95.0" fitWidth="95.0" layoutX="607.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Pics/blogLogo.png" />
          </image>
       </ImageView>
-      <Label layoutX="601.0" layoutY="209.0" text="Blogs" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="595.0" layoutY="209.0" text="Blogs" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="43.0" />
          </font>
       </Label>
-      <Label layoutX="1075.0" layoutY="29.0" text="Nom Utilisateur" textFill="WHITE">
+      <Label layoutX="1069.0" layoutY="29.0" text="Nom Utilisateur" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
@@ -41,22 +42,27 @@
             <Image url="@../Pics/logoSmall.png" />
          </image>
       </ImageView>
-      <Button layoutX="854.0" layoutY="26.0" mnemonicParsing="false" styleClass="blogList-navBar-btn" stylesheets="@styleSheet.css" text="Magasin" textAlignment="CENTER" textFill="WHITE">
+      <Button layoutX="848.0" layoutY="26.0" mnemonicParsing="false" styleClass="blogList-navBar-btn" stylesheets="@styleSheet.css" text="Magasin" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="51.0" layoutX="1054.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="5.0" />
-      <Button layoutX="976.0" layoutY="26.0" mnemonicParsing="false" styleClass="blogList-navBar-btn" stylesheets="@styleSheet.css" text="Blogs" textAlignment="CENTER" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="51.0" layoutX="1048.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="5.0" />
+      <Button layoutX="970.0" layoutY="26.0" mnemonicParsing="false" styleClass="blogList-navBar-btn" stylesheets="@styleSheet.css" text="Blogs" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Circle fill="WHITE" layoutX="963.0" layoutY="46.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <ScrollPane prefHeight="641.0" prefWidth="1315.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1100.0" prefWidth="1300.0">
+      <Circle fill="WHITE" layoutX="957.0" layoutY="46.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <ScrollPane layoutX="-1.0" layoutY="274.0" prefHeight="641.0" prefWidth="1315.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1100.0" prefWidth="1300.0">
                <children>
+                  <Label layoutX="562.0" layoutY="14.0" text="Modifier Blog" textFill="#4ac7f0">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
                   <AnchorPane layoutX="142.0" layoutY="69.0" prefHeight="1024.0" prefWidth="1040.0" styleClass="post-item" stylesheets="@styleSheet.css">
                      <children>
                         <Label layoutX="186.0" layoutY="546.0" text="Titre :">
@@ -77,10 +83,11 @@
                         <TextField fx:id="titre" layoutX="396.0" layoutY="549.0" prefHeight="25.0" prefWidth="358.0" />
                         <TextArea fx:id="description" layoutX="396.0" layoutY="614.0" prefHeight="122.0" prefWidth="458.0" />
                         <TextArea fx:id="contenu" layoutX="396.0" layoutY="776.0" prefHeight="121.0" prefWidth="458.0" />
-                        <Button fx:id="validerPost" layoutX="562.0" layoutY="963.0" mnemonicParsing="false" onAction="#validerAjout" prefHeight="31.0" prefWidth="86.0" styleClass="blogList-mesBlogs-btn" stylesheets="@styleSheet.css" text="Ajouter" textFill="WHITE">
+                        <Button fx:id="modifierPost" layoutX="562.0" layoutY="979.0" mnemonicParsing="false" onAction="#validerModification" prefHeight="31.0" prefWidth="86.0" styleClass="blogList-mesBlogs-btn" stylesheets="@styleSheet.css" text="Modifier" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
-                           </font></Button>
+                           </font>
+                        </Button>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="60.0" layoutX="477.0" layoutY="386.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="86.0" />
                         <ImageView fx:id="imageBrowsed" fitHeight="331.0" fitWidth="643.0" layoutX="202.0" layoutY="14.0" pickOnBounds="true" />
                         <Label fx:id="choisirImageLabel" layoutX="396.0" layoutY="356.0" text="Choisissez votre image de publication">
@@ -97,20 +104,26 @@
                               </ImageView>
                            </children>
                         </AnchorPane>
-                        <Button layoutX="393.0" layoutY="963.0" mnemonicParsing="false" onAction="#annulerAjoutPost" prefHeight="31.0" prefWidth="86.0" styleClass="blogList-mesBlogs-btn" stylesheets="@styleSheet.css" text="Annuler" textFill="#f8f8f8">
+                        <Button layoutX="393.0" layoutY="979.0" mnemonicParsing="false" onAction="#annulerModificationPost" prefHeight="31.0" prefWidth="86.0" styleClass="blogList-mesBlogs-btn" stylesheets="@styleSheet.css" text="Annuler" textFill="#f8f8f8">
                            <font>
                               <Font name="System Bold" size="15.0" />
-                           </font></Button>
+                           </font>
+                        </Button>
+                        <Button layoutX="35.0" layoutY="975.0" mnemonicParsing="false" onAction="#supprimerPost" prefHeight="38.0" prefWidth="41.0" styleClass="circle-btn" stylesheets="@styleSheet.css" text="X" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="12.0" layoutY="952.0" text="Supprimer Post" textFill="RED">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
-                  <Label layoutX="506.0" layoutY="14.0" text="Ajouter un nouveau Blog" textFill="#4ac7f0">
-                     <font>
-                        <Font name="System Bold" size="27.0" />
-                     </font>
-                  </Label>
                </children>
             </AnchorPane>
-        </content>
+         </content>
       </ScrollPane>
    </children>
 </AnchorPane>

@@ -24,8 +24,8 @@ public class BlogFXmain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        //Parent root = FXMLLoader.load(getClass().getResource("BlogFXlist.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("BlogFXlist.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("PostFXajouter.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

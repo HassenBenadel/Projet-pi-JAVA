@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="914.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PostFXajouterController">
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="914.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PostFXajouterController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="274.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1315.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="4.0" layoutY="87.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1315.0" />
@@ -57,7 +57,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1100.0" prefWidth="1300.0">
                <children>
-                  <AnchorPane layoutX="142.0" layoutY="69.0" prefHeight="1024.0" prefWidth="1040.0">
+                  <AnchorPane layoutX="142.0" layoutY="69.0" prefHeight="1024.0" prefWidth="1040.0" styleClass="post-item" stylesheets="@styleSheet.css">
                      <children>
                         <Label layoutX="186.0" layoutY="546.0" text="Titre :">
                            <font>
@@ -77,7 +77,10 @@
                         <TextField fx:id="titre" layoutX="396.0" layoutY="549.0" prefHeight="25.0" prefWidth="358.0" />
                         <TextArea fx:id="description" layoutX="396.0" layoutY="614.0" prefHeight="122.0" prefWidth="458.0" />
                         <TextArea fx:id="contenu" layoutX="396.0" layoutY="776.0" prefHeight="121.0" prefWidth="458.0" />
-                        <Button fx:id="validerPost" layoutX="577.0" layoutY="955.0" mnemonicParsing="false" onAction="#validerAjout" text="Valider" />
+                        <Button fx:id="validerPost" layoutX="562.0" layoutY="963.0" mnemonicParsing="false" onAction="#validerAjout" prefHeight="31.0" prefWidth="86.0" styleClass="blogList-mesBlogs-btn" stylesheets="@styleSheet.css" text="Ajouter" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Button>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="60.0" layoutX="477.0" layoutY="386.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="86.0" />
                         <ImageView fx:id="imageBrowsed" fitHeight="331.0" fitWidth="643.0" layoutX="202.0" layoutY="14.0" pickOnBounds="true" />
                         <Label fx:id="choisirImageLabel" layoutX="396.0" layoutY="356.0" text="Choisissez votre image de publication">
@@ -94,7 +97,10 @@
                               </ImageView>
                            </children>
                         </AnchorPane>
-                        <Button layoutX="411.0" layoutY="955.0" mnemonicParsing="false" text="Annuler" />
+                        <Button layoutX="393.0" layoutY="963.0" mnemonicParsing="false" onAction="#annulerAjoutPost" prefHeight="31.0" prefWidth="86.0" styleClass="blogList-mesBlogs-btn" stylesheets="@styleSheet.css" text="Annuler" textFill="#f8f8f8">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Button>
                      </children>
                   </AnchorPane>
                   <Label layoutX="506.0" layoutY="14.0" text="Ajouter un nouveau Blog" textFill="#4ac7f0">

@@ -18,10 +18,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
@@ -35,13 +37,17 @@ import util.ConnectionDB;
  */
 public class BlogFXmyListController implements Initializable {
     
+    @FXML
+    private GridPane grid;
+    @FXML
+    private AnchorPane anchor;
+    @FXML
+    private Label lilWarningLabel;
     
     final FileChooser fc = new FileChooser();
     List<Post> posts = new ArrayList<>();
     private clickListener myListener;
     String path;
-    @FXML
-    private GridPane grid;
     
     /**
      * Initializes the controller class.
@@ -49,6 +55,12 @@ public class BlogFXmyListController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         posts.addAll(getData(2));
+        System.out.println(posts.size());
+        if(posts.size() == 0) {
+            lilWarningLabel.setVisible(true);
+        } else {
+            lilWarningLabel.setVisible(false);
+        }
         int column = 0;
         int row = 1;
         try {
@@ -69,6 +81,30 @@ public class BlogFXmyListController implements Initializable {
             Logger.getLogger(BlogFXmyListController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
+    
+    @FXML
+    private void backToBlogList(ActionEvent event) {
+        AnchorPane cp;
+        try {
+            cp = FXMLLoader.load(getClass().getResource("BlogFXlist.fxml"));
+            anchor.getChildren().removeAll();
+            anchor.getChildren().setAll(cp);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void goToAjouterBlogBTN(ActionEvent event) {
+        AnchorPane cp;
+        try {
+            cp = FXMLLoader.load(getClass().getResource("PostFXajouter.fxml"));
+            anchor.getChildren().removeAll();
+            anchor.getChildren().setAll(cp);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     
     private List<Post> getData(int userId){
         Post post;

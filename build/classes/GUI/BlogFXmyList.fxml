@@ -13,10 +13,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="914.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BlogFXmyListController">
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="914.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BlogFXmyListController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="274.0" layoutX="-4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1325.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="4.0" layoutX="10.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1309.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="4.0" layoutX="10.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1325.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="1248.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Pics/Ps/Me.png" />
@@ -67,5 +67,20 @@
             </ScrollPane>
          </children>
       </HBox>
+      <Button layoutX="27.0" layoutY="308.0" mnemonicParsing="false" onAction="#backToBlogList" prefHeight="39.0" prefWidth="112.0" styleClass="blogList-mesBlogs-btn" stylesheets="@styleSheet.css" text="Retourner" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="lilWarningLabel" layoutX="460.0" layoutY="867.0" text="Commencez à ajouter de nouveaux blogs !">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Button layoutX="1189.0" layoutY="863.0" mnemonicParsing="false" onAction="#goToAjouterBlogBTN" prefHeight="39.0" prefWidth="86.0" styleClass="blogList-mesBlogs-btn" stylesheets="@styleSheet.css" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

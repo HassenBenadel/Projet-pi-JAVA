@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="914.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BlogFXlistController">
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="914.0" prefWidth="1309.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BlogFXlistController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="274.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1309.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <ImageView fitHeight="357.0" fitWidth="644.0" layoutX="665.0" layoutY="409.0" pickOnBounds="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="665.0" AnchorPane.rightAnchor="0.0">
@@ -83,7 +83,7 @@
             <TextField layoutX="52.0" layoutY="13.0" prefHeight="25.0" prefWidth="201.0" promptText="Chercher..." />
          </children>
       </Pane>
-      <Button layoutX="1094.0" layoutY="304.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="150.0" styleClass="blogList-mesBlogs-btn" stylesheets="@styleSheet.css" text="Mes Blogs" textFill="WHITE">
+      <Button layoutX="1094.0" layoutY="304.0" mnemonicParsing="false" onAction="#goToMyBlogs" prefHeight="51.0" prefWidth="150.0" styleClass="blogList-mesBlogs-btn" stylesheets="@styleSheet.css" text="Mes Blogs" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>

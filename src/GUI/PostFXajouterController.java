@@ -8,18 +8,22 @@ package GUI;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -40,12 +44,14 @@ public class PostFXajouterController implements Initializable {
     @FXML
     private TextArea contenu;
     @FXML
-    private Button browseImage;
-    @FXML
     private ImageView imageBrowsed;
     @FXML
     private Button validerPost;
-
+    @FXML
+    private Label choisirImageLabel;
+    @FXML
+    private AnchorPane anchor;
+    
     final FileChooser fc = new FileChooser();
     String path;
         
@@ -76,6 +82,29 @@ public class PostFXajouterController implements Initializable {
         Post p = new Post(2, sTitre, sPath, sDesc, sContenu, 0);
         SPost sp = new SPost();
         sp.ajouter(p);
+        
+        /* Redirect to myList : BEGIN */
+        AnchorPane cp;
+        try {
+            cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
+            anchor.getChildren().removeAll();
+            anchor.getChildren().setAll(cp);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        /* END */
+    }
+
+    @FXML
+    private void annulerAjoutPost(ActionEvent event) {
+        AnchorPane cp;
+        try {
+            cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
+            anchor.getChildren().removeAll();
+            anchor.getChildren().setAll(cp);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
     
 }

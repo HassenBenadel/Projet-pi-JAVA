@@ -45,18 +45,11 @@ public class BlogFXlistController implements Initializable {
     
     @FXML
     private GridPane grid;
-    @FXML
     private TextField titre;
-    @FXML
     private TextArea desc;
-    @FXML
     private TextArea contenu;
-    @FXML
     private ImageView imageBrowsed;
-    @FXML
     private TextField id;
-    @FXML
-    private TextField imagePath;
     @FXML
     private AnchorPane anchor;
     
@@ -101,6 +94,18 @@ public class BlogFXlistController implements Initializable {
             }
         } catch (IOException ex) {
             Logger.getLogger(BlogFXlistController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    private void goToMyBlogs(ActionEvent event) {
+        AnchorPane cp;
+        try {
+            cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
+            anchor.getChildren().removeAll();
+            anchor.getChildren().setAll(cp);
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
     
@@ -150,6 +155,5 @@ public class BlogFXlistController implements Initializable {
         Post post = new Post(Integer.parseInt(id.getText()), 3, titre.getText(), sPath, desc.getText(), contenu.getText(), 3);
         sp.modifier(post);
     }*/
-    
-    
+
 }
