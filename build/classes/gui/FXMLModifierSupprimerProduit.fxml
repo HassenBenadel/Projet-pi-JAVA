@@ -1,11 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLModifierSupprimerProduitController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="914.0" prefWidth="1039.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.FXMLModifierSupprimerProduitController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="182.0" stroke="BLACK" strokeType="INSIDE" width="1039.0" />
+      <ImageView fitHeight="147.0" fitWidth="167.0" layoutX="29.0" layoutY="18.0">
+         <image>
+            <Image url="@../image/272071956_646555749798327_1095942025241001948_n%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="800.0" layoutY="61.0">
+         <image>
+            <Image url="@../image/274756418_1631845397162871_4925711067034398751_n.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="847.0" layoutY="51.0">
+         <image>
+            <Image url="@../image/icons8-fidélité-50%20(1).png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcc8d3" height="737.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="1039.0" />
+      <Text layoutX="288.0" layoutY="612.0" strokeType="OUTSIDE" strokeWidth="0.0" text="image" />
+      <Text layoutX="289.0" layoutY="544.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix" />
+      <Text layoutX="282.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite" />
+      <Text layoutX="275.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom du produit" />
+      <Text layoutX="277.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type du produit" />
+      <Text layoutX="281.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id" />
+      <TextField fx:id="fxId" layoutX="434.0" layoutY="283.0" />
+      <TextField fx:id="FxPrix" layoutX="436.0" layoutY="533.0" />
+      <TextField fx:id="FxQuantite" layoutX="436.0" layoutY="465.0" />
+      <TextField fx:id="FxNomProduit" layoutX="436.0" layoutY="403.0" />
+      <TextField fx:id="FxReference" layoutX="436.0" layoutY="343.0" />
+      <Button fx:id="FxModifier" blendMode="COLOR_BURN" layoutX="574.0" layoutY="657.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="122.0" text="modifier">
+         <graphic>
+            <ImageView>
+               <image>
+                  <Image url="@../image/icons8-modifier-le-dossier-24.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="FxAddPhoto" layoutX="436.0" layoutY="594.0" mnemonicParsing="false" text="..." />
+      <Button blendMode="COLOR_BURN" layoutX="423.0" layoutY="656.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="113.0" text="annuler">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0">
+               <image>
+                  <Image url="@../image/icons8-x-50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button blendMode="COLOR_BURN" layoutX="740.0" layoutY="656.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="122.0" text="supprimer">
+         <graphic>
+            <ImageView>
+               <image>
+                  <Image url="@../image/icons8-supprimer-30.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fx:id="FxPhoto" fitHeight="191.0" fitWidth="236.0" layoutX="704.0" layoutY="318.0" pickOnBounds="true" />
+      <TextField fx:id="FxImagePath" layoutX="737.0" layoutY="533.0" />
+   </children>
 </AnchorPane>

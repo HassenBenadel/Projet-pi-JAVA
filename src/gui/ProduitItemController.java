@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -42,7 +43,10 @@ public class ProduitItemController implements Initializable {
     private Label idPrix;
     @FXML
     private Label idCategorie;
-        @FXML
+    @FXML
+    private TextField idProduit;
+    
+    @FXML
     private void click(MouseEvent mouseEvent) {
         myListener.onClickListener(produit);
     }
@@ -56,6 +60,7 @@ public class ProduitItemController implements Initializable {
 }
      private Produit produit;
     private clickListener myListener;
+    
     public void setData(Produit produit,clickListener myListener) throws FileNotFoundException {
         this.produit = produit;
         this.myListener= myListener;
@@ -74,7 +79,7 @@ public class ProduitItemController implements Initializable {
             ex.printStackTrace();
         }
         /* END */
-        
+        idProduit.setText(""+produit.getIdP());
         idCategorie.setText(Categ);
         idNomProduit.setText(produit.getNomProduit());
         idPrix.setText(""+produit.getPrix());
@@ -84,8 +89,6 @@ public class ProduitItemController implements Initializable {
         Image images = new Image(input);
         idPhoto.setImage(images);
         // Image : End
-    
-        // TODO
     }    
     
 }

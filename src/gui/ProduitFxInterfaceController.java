@@ -25,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -45,6 +46,11 @@ import util.Maconnexion;
  */
 public class ProduitFxInterfaceController implements Initializable {
     final FileChooser fc = new FileChooser();
+    List<Produit> p = new ArrayList<>();
+    Produit produit = new Produit();
+    private clickListener myListener;
+    String path;
+    
     @FXML
     private ScrollPane scroll;
     @FXML
@@ -53,29 +59,19 @@ public class ProduitFxInterfaceController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    List<Produit> p = new ArrayList<>();
-    @FXML
     private TextField FxQuantite;
-    @FXML
     private TextField FxPrix;
     @FXML
-    private Button FxAddPhoto;
-    @FXML
     private ImageView FxPhoto;
-    @FXML
-    private Button FxModifier;
-    @FXML
-    private Button FxSupprimer;
-    @FXML
     private TextField FxNomProduit;
-    @FXML
     private TextField FxReference;
-    
-    private clickListener myListener;
-    @FXML
+
     private TextField FxId;
-    @FXML
     private TextField FxImagePath;
+    @FXML
+    private Button ajouterProduit;
+    @FXML
+    private AnchorPane interfaceDaffichage;
     
     private List<Produit> getData(){
         Produit produit;
@@ -93,22 +89,27 @@ public class ProduitFxInterfaceController implements Initializable {
        return p; 
        
     }
-    String path;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         p.addAll(getData());
-        /*if(p.size() > 0) {
-           myListener = new clickListener() {
+      
+        if(p.size() > 0) {
+            myListener = new clickListener() {
                 @Override
                 public void onClickListener(Produit produit) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLModifierSupprimerProduit.fxml"));
                     try {
-                        setChosenPost(produit);
-                    } catch (FileNotFoundException ex) {
+                        Parent root = loader.load();
+                        FXMLModifierSupprimerProduitController otherController = loader.getController();
+                        otherController.setData(produit, myListener);
+                        interfaceDaffichage.getScene().setRoot(root);
+                    } catch (IOException ex) {
                         Logger.getLogger(ProduitFxInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+                
             };
-        }*/
+        }
         int column = 0;
         int row = 1;
         try {
@@ -130,7 +131,6 @@ public class ProduitFxInterfaceController implements Initializable {
         }
     }    
 
-    @FXML
     private void ajouterPhoto(ActionEvent event) throws FileNotFoundException {
          File file = fc.showOpenDialog(null);
         path = file.getAbsolutePath();
@@ -154,7 +154,6 @@ public class ProduitFxInterfaceController implements Initializable {
         // Image : End
     }
 
-    @FXML
     private void modifierProduit(ActionEvent event) {
         ProduitService ps = new ProduitService();
         path = FxImagePath.getText();
@@ -164,9 +163,21 @@ public class ProduitFxInterfaceController implements Initializable {
         ps.modifierProduit(produit);      
     }
 
-    @FXML
     private void supprimerProduit(ActionEvent event) {
         ProduitService ps = new ProduitService();
         ps.suprimerProduit(Integer.parseInt(FxId.getText()));
     }
+
+    @FXML
+    private void ajouterProduit(ActionEvent event) {
+         AnchorPane cp;
+            try {
+                cp = FXMLLoader.load(getClass().getResource("FXMLAjouterProduit.fxml"));
+                interfaceDaffichage.getChildren().removeAll();
+                interfaceDaffichage.getChildren().setAll(cp);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+    }
+    
 }

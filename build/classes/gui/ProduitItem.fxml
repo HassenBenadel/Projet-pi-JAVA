@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -11,16 +12,17 @@
    <children>
       <VBox layoutX="110.0" layoutY="29.0" prefHeight="349.0" prefWidth="320.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="idPhoto" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true">
+            <TextField fx:id="idProduit" />
+            <ImageView fx:id="idPhoto" fitHeight="140.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets left="40.0" top="25.0" />
                </VBox.margin>
             </ImageView>
             <HBox prefHeight="46.0" prefWidth="320.0">
                <children>
-                  <Label prefHeight="38.0" prefWidth="115.0" text="Nom :">
+                  <Label prefHeight="38.0" prefWidth="100.0" text="Nom :">
                      <padding>
-                        <Insets left="10.0" />
+                        <Insets left="20.0" />
                      </padding>
                   </Label>
                   <Label fx:id="idNomProduit" prefHeight="38.0" prefWidth="227.0" />
@@ -28,25 +30,29 @@
             </HBox>
             <HBox prefHeight="52.0" prefWidth="320.0">
                <children>
-                  <Label prefHeight="44.0" prefWidth="118.0" text="Prix:">
+                  <Label prefHeight="44.0" prefWidth="93.0" text="Prix:">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                      <padding>
-                        <Insets left="10.0" />
+                        <Insets left="20.0" />
                      </padding>
                   </Label>
                   <Label fx:id="idPrix" prefHeight="44.0" prefWidth="239.0" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="71.0" prefWidth="320.0">
                <children>
                   <Label prefHeight="39.0" prefWidth="97.0" text="categorie">
                      <padding>
-                        <Insets left="10.0" />
+                        <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="idCategorie" prefHeight="44.0" prefWidth="132.0" text="xxx" />
+                  <Label fx:id="idCategorie" prefHeight="44.0" prefWidth="132.0" text="xxx">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </Label>
                </children>
             </HBox>
          </children>
