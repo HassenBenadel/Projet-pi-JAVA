@@ -33,6 +33,9 @@ public class MyBlogItemController implements Initializable {
     @FXML
     private Button viewMore;
 
+    private Post post;
+    private clickListener myListener;
+ 
     /**
      * Initializes the controller class.
      */
@@ -41,9 +44,7 @@ public class MyBlogItemController implements Initializable {
         // TODO
     }    
     
-    private Post post;
-    private clickListener myListener;
-    
+    @FXML
     private void click(MouseEvent mouseEvent) {
         myListener.onClickListener(post);
     }

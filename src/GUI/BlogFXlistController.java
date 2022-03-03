@@ -128,7 +128,7 @@ public class BlogFXlistController implements Initializable {
         return posts;
     }
     
-    private void setChosenPost(Post p) throws FileNotFoundException{
+    /*private void setChosenPost(Post p) throws FileNotFoundException{
         id.setText(""+p.getId());
         titre.setText(p.getTitre());
         desc.setText(p.getDescription());
@@ -139,7 +139,7 @@ public class BlogFXlistController implements Initializable {
         Image images = new Image(input);
         imageBrowsed.setImage(images);
         // Image : End
-    }
+    }*/
     
     /*private void supprimerPost(ActionEvent event) {
         SPost sp = new SPost();

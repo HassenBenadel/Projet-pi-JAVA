@@ -23,7 +23,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
@@ -46,6 +48,7 @@ public class BlogFXmyListController implements Initializable {
     
     final FileChooser fc = new FileChooser();
     List<Post> posts = new ArrayList<>();
+    Post post = new Post();
     private clickListener myListener;
     String path;
     
@@ -60,6 +63,22 @@ public class BlogFXmyListController implements Initializable {
             lilWarningLabel.setVisible(true);
         } else {
             lilWarningLabel.setVisible(false);
+        }
+        if(posts.size() > 0) {
+            myListener = new clickListener() {
+                @Override
+                public void onClickListener(Post post) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("PostFXmodifier.fxml"));
+                    try {
+                        Parent root = loader.load();
+                        PostFXmodifierController otherController = loader.getController();
+                        otherController.setData(post, myListener);
+                        anchor.getScene().setRoot(root);
+                    } catch (IOException ex) {
+                        Logger.getLogger(BlogFXmyListController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
         }
         int column = 0;
         int row = 1;
@@ -96,21 +115,18 @@ public class BlogFXmyListController implements Initializable {
     
     @FXML
     private void goToAjouterBlogBTN(ActionEvent event) {
-        AnchorPane cp;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PostFXajouter.fxml"));
         try {
-            cp = FXMLLoader.load(getClass().getResource("PostFXajouter.fxml"));
-            anchor.getChildren().removeAll();
-            anchor.getChildren().setAll(cp);
+            Parent root = loader.load();
+            PostFXajouterController acd = loader.getController();
+            anchor.getScene().setRoot(root);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            Logger.getLogger(BlogFXmyListController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     private List<Post> getData(int userId){
         Post post;
-        /*SPost sp = new SPost();
-        List<Post> p = sp.afficher();
-        return p;*/
         Connection cnx = ConnectionDB.getInstance().getCnx();
         String req = "SELECT * FROM post WHERE userId = "+userId+"";
         try {
@@ -123,5 +139,9 @@ public class BlogFXmyListController implements Initializable {
             ex.printStackTrace();
         }
         return posts;
+    }
+    
+    private void click(MouseEvent mouseEvent) {
+        myListener.onClickListener(post);
     }
 }

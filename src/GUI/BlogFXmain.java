@@ -27,6 +27,7 @@ public class BlogFXmain extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("BlogFXlist.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("PostFXajouter.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("PostFXmodifier.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Blog");
