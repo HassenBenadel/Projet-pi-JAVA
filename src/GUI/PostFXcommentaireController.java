@@ -144,7 +144,7 @@ public class PostFXcommentaireController implements Initializable {
                 fxmlloader.setLocation(getClass().getResource("/GUI/CommentaireItem.fxml"));
                 AnchorPane anchorPane = fxmlloader.load();
                 CommentaireItemController itemController = fxmlloader.getController();
-                itemController.setData(commentaires.get(i), myListenerC, 3);
+                itemController.setData(commentaires.get(i), myListenerC, 5);
                 if(column == 1) {
                     column = 0;
                     row++;
@@ -175,7 +175,7 @@ public class PostFXcommentaireController implements Initializable {
     @FXML
     private void ajouterCommentaire(ActionEvent event) throws FileNotFoundException {
         Commentaire commentaire = new Commentaire();
-        commentaire.setUserId(3);
+        commentaire.setUserId(5);
         commentaire.setCommentateur("samir");
         commentaire.setIdPost(Integer.parseInt(hiddenId.getText()));
         commentaire.setContenu(contenuCommentaire.getText());

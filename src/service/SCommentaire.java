@@ -66,7 +66,7 @@ public class SCommentaire implements ICommentaire{
 
     @Override
     public void modifier(Commentaire c) {
-        String req = "UPDATE commentaire SET userId = "+c.getUserId()+" , commentateur = '"+c.getCommentateur()+"', contenu = '"+c.getContenu()+"' WHERE id = "+c.getId()+"";
+        String req = "UPDATE commentaire SET contenu = '"+c.getContenu()+"' WHERE id = "+c.getId()+"";
         try {
             Statement st = cnx.createStatement();
             int rowsUpdated = st.executeUpdate(req);

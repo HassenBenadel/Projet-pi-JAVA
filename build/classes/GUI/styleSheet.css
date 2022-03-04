@@ -39,5 +39,7 @@
     -fx-background-color: rgba(0,0,0,0);
 }
 
-.scrollPane-border {
+.textFields {
+    -fx-border-color: #000E12;
+    -fx-border-width: 0px 0px 2px 0px;
 }

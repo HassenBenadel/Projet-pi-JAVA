@@ -66,6 +66,12 @@ public class CommentaireItemController implements Initializable {
 
     @FXML
     private void modifierCommentaire(ActionEvent event) {
+        SCommentaire sc = new SCommentaire();
+        commentaire.setId(Integer.parseInt(hiddenId.getText()));
+        commentaire.setContenu(contenuCommentaire.getText());
+        sc.modifier(commentaire);
+        
+        myListener.onClickListener(commentaire);
     }
 
     @FXML
@@ -89,9 +95,11 @@ public class CommentaireItemController implements Initializable {
         if(connectedUserId == commentaire.getUserId()) {
             modifierCommentaireBTN.setVisible(true);
             supprimerCommentaireBTN.setVisible(true);
+            contenuCommentaire.setEditable(true);
         } else {
             modifierCommentaireBTN.setVisible(false);
             supprimerCommentaireBTN.setVisible(false);
+            contenuCommentaire.setEditable(false);
         }
     }
     

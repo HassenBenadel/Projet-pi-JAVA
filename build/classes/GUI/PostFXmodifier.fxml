@@ -79,9 +79,9 @@
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="titre" layoutX="396.0" layoutY="549.0" prefHeight="25.0" prefWidth="358.0" />
-                        <TextArea fx:id="description" layoutX="396.0" layoutY="614.0" prefHeight="122.0" prefWidth="458.0" />
-                        <TextArea fx:id="contenu" layoutX="396.0" layoutY="776.0" prefHeight="121.0" prefWidth="458.0" />
+                        <TextField fx:id="titre" layoutX="396.0" layoutY="549.0" prefHeight="25.0" prefWidth="358.0" promptText="Titre" styleClass="textFields" stylesheets="@styleSheet.css" />
+                        <TextArea fx:id="description" layoutX="396.0" layoutY="614.0" prefHeight="122.0" prefWidth="458.0" promptText="Description..." />
+                        <TextArea fx:id="contenu" layoutX="396.0" layoutY="776.0" prefHeight="121.0" prefWidth="458.0" promptText="Contenu..." />
                         <Button fx:id="modifierPost" layoutX="562.0" layoutY="979.0" mnemonicParsing="false" onAction="#validerModification" prefHeight="31.0" prefWidth="86.0" styleClass="blogList-mesBlogs-btn" stylesheets="@styleSheet.css" text="Modifier" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
@@ -120,7 +120,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <TextField fx:id="hiddenId" editable="false" layoutX="142.0" layoutY="21.0" visible="false" />
+                  <TextField fx:id="hiddenId" editable="false" layoutX="142.0" layoutY="21.0" stylesheets="@styleSheet.css" visible="false" />
                   <TextField fx:id="hiddenPath" editable="false" layoutX="316.0" layoutY="21.0" visible="false" />
                </children>
             </AnchorPane>

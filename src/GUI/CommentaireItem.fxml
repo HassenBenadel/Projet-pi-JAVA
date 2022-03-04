@@ -23,7 +23,7 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <TextArea fx:id="contenuCommentaire" layoutX="106.0" layoutY="46.0" opacity="0.53" prefHeight="136.0" prefWidth="849.0" promptText="Contenu Commentaire" />
+      <TextArea fx:id="contenuCommentaire" editable="false" layoutX="106.0" layoutY="46.0" opacity="0.53" prefHeight="136.0" prefWidth="849.0" promptText="Contenu Commentaire" />
       <Button fx:id="modifierCommentaireBTN" layoutX="5.0" layoutY="148.0" mnemonicParsing="false" onAction="#modifierCommentaire" prefHeight="39.0" prefWidth="41.0" styleClass="circle-btn" stylesheets="@styleSheet.css">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -42,6 +42,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField fx:id="hiddenId" layoutX="806.0" layoutY="19.0" />
+      <TextField fx:id="hiddenId" editable="false" layoutX="806.0" layoutY="19.0" visible="false" />
    </children>
 </AnchorPane>

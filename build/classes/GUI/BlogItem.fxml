@@ -65,7 +65,7 @@
                      <font>
                         <Font size="15.0" />
                      </font></Button>
-                  <TextField fx:id="hiddenId" layoutX="14.0" layoutY="13.0" />
+                  <TextField fx:id="hiddenId" editable="false" layoutX="14.0" layoutY="13.0" visible="false" />
                </children>
             </AnchorPane>
          </children>
