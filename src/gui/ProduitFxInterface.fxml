@@ -17,7 +17,8 @@
       <Insets />
    </opaqueInsets>
    <children>
-      <HBox alignment="CENTER" layoutX="10.0" layoutY="238.0" prefHeight="674.0" prefWidth="1031.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcc8d3" height="923.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1053.0" />
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="260.0" prefHeight="652.0" prefWidth="1031.0">
          <children>
             <ScrollPane fx:id="scroll" prefHeight="674.0" prefWidth="902.0">
                <content>
@@ -51,7 +52,7 @@
       </ImageView>
       <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="946.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
       <Text fill="#f5f4f4" layoutX="802.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom de l'utilisateur" wrappingWidth="145.90625" />
-      <Button fx:id="ajouterProduit" layoutX="843.0" layoutY="191.0" mnemonicParsing="false" onAction="#ajouterProduit" prefHeight="40.0" prefWidth="154.0" text="ajouter produit">
+      <Button fx:id="ajouterProduit" layoutX="664.0" layoutY="196.0" mnemonicParsing="false" onAction="#ajouterProduit" prefHeight="40.0" prefWidth="154.0" text="ajouter produit">
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="21.0">
                <image>
@@ -60,5 +61,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="843.0" layoutY="198.0" mnemonicParsing="false" onAction="#retourAuCategories" prefHeight="40.0" prefWidth="146.0" text="Categorie" />
    </children>
 </AnchorPane>

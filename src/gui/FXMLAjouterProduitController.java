@@ -28,6 +28,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import model.Produit;
@@ -84,8 +85,8 @@ public class FXMLAjouterProduitController implements Initializable {
 
     }    
     String path;
-    @FXML
-    private void ajouterPhoto(ActionEvent event) throws FileNotFoundException {
+   @FXML
+    private void ajouterPhoto(MouseEvent event) throws FileNotFoundException {
         File file = fc.showOpenDialog(null);
         path = file.getAbsolutePath();
         FileInputStream input = new FileInputStream(path);

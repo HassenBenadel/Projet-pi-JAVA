@@ -5,13 +5,12 @@
  */
 package interfaces;
 
-import model.Produit;
+import model.Categorie;
 
 /**
  *
  * @author hadir
  */
-public interface clickListener {
-    public void onClickListener(Produit produit);
-   
+public interface clickListenerC {
+     public void onClickListener(Categorie categorie);
 }

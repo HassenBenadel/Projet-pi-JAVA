@@ -66,7 +66,7 @@ Connection cnx = Maconnexion.getInstance().getCnx();
 
     @Override
     public void modifierCategorie(Categorie C) {
-        String req="UPDATE Categorie set type='"+C.getType()+"' where idC="+C.getIdC()+"";
+        String req="UPDATE Categorie set type='"+C.getType()+"',imageC='"+C.getImageC()+"' where idC="+C.getIdC()+"";
         try {
             Statement st = cnx.createStatement();
             int rowsUpdated = st.executeUpdate(req);

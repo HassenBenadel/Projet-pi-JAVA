@@ -35,6 +35,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
+import model.Categorie;
 import model.Produit;
 import service.ProduitService;
 import util.Maconnexion;
@@ -61,7 +62,6 @@ public class ProduitFxInterfaceController implements Initializable {
      */
     private TextField FxQuantite;
     private TextField FxPrix;
-    @FXML
     private ImageView FxPhoto;
     private TextField FxNomProduit;
     private TextField FxReference;
@@ -91,11 +91,10 @@ public class ProduitFxInterfaceController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        p.addAll(getData());
-      
+        p.addAll(getData()); //teba3 laffichage w teba3 kol chy 
+      //select to edit
         if(p.size() > 0) {
             myListener = new clickListener() {
-                @Override
                 public void onClickListener(Produit produit) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLModifierSupprimerProduit.fxml"));
                     try {
@@ -107,9 +106,12 @@ public class ProduitFxInterfaceController implements Initializable {
                         Logger.getLogger(ProduitFxInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                
+
+              
             };
         }
+        //fin
+        //affichage
         int column = 0;
         int row = 1;
         try {
@@ -129,8 +131,9 @@ public class ProduitFxInterfaceController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(ProduitFxInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
-
+        //fin
+    } 
+    
     private void ajouterPhoto(ActionEvent event) throws FileNotFoundException {
          File file = fc.showOpenDialog(null);
         path = file.getAbsolutePath();
@@ -139,7 +142,7 @@ public class ProduitFxInterfaceController implements Initializable {
         FxPhoto.setImage(image);
         FxImagePath.setText(path);
     }
-    private void setChosenPost(Produit p) throws FileNotFoundException{
+    /*private void setChosenPost(Produit p) throws FileNotFoundException{
         FxId.setText(""+p.getIdP());
         FxReference.setText(""+p.getReference());
         FxNomProduit.setText(p.getNomProduit());
@@ -152,7 +155,7 @@ public class ProduitFxInterfaceController implements Initializable {
         Image images = new Image(input);
         FxPhoto.setImage(images);
         // Image : End
-    }
+    }*/
 
     private void modifierProduit(ActionEvent event) {
         ProduitService ps = new ProduitService();
@@ -173,6 +176,18 @@ public class ProduitFxInterfaceController implements Initializable {
          AnchorPane cp;
             try {
                 cp = FXMLLoader.load(getClass().getResource("FXMLAjouterProduit.fxml"));
+                interfaceDaffichage.getChildren().removeAll();
+                interfaceDaffichage.getChildren().setAll(cp);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+    }
+
+    @FXML
+    private void retourAuCategories(ActionEvent event) {
+         AnchorPane cp;
+            try {
+                cp = FXMLLoader.load(getClass().getResource("CategorieFXInterface.fxml"));
                 interfaceDaffichage.getChildren().removeAll();
                 interfaceDaffichage.getChildren().setAll(cp);
             } catch (IOException ex) {

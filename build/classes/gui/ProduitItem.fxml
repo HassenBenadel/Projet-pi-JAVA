@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" onMousePressed="#click" prefHeight="342.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProduitItemController">
    <children>
-      <VBox layoutX="110.0" layoutY="29.0" prefHeight="349.0" prefWidth="320.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="110.0" layoutY="-1.0" prefHeight="350.0" prefWidth="320.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
          <children>
             <TextField fx:id="idProduit" editable="false" visible="false" />
             <ImageView fx:id="idPhoto" fitHeight="140.0" fitWidth="227.0" pickOnBounds="true">

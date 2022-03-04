@@ -65,6 +65,9 @@ public class Categorie {
         this.type = type;
         this.imageC = imageC;
     }
+
+    public Categorie() {
+    }
     
     
 }

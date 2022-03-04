@@ -8,8 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" fx:id="modifierProduit" prefHeight="914.0" prefWidth="1039.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.FXMLModifierSupprimerProduitController">
+<AnchorPane id="AnchorPane" fx:id="modifierProduit" prefHeight="914.0" prefWidth="1039.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLModifierSupprimerProduitController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="182.0" stroke="BLACK" strokeType="INSIDE" width="1039.0" />
       <ImageView fitHeight="147.0" fitWidth="167.0" layoutX="29.0" layoutY="18.0">
@@ -76,5 +75,10 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <ImageView fitHeight="242.0" fitWidth="260.0" layoutX="61.0" layoutY="628.0">
+         <image>
+            <Image url="@../image/appareil-electronique.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
