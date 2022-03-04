@@ -11,11 +11,20 @@ package model;
  */
 public class Commentaire {
     private int id;
+    private int idPost;
     private int userId;
     private String commentateur;
     private String contenu;
 
     public Commentaire() {
+    }
+
+    public Commentaire(int id, int idPost, int userId, String commentateur, String contenu) {
+        this.id = id;
+        this.idPost = idPost;
+        this.userId = userId;
+        this.commentateur = commentateur;
+        this.contenu = contenu;
     }
 
     public Commentaire(int id, int userId, String commentateur, String contenu) {

@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -35,11 +36,17 @@ public class BlogItemController implements Initializable {
     private Label description;
     @FXML
     private Button viewMore;
-    @FXML
-    private Label nomUtilisateur;
     
     private Post post;
     private clickListener myListener;
+    @FXML
+    private Label titre1;
+    @FXML
+    private Label titre11;
+    @FXML
+    private Label titre12;
+    @FXML
+    private TextField hiddenId;
     
     /**
      * Initializes the controller class.
@@ -59,6 +66,7 @@ public class BlogItemController implements Initializable {
         this.myListener = myListener;
         description.setText(post.getDescription());
         titre.setText(post.getTitre());
+        hiddenId.setText(""+post.getId());
         // Image : Begin
         String path = post.getImage();
         FileInputStream input = new FileInputStream(path);
