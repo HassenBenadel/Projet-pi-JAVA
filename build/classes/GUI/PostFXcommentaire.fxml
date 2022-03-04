@@ -47,13 +47,13 @@
          </font>
       </Button>
       <Circle fill="WHITE" layoutX="957.0" layoutY="46.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <ScrollPane layoutY="96.0" prefHeight="819.0" prefWidth="1309.0" vvalue="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <ScrollPane layoutY="96.0" prefHeight="819.0" prefWidth="1309.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="1294.0">
                <children>
                   <HBox layoutX="177.0" layoutY="15.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="507.0" stroke="BLACK" strokeType="INSIDE" width="14.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4ac7f0" height="507.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="14.0" />
                         <ImageView fx:id="image" fitHeight="507.0" fitWidth="940.0" pickOnBounds="true" />
                      </children>
                   </HBox>

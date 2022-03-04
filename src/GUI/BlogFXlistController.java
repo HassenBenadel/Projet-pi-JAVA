@@ -44,6 +44,11 @@ import util.ConnectionDB;
  */
 public class BlogFXlistController implements Initializable {
     
+    final FileChooser fc = new FileChooser();
+    List<Post> posts = new ArrayList<>();
+    private clickListener myListener;
+    String path;
+    
     @FXML
     private GridPane grid;
     private TextField titre;
@@ -53,11 +58,6 @@ public class BlogFXlistController implements Initializable {
     private TextField id;
     @FXML
     private AnchorPane anchor;
-    
-    final FileChooser fc = new FileChooser();
-    List<Post> posts = new ArrayList<>();
-    private clickListener myListener;
-    String path;
     
     /**
      * Initializes the controller class.
@@ -79,7 +79,7 @@ public class BlogFXlistController implements Initializable {
                         Logger.getLogger(BlogFXmyListController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-            };
+            }; // dhib w layla / soul7oufet wal arneb
         }
         int column = 0;
         int row = 1;

@@ -37,6 +37,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import model.Commentaire;
 import model.Post;
+import service.SCommentaire;
 import service.SPost;
 import util.ConnectionDB;
 
@@ -84,6 +85,17 @@ public class PostFXcommentaireController implements Initializable {
         
     }    
     
+    public void setData(Post post) throws FileNotFoundException {
+        this.post = post;
+        hiddenId.setText(""+post.getId());
+        setNewData();
+    }
+    
+    public void setData(int postId) throws FileNotFoundException {
+        hiddenId.setText(""+postId);
+        setNewData();
+    }
+    
     public void setData(Post post, clickListener myListener) throws FileNotFoundException {
         this.post = post;
         this.myListener = myListener;
@@ -106,6 +118,24 @@ public class PostFXcommentaireController implements Initializable {
         // Image : End
         
         commentaires.addAll(getData());
+        if(commentaires.size() > 0) {
+            myListenerC = new clickListenerC() {
+                @Override
+                public void onClickListener(Commentaire commentaire) {
+                    Post post = new Post();
+                    post.setId(Integer.parseInt(hiddenId.getText()));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("PostFXcommentaire.fxml"));
+                    try {
+                        Parent root = loader.load();
+                        PostFXcommentaireController otherController = loader.getController();
+                        otherController.setData(post);
+                        anchor.getScene().setRoot(root);
+                    } catch (IOException ex) {
+                        Logger.getLogger(BlogFXmyListController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
+        }
         int column = 0;
         int row = 1;
         try {
@@ -114,7 +144,7 @@ public class PostFXcommentaireController implements Initializable {
                 fxmlloader.setLocation(getClass().getResource("/GUI/CommentaireItem.fxml"));
                 AnchorPane anchorPane = fxmlloader.load();
                 CommentaireItemController itemController = fxmlloader.getController();
-                itemController.setData(commentaires.get(i), myListenerC, 2);
+                itemController.setData(commentaires.get(i), myListenerC, 3);
                 if(column == 1) {
                     column = 0;
                     row++;
@@ -143,7 +173,26 @@ public class PostFXcommentaireController implements Initializable {
     }
 
     @FXML
-    private void ajouterCommentaire(ActionEvent event) {
+    private void ajouterCommentaire(ActionEvent event) throws FileNotFoundException {
+        Commentaire commentaire = new Commentaire();
+        commentaire.setUserId(3);
+        commentaire.setCommentateur("samir");
+        commentaire.setIdPost(Integer.parseInt(hiddenId.getText()));
+        commentaire.setContenu(contenuCommentaire.getText());
+        SCommentaire sc = new SCommentaire();
+        sc.ajouter(commentaire);
+        
+        Post post = new Post();
+        post.setId(Integer.parseInt(hiddenId.getText()));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PostFXcommentaire.fxml"));
+        try {
+            Parent root = loader.load();
+            PostFXcommentaireController otherController = loader.getController();
+            otherController.setData(post);
+            anchor.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(BlogFXmyListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

@@ -71,4 +71,13 @@ public class Commentaire {
     public void setContenu(String contenu) {
         this.contenu = contenu;
     }
+
+    public int getIdPost() {
+        return idPost;
+    }
+
+    public void setIdPost(int idPost) {
+        this.idPost = idPost;
+    }
+    
 }

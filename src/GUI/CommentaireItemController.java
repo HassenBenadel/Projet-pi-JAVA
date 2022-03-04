@@ -9,11 +9,16 @@ import interfaces.clickListener;
 import interfaces.clickListenerC;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -21,8 +26,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import model.Commentaire;
 import model.Post;
+import service.SCommentaire;
 
 /**
  * FXML Controller class
@@ -46,6 +53,8 @@ public class CommentaireItemController implements Initializable {
     private Button supprimerCommentaireBTN;
     @FXML
     private TextField hiddenId;
+    @FXML
+    private AnchorPane anch;
 
     /**
      * Initializes the controller class.
@@ -61,9 +70,12 @@ public class CommentaireItemController implements Initializable {
 
     @FXML
     private void supprimerCommentaire(ActionEvent event) {
+        SCommentaire sc = new SCommentaire();
+        sc.supprimer(commentaire.getId());
+        
+        myListener.onClickListener(commentaire);
     }
     
-    @FXML
     private void click(MouseEvent mouseEvent) {
         myListener.onClickListener(commentaire);
     }
@@ -73,6 +85,21 @@ public class CommentaireItemController implements Initializable {
         this.myListener = myListener;
         hiddenId.setText(""+commentaire.getId());
         contenuCommentaire.setText(commentaire.getContenu());
+        nomUtilisateur.setText(commentaire.getCommentateur());
+        if(connectedUserId == commentaire.getUserId()) {
+            modifierCommentaireBTN.setVisible(true);
+            supprimerCommentaireBTN.setVisible(true);
+        } else {
+            modifierCommentaireBTN.setVisible(false);
+            supprimerCommentaireBTN.setVisible(false);
+        }
+    }
+    
+    public void setData(Commentaire commentaire, int connectedUserId) throws FileNotFoundException {
+        this.commentaire = commentaire;
+        hiddenId.setText(""+commentaire.getId());
+        contenuCommentaire.setText(commentaire.getContenu());
+        nomUtilisateur.setText(commentaire.getCommentateur());
         if(connectedUserId == commentaire.getUserId()) {
             modifierCommentaireBTN.setVisible(true);
             supprimerCommentaireBTN.setVisible(true);

@@ -24,7 +24,7 @@ public class SCommentaire implements ICommentaire{
     
     @Override
     public void ajouter(Commentaire c) {
-        String req = "INSERT INTO commentaire(userId , commentateur, contenu) VALUES("+c.getUserId()+",'"+c.getCommentateur()+"','"+c.getContenu()+"')";
+        String req = "INSERT INTO commentaire(idPost, userId , commentateur, contenu) VALUES("+c.getIdPost()+", "+c.getUserId()+",'"+c.getCommentateur()+"','"+c.getContenu()+"')";
         try {
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
