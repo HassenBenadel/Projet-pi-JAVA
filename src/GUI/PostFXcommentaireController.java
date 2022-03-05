@@ -7,7 +7,9 @@ package GUI;
 
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
+import com.restfb.Parameter;
 import com.restfb.Version;
+import com.restfb.types.FacebookType;
 import com.restfb.types.User;
 import interfaces.clickListener;
 import interfaces.clickListenerC;
@@ -30,6 +32,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -222,10 +226,19 @@ public class PostFXcommentaireController implements Initializable {
 
     @FXML
     private void shareFB(ActionEvent event) {
-        String accessToken = "EAARUP2EV8GABAPby8ftUBvcg1lU9xpFK6qenBdGVZAZBmUvui46T4MncS2ZAR8iDuc2zUoS26BKW9rwOuRtY74CEQNwuz9ZC1H58IFnLLOb2Ha2Evzq4HZCwZBMz9NTW5Rtns83dcZAEq1N7yiaTMLZBxPigMPepnHt5Few2CLz0CMBhZCf4mjr3ZBMvLmiUECZBOdlvu2pzGpjTiarbedQMyAk";
+        String accessToken = "EAAJPFAOpaD8BAEjcSLpUQ0SBAlMb1foTYjzXgXeDagfEZA2TmAjO2ZA2s3iH7tWOpqJ6XT"
+                + "j0GiZBK5pwr2ZCPo7U21RFVAwGz3VDEHSj0dGvuypn80ZC7M0XJZCJAVsYgbNFC3dla8pZBbZA5oSl9Wdv"
+                + "GH9f9APNzH3u2KJ1brb5nQMtpLW5OwanO1ytufLKJCTACZAC5meU4oV8cAfiag0wc";
         FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.UNVERSIONED);
-        User me = fbClient.fetchObject("me", User.class);
-        System.out.println(me.getName());
+        FacebookType response = fbClient.publish("me/feed", FacebookType.class, Parameter.with("message", post.getTitre() + " : " + post.getDescription()
+                + "\nAllez voir le dernier blog sur notre application!!"));
+        System.out.println("fb.com/"+response.getId());
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("Le Blog est ajoute avec succes! \n fb.com/"+response.getId()+"");
+
+        alert.showAndWait();
     }
 
     @FXML

@@ -83,42 +83,42 @@ public class PostFXajouterController implements Initializable {
     
     @FXML
     private void validerAjout(ActionEvent event) {
-            boolean isTitre = false, isDesc = false, isContenu = false, isPath = false;
-            String sTitre = titre.getText();
-            String sDesc = description.getText();
-            String sContenu = contenu.getText();
-            String sPath = path;
-            if(titre.getText().isEmpty()) {
-                titreWarning.setVisible(true);
-                isTitre = false;
-            } else {
-                titreWarning.setVisible(false);
-                isTitre = true;
-            }
-            if(description.getText().isEmpty()) {
-                descWarning.setVisible(true);
-                isDesc = false;
-            } else {
-                descWarning.setVisible(false);
-                isDesc = true;
-            }
-            if(contenu.getText().isEmpty()) {
-                contenuWarning.setVisible(true);
-                isContenu = false;
-            } else {
-                contenuWarning.setVisible(false);
-                isContenu = true;
-            }
-            if(path == "") {
-                imageWarning.setVisible(true);
-                isPath = false;
-            } else {
-                imageWarning.setVisible(false);
-                isPath = true;
-            }
-            if(isContenu && isDesc && isPath && isTitre) {
-                int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer l'ajout ?" , "Ajout", JOptionPane.YES_NO_OPTION);
-                if(opt==0) {
+        boolean isTitre = false, isDesc = false, isContenu = false, isPath = false;
+        String sTitre = titre.getText();
+        String sDesc = description.getText();
+        String sContenu = contenu.getText();
+        String sPath = path;
+        if(titre.getText().isEmpty()) {
+            titreWarning.setVisible(true);
+            isTitre = false;
+        } else {
+            titreWarning.setVisible(false);
+            isTitre = true;
+        }
+        if(description.getText().isEmpty()) {
+            descWarning.setVisible(true);
+            isDesc = false;
+        } else {
+            descWarning.setVisible(false);
+            isDesc = true;
+        }
+        if(contenu.getText().isEmpty()) {
+            contenuWarning.setVisible(true);
+            isContenu = false;
+        } else {
+            contenuWarning.setVisible(false);
+            isContenu = true;
+        }
+        if(path == "") {
+            imageWarning.setVisible(true);
+            isPath = false;
+        } else {
+            imageWarning.setVisible(false);
+            isPath = true;
+        }
+        if(isContenu && isDesc && isPath && isTitre) {
+            int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer l'ajout ?" , "Ajout", JOptionPane.YES_NO_OPTION);
+            if(opt==0) {
                 sPath = sPath.replace("\\", "\\\\");
                 Post p = new Post(2, sTitre, sPath, sDesc, sContenu);
                 SPost sp = new SPost();
@@ -135,7 +135,6 @@ public class PostFXajouterController implements Initializable {
                 ex.printStackTrace();
             }
         }
-        /* END */
     }
 
     @FXML
