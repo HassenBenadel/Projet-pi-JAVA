@@ -31,6 +31,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javax.swing.JOptionPane;
 import model.Post;
 import service.SPost;
 import util.ConnectionDB;
@@ -76,28 +77,30 @@ public class PostFXmodifierController implements Initializable {
 
     @FXML
     private void validerModification(ActionEvent event) {
-        Post post = new Post();
-        post.setId(Integer.parseInt(hiddenId.getText()));
-        post.setTitre(titre.getText());
-        post.setDescription(description.getText());
-        post.setContenu(contenu.getText());
-        path = hiddenPath.getText();
-        String sPath = path;
-        sPath = sPath.replace("\\", "\\\\");
-        post.setImage(sPath);
-        SPost sp = new SPost();
-        sp.modifier(post);
-        
-        /* Redirect to myList : BEGIN */
-        AnchorPane cp;
-        try {
-            cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
-            anchor.getChildren().removeAll();
-            anchor.getChildren().setAll(cp);
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer la modification ?" , "Modification", JOptionPane.YES_NO_OPTION);
+        if(opt==0) {
+            Post post = new Post();
+            post.setId(Integer.parseInt(hiddenId.getText()));
+            post.setTitre(titre.getText());
+            post.setDescription(description.getText());
+            post.setContenu(contenu.getText());
+            path = hiddenPath.getText();
+            String sPath = path;
+            sPath = sPath.replace("\\", "\\\\");
+            post.setImage(sPath);
+            SPost sp = new SPost();
+            sp.modifier(post);
+
+            /* Redirect to myList : BEGIN */
+            AnchorPane cp;
+            try {
+                cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
+                anchor.getChildren().removeAll();
+                anchor.getChildren().setAll(cp);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
-        /* END */
     }
 
     @FXML
@@ -126,21 +129,23 @@ public class PostFXmodifierController implements Initializable {
     
     @FXML
     private void supprimerPost(ActionEvent event) {
-        Post post = new Post();
-        post.setId(Integer.parseInt(hiddenId.getText()));
-        SPost sp = new SPost();
-        sp.supprimer(post.getId());
-        
-        /* Redirect to myList : BEGIN */
-        AnchorPane cp;
-        try {
-            cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
-            anchor.getChildren().removeAll();
-            anchor.getChildren().setAll(cp);
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer la supprition ?" , "Supprition", JOptionPane.YES_NO_OPTION);
+        if(opt==0) {
+            Post post = new Post();
+            post.setId(Integer.parseInt(hiddenId.getText()));
+            SPost sp = new SPost();
+            sp.supprimer(post.getId());
+
+            /* Redirect to myList : BEGIN */
+            AnchorPane cp;
+            try {
+                cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
+                anchor.getChildren().removeAll();
+                anchor.getChildren().setAll(cp);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
-        /* END */
     }
     
     public void setData(Post post, clickListener myListener) throws FileNotFoundException {

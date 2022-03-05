@@ -27,6 +27,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javax.swing.JOptionPane;
 import model.Commentaire;
 import model.Post;
 import service.SCommentaire;
@@ -66,20 +67,26 @@ public class CommentaireItemController implements Initializable {
 
     @FXML
     private void modifierCommentaire(ActionEvent event) {
-        SCommentaire sc = new SCommentaire();
-        commentaire.setId(Integer.parseInt(hiddenId.getText()));
-        commentaire.setContenu(contenuCommentaire.getText());
-        sc.modifier(commentaire);
-        
-        myListener.onClickListener(commentaire);
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer la modification ?" , "Modification", JOptionPane.YES_NO_OPTION);
+        if(opt==0) {
+            SCommentaire sc = new SCommentaire();
+            commentaire.setId(Integer.parseInt(hiddenId.getText()));
+            commentaire.setContenu(contenuCommentaire.getText());
+            sc.modifier(commentaire);
+
+            myListener.onClickListener(commentaire);
+        }
     }
 
     @FXML
     private void supprimerCommentaire(ActionEvent event) {
-        SCommentaire sc = new SCommentaire();
-        sc.supprimer(commentaire.getId());
-        
-        myListener.onClickListener(commentaire);
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer la supprition ?" , "Supprition", JOptionPane.YES_NO_OPTION);
+        if(opt==0) {
+            SCommentaire sc = new SCommentaire();
+            sc.supprimer(commentaire.getId());
+
+            myListener.onClickListener(commentaire);
+        }
     }
     
     private void click(MouseEvent mouseEvent) {

@@ -27,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import model.Post;
 import service.SPost;
 
@@ -74,23 +75,26 @@ public class PostFXajouterController implements Initializable {
     
     @FXML
     private void validerAjout(ActionEvent event) {
-        String sTitre = titre.getText();
-        String sDesc = description.getText();
-        String sContenu = contenu.getText();
-        String sPath = path;
-        sPath = sPath.replace("\\", "\\\\");
-        Post p = new Post(2, sTitre, sPath, sDesc, sContenu);
-        SPost sp = new SPost();
-        sp.ajouter(p);
-        
-        /* Redirect to myList : BEGIN */
-        AnchorPane cp;
-        try {
-            cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
-            anchor.getChildren().removeAll();
-            anchor.getChildren().setAll(cp);
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer l'ajout ?" , "Ajout", JOptionPane.YES_NO_OPTION);
+         if(opt==0) {
+            String sTitre = titre.getText();
+            String sDesc = description.getText();
+            String sContenu = contenu.getText();
+            String sPath = path;
+            sPath = sPath.replace("\\", "\\\\");
+            Post p = new Post(2, sTitre, sPath, sDesc, sContenu);
+            SPost sp = new SPost();
+            sp.ajouter(p);
+
+            /* Redirect to myList : BEGIN */
+            AnchorPane cp;
+            try {
+                cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
+                anchor.getChildren().removeAll();
+                anchor.getChildren().setAll(cp);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
         /* END */
     }
