@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="page1" prefHeight="638.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLController">
+   <children>
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="92.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/boutique%20(6).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="117.0" layoutX="593.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/boutique%20(5).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="346.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/boutique%20(4).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="75.0" fitWidth="91.0" layoutX="92.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/boutique%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="91.0" layoutX="342.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/boutique%20(2).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="84.0" layoutX="612.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/boutique%20(3).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="supprimerbq" layoutX="79.0" layoutY="227.0" mnemonicParsing="false" onAction="#supprimerBoutique" prefHeight="31.0" prefWidth="100.0" text="SUPPRMER" />
+      <Label fx:id="text2" layoutX="111.0" layoutY="206.0" text="Darty" />
+      <Label fx:id="text1" layoutX="370.0" layoutY="206.0" text="Fnac" />
+      <Label fx:id="text3" layoutX="603.0" layoutY="206.0" text="Monoprix" />
+      <Label fx:id="text4" layoutX="110.0" layoutY="482.0" text="Apple" />
+      <Label fx:id="text5" layoutX="364.0" layoutY="492.0" text="Geant" />
+      <Label fx:id="text6" layoutX="637.0" layoutY="492.0" text="Winx" />
+      <Button fx:id="supprimerbq" layoutX="337.0" layoutY="227.0" mnemonicParsing="false" onAction="#supprimerMagasin" text="SUPPRIMER" />
+      <Button fx:id="supprimermg" layoutX="585.0" layoutY="227.0" mnemonicParsing="false" onAction="#supprimerMagasin" prefHeight="31.0" prefWidth="100.0" text="SUPPRIMER" />
+      <Button fx:id="supprimerbq" layoutX="80.0" layoutY="558.0" mnemonicParsing="false" onAction="#supprimerMagasin" text="SUPPRIMER" />
+      <Button fx:id="supprimermg" layoutX="337.0" layoutY="558.0" mnemonicParsing="false" onAction="#supprimerMagasin" text="SUPPRIMER" />
+      <Button fx:id="supprimerbq" layoutX="604.0" layoutY="558.0" mnemonicParsing="false" onAction="#supprimerMagasin" text="SUPPRIMER" />
+      <Button fx:id="ajoutermg" layoutX="660.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajouterMagasin" text="AJOUTER UN MAGASIN" />
+      <Button fx:id="ajouterbq" layoutX="654.0" layoutY="58.0" mnemonicParsing="false" onAction="#ajouterBoutique" text="AJOUTER UNE BOUTIQUE" />
+      <ToolBar layoutX="29.0" layoutY="20.0" prefHeight="45.0" prefWidth="597.0">
+        <items>
+          <Button mnemonicParsing="false" text="Recherche" />
+        </items>
+      </ToolBar>
+      <Button fx:id="mD" layoutX="85.0" layoutY="269.0" mnemonicParsing="false" onAction="#ModifierBoutique" text="MODIFIER" />
+      <Button fx:id="MF" layoutX="343.0" layoutY="269.0" mnemonicParsing="false" onAction="#ModifierBoutique" text="MODIFIER" />
+      <Button fx:id="MM" layoutX="591.0" layoutY="269.0" mnemonicParsing="false" onAction="#ModifierMagasin" text="MODIFIER" />
+      <Button fx:id="MA" layoutX="85.0" layoutY="513.0" mnemonicParsing="false" onAction="#ModifierBoutique" text="MODIFIER" />
+      <Button fx:id="MG" layoutX="340.0" layoutY="513.0" mnemonicParsing="false" onAction="#ModifierMagasin" text="MODIFIER" />
+      <Button fx:id="MW" layoutX="610.0" layoutY="513.0" mnemonicParsing="false" onAction="#ModifierBoutique" text="MODIFIER" />
+   </children>
+</AnchorPane>

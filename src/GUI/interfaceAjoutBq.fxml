@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="308.0" prefWidth="588.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InterfaceAjoutBqController">
+   <children>
+      <VBox layoutX="296.0" layoutY="89.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+         <children>
+            <TextField fx:id="b5" />
+            <TextField fx:id="b6" />
+            <TextField fx:id="b7" />
+         </children>
+      </VBox>
+      <VBox layoutX="163.0" layoutY="89.0" prefHeight="144.0" prefWidth="100.0" spacing="40.0">
+         <children>
+            <Label text="Nom_Boutique" />
+            <Label text="LocalisationB" />
+            <Label text="Description" />
+         </children>
+      </VBox>
+      <Button fx:id="ok" layoutX="340.0" layoutY="276.0" mnemonicParsing="false" onAction="#ajouterBoutique" text="Ajouter" />
+      <Button fx:id="annuler" layoutX="177.0" layoutY="276.0" mnemonicParsing="false" onAction="#Annuler" text="Annuler" />
+      <Button layoutX="459.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#map" text="Map" />
+      <Label layoutX="175.0" layoutY="30.0" text="Ajouter une boutique" textFill="#df0505">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
