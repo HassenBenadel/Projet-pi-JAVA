@@ -150,6 +150,11 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Label fx:id="noteWarning" layoutX="563.0" layoutY="568.0" text="Il faut avoir un Note entre 0 et 10" textFill="RED" visible="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         </content>

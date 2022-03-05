@@ -66,6 +66,12 @@ public class PostFXmodifierController implements Initializable {
     private TextField hiddenPath;
     @FXML
     private AnchorPane anchor;
+    @FXML
+    private Label titreWarning;
+    @FXML
+    private Label descWarning;
+    @FXML
+    private Label contenuWarning;
     
     /**
      * Initializes the controller class.
@@ -77,29 +83,56 @@ public class PostFXmodifierController implements Initializable {
 
     @FXML
     private void validerModification(ActionEvent event) {
-        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer la modification ?" , "Modification", JOptionPane.YES_NO_OPTION);
-        if(opt==0) {
-            Post post = new Post();
-            post.setId(Integer.parseInt(hiddenId.getText()));
-            post.setTitre(titre.getText());
-            post.setDescription(description.getText());
-            post.setContenu(contenu.getText());
-            path = hiddenPath.getText();
-            String sPath = path;
-            sPath = sPath.replace("\\", "\\\\");
-            post.setImage(sPath);
-            SPost sp = new SPost();
-            sp.modifier(post);
+        boolean isTitre = false, isDesc = false, isContenu = false;
+        String sTitre = titre.getText();
+        String sDesc = description.getText();
+        String sContenu = contenu.getText();
+        if(titre.getText().isEmpty()) {
+            titreWarning.setVisible(true);
+            isTitre = false;
+        } else {
+            titreWarning.setVisible(false);
+            isTitre = true;
+        }
+        if(description.getText().isEmpty()) {
+            descWarning.setVisible(true);
+            isDesc = false;
+        } else {
+            descWarning.setVisible(false);
+            isDesc = true;
+        }
+        if(contenu.getText().isEmpty()) {
+            contenuWarning.setVisible(true);
+            isContenu = false;
+        } else {
+            contenuWarning.setVisible(false);
+            isContenu = true;
+        }
+        if(isContenu && isDesc && isTitre) {
+            int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer la modification ?" , "Modification", JOptionPane.YES_NO_OPTION);
+            if(opt==0) {
+                Post post = new Post();
+                post.setId(Integer.parseInt(hiddenId.getText()));
+                post.setTitre(titre.getText());
+                post.setDescription(description.getText());
+                post.setContenu(contenu.getText());
+                path = hiddenPath.getText();
+                String sPath = path;
+                sPath = sPath.replace("\\", "\\\\");
+                post.setImage(sPath);
+                SPost sp = new SPost();
+                sp.modifier(post);
 
-            /* Redirect to myList : BEGIN */
-            AnchorPane cp;
-            try {
-                cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
-                anchor.getChildren().removeAll();
-                anchor.getChildren().setAll(cp);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+                /* Redirect to myList : BEGIN */
+                AnchorPane cp;
+                try {
+                    cp = FXMLLoader.load(getClass().getResource("BlogFXmyList.fxml"));
+                    anchor.getChildren().removeAll();
+                    anchor.getChildren().setAll(cp);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+           }
         }
     }
 

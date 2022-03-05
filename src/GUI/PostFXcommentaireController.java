@@ -86,6 +86,8 @@ public class PostFXcommentaireController implements Initializable {
     private TextField ratingTF;
     @FXML
     private Label note;
+    @FXML
+    private Label noteWarning;
 
     /**
      * Initializes the controller class.
@@ -228,22 +230,32 @@ public class PostFXcommentaireController implements Initializable {
 
     @FXML
     private void noterPost(ActionEvent event) {
-        int verif = sp.verifier(connectedUser, Integer.parseInt(hiddenId.getText()));
-        System.out.println(verif);
-        if(verif == 0) {
-            sp.addRating(connectedUser, Integer.parseInt(hiddenId.getText()), Integer.parseInt(ratingTF.getText()));
+        boolean isNote = false;
+        int noteTest = Integer.parseInt(ratingTF.getText());
+        if(ratingTF.getText().isEmpty() || noteTest > 10 || noteTest < 0) {
+            noteWarning.setVisible(true);
+            isNote = false;
         } else {
-            sp.updateRating(connectedUser, Integer.parseInt(hiddenId.getText()), Integer.parseInt(ratingTF.getText()));
+            noteWarning.setVisible(false);
+            isNote = true;
         }
-        post.setId(Integer.parseInt(hiddenId.getText()));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PostFXcommentaire.fxml"));
-        try {
-            Parent root = loader.load();
-            PostFXcommentaireController otherController = loader.getController();
-            otherController.setData(post);
-            anchor.getScene().setRoot(root);
-        } catch (IOException ex) {
-            Logger.getLogger(BlogFXmyListController.class.getName()).log(Level.SEVERE, null, ex);
+        if(isNote) {
+            int verif = sp.verifier(connectedUser, Integer.parseInt(hiddenId.getText()));
+            if(verif == 0) {
+                sp.addRating(connectedUser, Integer.parseInt(hiddenId.getText()), Integer.parseInt(ratingTF.getText()));
+            } else {
+                sp.updateRating(connectedUser, Integer.parseInt(hiddenId.getText()), Integer.parseInt(ratingTF.getText()));
+            }
+            post.setId(Integer.parseInt(hiddenId.getText()));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("PostFXcommentaire.fxml"));
+            try {
+                Parent root = loader.load();
+                PostFXcommentaireController otherController = loader.getController();
+                otherController.setData(post);
+                anchor.getScene().setRoot(root);
+            } catch (IOException ex) {
+                Logger.getLogger(BlogFXmyListController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
