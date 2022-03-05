@@ -58,5 +58,19 @@ public class FavorieService implements IFavorieService{
             ex.printStackTrace();
         }
        return favories; 
-    }    
+    }  
+    public int verifier(int idUser, int idP) {
+        int nbR = 0;
+        String req = "select count(*) as count from favorie where idP = "+idP+" and idUser="+idUser+"";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()) {
+                nbR = rs.getInt("count");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+       return nbR;
+    }
 }

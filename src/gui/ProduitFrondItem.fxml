@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="itemProduitF" prefHeight="410.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProduitFrondItemController">
+   <children>
+      <VBox prefHeight="410.0" prefWidth="320.0">
+         <children>
+            <TextField fx:id="idProduit" editable="false" prefHeight="31.0" prefWidth="283.0" visible="false" />
+            <ImageView fx:id="idPhoto" fitHeight="169.0" fitWidth="300.0" pickOnBounds="true">
+               <VBox.margin>
+                  <Insets left="10.0" top="25.0" />
+               </VBox.margin>
+            </ImageView>
+            <HBox prefHeight="46.0" prefWidth="320.0">
+               <children>
+                  <Label prefHeight="38.0" prefWidth="100.0" text="Nom :">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="idNomProduit" prefHeight="38.0" prefWidth="227.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="41.0" prefWidth="320.0">
+               <children>
+                  <Label prefHeight="44.0" prefWidth="104.0" text="Prix:">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="idPrix" prefHeight="40.0" prefWidth="125.0" />
+                  <AnchorPane onMousePressed="#ajouterAuFavorie" prefHeight="32.0" prefWidth="34.0">
+                     <children>
+                        <ImageView fx:id="favorieImg" fitHeight="41.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox prefHeight="46.0" prefWidth="320.0">
+               <children>
+                  <Label prefHeight="39.0" prefWidth="97.0" text="categorie">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="idCategorie" prefHeight="37.0" prefWidth="132.0" text="xxx" />
+               </children>
+            </HBox>
+            <Button blendMode="GREEN" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" text="commander">
+               <VBox.margin>
+                  <Insets left="100.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

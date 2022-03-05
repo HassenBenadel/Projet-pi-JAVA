@@ -34,7 +34,7 @@ import util.Maconnexion;
 public class CategorieItemController implements Initializable {
     
     private Categorie categorie;
-    private clickListenerC   myListener;
+    private clickListenerC   myListenerC;
     @FXML
     private TextField idCategorie;
     @FXML
@@ -46,7 +46,7 @@ public class CategorieItemController implements Initializable {
     private AnchorPane anchor;
     @FXML
     private void click(MouseEvent mouseEvent) {
-        myListener.onClickListener(categorie);
+        myListenerC.onClickListener(categorie);
     }
     /**
      * Initializes the controller class.
@@ -56,9 +56,9 @@ public class CategorieItemController implements Initializable {
         // TODO
     }  
     
-     public void setData(Categorie categorie,clickListenerC myListener) throws FileNotFoundException {
+     public void setData(Categorie categorie,clickListenerC myListenerC) throws FileNotFoundException {
         this.categorie = categorie;
-        this.myListener= myListener;
+        this.myListenerC= myListenerC;
         idCategorie.setText(""+categorie.getIdC());
         type.setText(categorie.getType());
         // Image : Begin

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="CatEtProd" prefHeight="914.0" prefWidth="1039.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProduitFrondController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcc8d3" height="914.0" stroke="BLACK" strokeType="INSIDE" width="1039.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="157.0" stroke="BLACK" strokeType="INSIDE" width="1039.0" />
+      <ImageView fitHeight="135.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0">
+         <image>
+            <Image url="@../image/272071956_646555749798327_1095942025241001948_n%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="820.0" layoutY="58.0">
+         <image>
+            <Image url="@../image/icons8-fidélité-50%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="882.0" layoutY="68.0">
+         <image>
+            <Image url="@../image/274756418_1631845397162871_4925711067034398751_n.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="793.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non de l'utilisateur" />
+      <ImageView fitHeight="50.0" fitWidth="62.0" layoutX="944.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox alignment="CENTER" layoutX="21.0" layoutY="173.0" prefHeight="286.0" prefWidth="998.0">
+         <children>
+            <ScrollPane fx:id="scroll" prefHeight="286.0" prefWidth="796.0">
+               <content>
+                  <GridPane fx:id="grid" prefHeight="22.0" prefWidth="142.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <AnchorPane fx:id="prodList" layoutY="473.0" prefHeight="440.0" prefWidth="1039.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="440.0" prefWidth="1039.0">
+               <children>
+                  <ScrollPane fx:id="scroll2" prefHeight="412.0" prefWidth="712.0">
+                     <content>
+                        <GridPane fx:id="grid2" prefHeight="24.0" prefWidth="150.0">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

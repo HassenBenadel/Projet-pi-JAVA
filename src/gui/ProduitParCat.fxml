@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="produitParCategorie" prefHeight="914.0" prefWidth="1039.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProduitParCatController">
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcc8d3" height="923.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1053.0" />
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="260.0" prefHeight="652.0" prefWidth="1031.0">
+         <children>
+            <ScrollPane fx:id="scroll" prefHeight="674.0" prefWidth="902.0">
+               <content>
+                  <GridPane fx:id="grid" prefHeight="15.0" prefWidth="80.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000e12" height="182.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="1053.0" />
+      <ImageView fitHeight="169.0" fitWidth="176.0" layoutX="14.0" layoutY="4.0">
+         <image>
+            <Image url="@../image/272071956_646555749798327_1095942025241001948_n%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="887.0" layoutY="68.0">
+         <image>
+            <Image url="@../image/274756418_1631845397162871_4925711067034398751_n.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="818.0" layoutY="62.0">
+         <image>
+            <Image url="@../image/icons8-fidélité-50%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="946.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fill="#f5f4f4" layoutX="802.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom de l'utilisateur" wrappingWidth="145.90625" />
+   </children>
+</AnchorPane>

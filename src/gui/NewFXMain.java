@@ -15,6 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 /**
  *
@@ -24,12 +27,13 @@ public class NewFXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-       //Parent root = FXMLLoader.load(getClass().getResource("FXMLModifierSupprimerCategorie.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("CategorieFXInterface.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("ProduitFrond.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("CategorieFXInterface.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Produit");
         primaryStage.show();
+      
     }
 
     /**
