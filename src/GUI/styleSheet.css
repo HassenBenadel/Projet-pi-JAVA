@@ -43,3 +43,10 @@
     -fx-border-color: #000E12;
     -fx-border-width: 0px 0px 2px 0px;
 }
+
+.comboBox {
+    -fx-text-fill: white;
+    -fx-background-color: #000E12;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 16.4;
+}
