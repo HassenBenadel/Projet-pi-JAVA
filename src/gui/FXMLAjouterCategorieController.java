@@ -21,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javax.swing.JOptionPane;
 import model.Categorie;
 import service.categorieService;
 
@@ -59,15 +60,17 @@ public class FXMLAjouterCategorieController implements Initializable {
 
     @FXML
     private void ajoutercategorie(ActionEvent event) {
-        String types =type.getText();
-        String sPath = path;
-        sPath = sPath.replace("\\", "\\\\");
-        Categorie c = new Categorie(types,sPath);
-        System.out.println(c.getType());
-        System.out.println(c.getImageC());
-        categorieService Cs = new categorieService();
-        Cs.ajouterCategorie(c);
-        AnchorPane cp;
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer l'ajout ?" , "Ajout", JOptionPane.YES_NO_OPTION);
+        if(opt==0) {
+            String types =type.getText();
+            String sPath = path;
+            sPath = sPath.replace("\\", "\\\\");
+            Categorie c = new Categorie(types,sPath);
+            System.out.println(c.getType());
+            System.out.println(c.getImageC());
+            categorieService Cs = new categorieService();
+            Cs.ajouterCategorie(c);
+            AnchorPane cp;
             try {
                 cp = FXMLLoader.load(getClass().getResource("CategorieFXInterface.fxml"));
                 interfaceDajoutC.getChildren().removeAll();
@@ -75,10 +78,13 @@ public class FXMLAjouterCategorieController implements Initializable {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        }
     }
 
     @FXML
     private void annulerAjout(ActionEvent event) {
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous anuuler l'ajout ?" , "Ajout", JOptionPane.YES_NO_OPTION);
+         if(opt==0) {
          AnchorPane cp;
             try {
                 cp = FXMLLoader.load(getClass().getResource("CategorieFXInterface.fxml"));
@@ -87,6 +93,7 @@ public class FXMLAjouterCategorieController implements Initializable {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+    }
     }
     
 }

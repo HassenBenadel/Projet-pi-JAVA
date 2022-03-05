@@ -63,5 +63,14 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button blendMode="COLOR_BURN" layoutX="468.0" layoutY="198.0" mnemonicParsing="false" onAction="#statique" prefHeight="40.0" prefWidth="126.0" text="statistique">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../image/statistiques.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

@@ -28,6 +28,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javax.swing.JOptionPane;
 import model.Categorie;
 import service.categorieService;
 import util.Maconnexion;
@@ -102,6 +103,8 @@ public class FXMLModifierSupprimerCategorieController implements Initializable {
 
     @FXML
     private void modifierCategorie(ActionEvent event) {
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer la modification ?" , "Ajout", JOptionPane.YES_NO_OPTION);
+         if(opt==0) {
         Categorie categorie = new Categorie();
         categorie.setIdC(Integer.parseInt(idC.getText()));
         categorie.setType(typeM.getText());
@@ -123,9 +126,12 @@ public class FXMLModifierSupprimerCategorieController implements Initializable {
         }
         /* END */
     }
+    }
 
     @FXML
     private void supprimerCategorie(ActionEvent event) {
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous vraiment supprimer?" , "Ajout", JOptionPane.YES_NO_OPTION);
+         if(opt==0) {
          categorieService ps = new categorieService();
         ps.suprimerCategorie(Integer.parseInt(idC.getText()));
            /* Redirect to myList : BEGIN */
@@ -137,10 +143,13 @@ public class FXMLModifierSupprimerCategorieController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+         }
     }
 
     @FXML
     private void annulerModif(ActionEvent event) {
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous annuler?" , "Ajout", JOptionPane.YES_NO_OPTION);
+         if(opt==0) {
          AnchorPane cp;
         try {
             cp = FXMLLoader.load(getClass().getResource("CategorieFXInterface.fxml"));
@@ -149,6 +158,7 @@ public class FXMLModifierSupprimerCategorieController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
     }
     
 }

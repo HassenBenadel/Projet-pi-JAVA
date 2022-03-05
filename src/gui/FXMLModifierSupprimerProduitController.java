@@ -27,6 +27,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javax.swing.JOptionPane;
 import model.Produit;
 import service.ProduitService;
 import util.Maconnexion;
@@ -103,6 +104,8 @@ public class FXMLModifierSupprimerProduitController implements Initializable {
 
     @FXML
     private void modifier(ActionEvent event) {
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer la modification ?" , "Ajout", JOptionPane.YES_NO_OPTION);
+         if(opt==0) {
        Produit produit = new Produit();
        produit.setIdP(Integer.parseInt(fxId.getText()));
         produit.setQuantite(Integer.parseInt(FxQuantite.getText()));
@@ -124,7 +127,7 @@ public class FXMLModifierSupprimerProduitController implements Initializable {
             ex.printStackTrace();
         }
         /* END */
-             
+         }   
     }
 
     @FXML
@@ -140,6 +143,8 @@ public class FXMLModifierSupprimerProduitController implements Initializable {
     @FXML
     private void annulerModif(ActionEvent event) {
            /* Redirect to myList : BEGIN */
+           int opt=JOptionPane.showConfirmDialog(null, "voulez-vous annuler la modification ?" , "Ajout", JOptionPane.YES_NO_OPTION);
+         if(opt==0) {
         AnchorPane cp;
         try {
             cp = FXMLLoader.load(getClass().getResource("ProduitFxInterface.fxml"));
@@ -149,10 +154,13 @@ public class FXMLModifierSupprimerProduitController implements Initializable {
             ex.printStackTrace();
         }
         /* END */
+         }
     }
 
     @FXML
     private void supprimerProduit(ActionEvent event) {
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous vraiment supprimer ?" , "Ajout", JOptionPane.YES_NO_OPTION);
+         if(opt==0) {
         ProduitService ps = new ProduitService();
         ps.suprimerProduit(Integer.parseInt(fxId.getText()));
            /* Redirect to myList : BEGIN */
@@ -166,6 +174,7 @@ public class FXMLModifierSupprimerProduitController implements Initializable {
         }
         /* END */
 
+    }
     }
     
 }

@@ -134,5 +134,17 @@ public class CategorieFXInterfaceController implements Initializable {
                 ex.printStackTrace();
             }
     }
+
+    @FXML
+    private void statique(ActionEvent event) {
+         AnchorPane cp;
+            try {
+                cp = FXMLLoader.load(getClass().getResource("Statisqtique.fxml"));
+                interfaceDaffichageCategorie.getChildren().removeAll();
+                interfaceDaffichageCategorie.getChildren().setAll(cp);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+    }
     
 }

@@ -31,6 +31,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javax.swing.JOptionPane;
 import model.Produit;
 import service.ProduitService;
 import util.Maconnexion;
@@ -95,6 +96,8 @@ public class FXMLAjouterProduitController implements Initializable {
     }
     @FXML
     private void ajouterProduit(ActionEvent event) {
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer l'ajout ?" , "Ajout", JOptionPane.YES_NO_OPTION);
+         if(opt==0) {
         //int reference = Integer.parseInt(FxReference.getText());
         /* get reference */
         String typeCategorie = FxReference.getSelectionModel().getSelectedItem().toString();
@@ -131,9 +134,12 @@ public class FXMLAjouterProduitController implements Initializable {
             }
         
     }
+    }
 
     @FXML
     private void annulerAjout(ActionEvent event) {
+        int opt=JOptionPane.showConfirmDialog(null, "voulez-vous confirmer l'ajout ?" , "Ajout", JOptionPane.YES_NO_OPTION);
+         if(opt==0) {
          AnchorPane cp;
             try {
                 cp = FXMLLoader.load(getClass().getResource("ProduitFxInterface.fxml"));
@@ -142,7 +148,7 @@ public class FXMLAjouterProduitController implements Initializable {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-        
+         }
     }
     
 }
