@@ -111,9 +111,11 @@ public class CommentaireItemController implements Initializable {
         if(connectedUserId == commentaire.getUserId()) {
             modifierCommentaireBTN.setVisible(true);
             supprimerCommentaireBTN.setVisible(true);
+            contenuCommentaire.setEditable(true);
         } else {
             modifierCommentaireBTN.setVisible(false);
             supprimerCommentaireBTN.setVisible(false);
+            contenuCommentaire.setEditable(false);
         }
     }
 }

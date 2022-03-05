@@ -47,7 +47,7 @@
          </font>
       </Button>
       <Circle fill="WHITE" layoutX="957.0" layoutY="46.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <ScrollPane layoutY="96.0" prefHeight="819.0" prefWidth="1309.0" vvalue="0.28" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <ScrollPane layoutY="96.0" prefHeight="819.0" prefWidth="1309.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="1294.0">
                <children>
@@ -57,11 +57,11 @@
                         <ImageView fx:id="image" fitHeight="507.0" fitWidth="940.0" pickOnBounds="true" />
                      </children>
                   </HBox>
-                  <VBox alignment="TOP_CENTER" layoutX="155.0" layoutY="565.0" prefHeight="82.0" prefWidth="998.0">
+                  <VBox alignment="TOP_CENTER" layoutX="155.0" layoutY="575.0" prefHeight="82.0" prefWidth="998.0">
                      <children>
                         <Label fx:id="titre" text="titre" textAlignment="CENTER">
                            <font>
-                              <Font name="System Bold" size="57.0" />
+                              <Font name="System Bold" size="47.0" />
                            </font>
                         </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="3.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="780.0" />
@@ -125,22 +125,31 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="663.0" layoutY="540.0" prefHeight="25.0" prefWidth="47.0" />
-                  <Label layoutX="557.0" layoutY="542.0" text="Notez ce Blog" textFill="#4ac7f0">
+                  <TextField fx:id="ratingTF" layoutX="641.0" layoutY="539.0" prefHeight="25.0" prefWidth="47.0" />
+                  <Label layoutX="535.0" layoutY="541.0" text="Notez ce Blog" textFill="#4ac7f0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="717.0" layoutY="544.0" text="10">
+                  <Label fx:id="note" layoutX="698.0" layoutY="543.0" text="10">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="731.0" layoutY="544.0" text="/10" textFill="#4ac7f0">
+                  <Label layoutX="712.0" layoutY="543.0" text="/10" textFill="#4ac7f0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
+                  <Button layoutX="740.0" layoutY="535.0" mnemonicParsing="false" onAction="#noterPost" prefHeight="32.0" prefWidth="35.0" styleClass="circle-btn" stylesheets="@styleSheet.css">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Pics/rateIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
         </content>

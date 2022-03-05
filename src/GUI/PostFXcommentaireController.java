@@ -52,10 +52,12 @@ import util.ConnectionDB;
  */
 public class PostFXcommentaireController implements Initializable {
     
+    int connectedUser = 4;
     final FileChooser fc = new FileChooser();
     List<Commentaire> commentaires = new ArrayList<>();
     private Commentaire commentaire;
     private Post post;
+    private SPost sp = new SPost();
     private clickListener myListener;
     private clickListenerC myListenerC;
     String path;
@@ -80,13 +82,16 @@ public class PostFXcommentaireController implements Initializable {
     private TextField hiddenId;
     @FXML
     private GridPane grid;
+    @FXML
+    private TextField ratingTF;
+    @FXML
+    private Label note;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
     }    
     
     public void setData(Post post) throws FileNotFoundException {
@@ -109,11 +114,12 @@ public class PostFXcommentaireController implements Initializable {
     
     private void setNewData() throws FileNotFoundException {
         Post post = new Post();
-        SPost sp = new SPost();
         post = sp.afficherParId(Integer.parseInt(hiddenId.getText()));
         titre.setText(post.getTitre());
         description.setText(post.getDescription());
         contenu.setText(post.getContenu());
+        int ttRating = sp.getTotal(Integer.parseInt(hiddenId.getText()));
+        note.setText(""+ttRating);
         // Image : Begin
         String path = post.getImage();
         FileInputStream input = new FileInputStream(path);
@@ -148,7 +154,7 @@ public class PostFXcommentaireController implements Initializable {
                 fxmlloader.setLocation(getClass().getResource("/GUI/CommentaireItem.fxml"));
                 AnchorPane anchorPane = fxmlloader.load();
                 CommentaireItemController itemController = fxmlloader.getController();
-                itemController.setData(commentaires.get(i), myListenerC, 5);
+                itemController.setData(commentaires.get(i), myListenerC, connectedUser);
                 if(column == 1) {
                     column = 0;
                     row++;
@@ -179,14 +185,13 @@ public class PostFXcommentaireController implements Initializable {
     @FXML
     private void ajouterCommentaire(ActionEvent event) throws FileNotFoundException {
         Commentaire commentaire = new Commentaire();
-        commentaire.setUserId(5);
+        commentaire.setUserId(connectedUser);
         commentaire.setCommentateur("samir");
         commentaire.setIdPost(Integer.parseInt(hiddenId.getText()));
         commentaire.setContenu(contenuCommentaire.getText());
         SCommentaire sc = new SCommentaire();
         sc.ajouter(commentaire);
         
-        Post post = new Post();
         post.setId(Integer.parseInt(hiddenId.getText()));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PostFXcommentaire.fxml"));
         try {
@@ -219,6 +224,27 @@ public class PostFXcommentaireController implements Initializable {
         FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.UNVERSIONED);
         User me = fbClient.fetchObject("me", User.class);
         System.out.println(me.getName());
+    }
+
+    @FXML
+    private void noterPost(ActionEvent event) {
+        int verif = sp.verifier(connectedUser, Integer.parseInt(hiddenId.getText()));
+        System.out.println(verif);
+        if(verif == 0) {
+            sp.addRating(connectedUser, Integer.parseInt(hiddenId.getText()), Integer.parseInt(ratingTF.getText()));
+        } else {
+            sp.updateRating(connectedUser, Integer.parseInt(hiddenId.getText()), Integer.parseInt(ratingTF.getText()));
+        }
+        post.setId(Integer.parseInt(hiddenId.getText()));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PostFXcommentaire.fxml"));
+        try {
+            Parent root = loader.load();
+            PostFXcommentaireController otherController = loader.getController();
+            otherController.setData(post);
+            anchor.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(BlogFXmyListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

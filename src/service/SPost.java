@@ -109,4 +109,59 @@ public class SPost implements IPost{
         }
        return post;
     }
+    
+    /********** RATING : BEGIN **********/
+    public int verifier(int userId, int postId) {
+        int nbR = 0;
+        String req = "select count(*) as count from PostRating where postId = "+postId+" and userId="+userId+"";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()) {
+                nbR = rs.getInt("count");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+       return nbR;
+    }
+    
+    public void addRating(int userId, int postId, int rating) {
+        String req = "INSERT INTO PostRating(postId, userId, rating) VALUES("+postId+", "+userId+", "+rating+")";
+        try {
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void updateRating(int userId, int postId, int rating) {
+        String req = "UPDATE PostRating SET rating = "+rating+" WHERE postId="+postId+" and userId="+userId+"";
+        try {
+            Statement st = cnx.createStatement();
+            int rowsUpdated = st.executeUpdate(req);
+            if (rowsUpdated > 0) {
+                System.out.println("Post modifie avec succee!");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public int getTotal(int postId) {
+        int total = 0;
+        String req = "select round(AVG(rating), 2) as count from PostRating where postId="+postId+"";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()) {
+                total += rs.getInt("count");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+       return total;
+    }
+    /********** END **********/
 }
