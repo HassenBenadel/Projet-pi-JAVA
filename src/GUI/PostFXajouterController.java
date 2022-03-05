@@ -79,7 +79,7 @@ public class PostFXajouterController implements Initializable {
         String sContenu = contenu.getText();
         String sPath = path;
         sPath = sPath.replace("\\", "\\\\");
-        Post p = new Post(2, sTitre, sPath, sDesc, sContenu, 0);
+        Post p = new Post(2, sTitre, sPath, sDesc, sContenu);
         SPost sp = new SPost();
         sp.ajouter(p);
         

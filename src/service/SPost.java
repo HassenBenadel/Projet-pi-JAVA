@@ -24,7 +24,7 @@ public class SPost implements IPost{
     
     @Override
     public void ajouter(Post p) {
-        String req = "INSERT INTO post(userId , titre, image, description, contenu, nombreVues) VALUES("+p.getUserId()+",'"+p.getTitre()+"','"+p.getImage()+"','"+p.getDescription()+"','"+p.getContenu()+"',"+p.getNombreVues()+")";
+        String req = "INSERT INTO post(userId , titre, image, description, contenu) VALUES("+p.getUserId()+",'"+p.getTitre()+"','"+p.getImage()+"','"+p.getDescription()+"','"+p.getContenu()+"')";
         try {
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
@@ -42,7 +42,7 @@ public class SPost implements IPost{
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()) {
-                p.add(new Post(rs.getInt("id"), rs.getInt("userId"), rs.getString("titre"), rs.getString("image"), rs.getString("description"), rs.getString("contenu"), rs.getInt("nombreVues")));
+                p.add(new Post(rs.getInt("id"), rs.getInt("userId"), rs.getString("titre"), rs.getString("image"), rs.getString("description"), rs.getString("contenu")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -86,7 +86,7 @@ public class SPost implements IPost{
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()) {
-                p = (new Post(rs.getInt("id"), rs.getInt("userId"), rs.getString("titre"), rs.getString("image"), rs.getString("description"), rs.getString("contenu"), rs.getInt("nombreVues")));
+                p = (new Post(rs.getInt("id"), rs.getInt("userId"), rs.getString("titre"), rs.getString("image"), rs.getString("description"), rs.getString("contenu")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -102,7 +102,7 @@ public class SPost implements IPost{
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()) {
-                post = (new Post(rs.getInt("id"), rs.getInt("userId"), rs.getString("titre"), rs.getString("image"), rs.getString("description"), rs.getString("contenu"), rs.getInt("nombreVues")));
+                post = (new Post(rs.getInt("id"), rs.getInt("userId"), rs.getString("titre"), rs.getString("image"), rs.getString("description"), rs.getString("contenu")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

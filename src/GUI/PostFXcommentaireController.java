@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Version;
+import com.restfb.types.User;
 import interfaces.clickListener;
 import interfaces.clickListenerC;
 import java.io.FileInputStream;
@@ -207,6 +211,14 @@ public class PostFXcommentaireController implements Initializable {
             ex.printStackTrace();
         }
         /* END */
+    }
+
+    @FXML
+    private void shareFB(ActionEvent event) {
+        String accessToken = "EAARUP2EV8GABAPby8ftUBvcg1lU9xpFK6qenBdGVZAZBmUvui46T4MncS2ZAR8iDuc2zUoS26BKW9rwOuRtY74CEQNwuz9ZC1H58IFnLLOb2Ha2Evzq4HZCwZBMz9NTW5Rtns83dcZAEq1N7yiaTMLZBxPigMPepnHt5Few2CLz0CMBhZCf4mjr3ZBMvLmiUECZBOdlvu2pzGpjTiarbedQMyAk";
+        FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.UNVERSIONED);
+        User me = fbClient.fetchObject("me", User.class);
+        System.out.println(me.getName());
     }
     
 }
