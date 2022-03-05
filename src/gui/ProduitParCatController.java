@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -100,5 +101,17 @@ public class ProduitParCatController implements Initializable {
         }
        return p; 
        
+    }
+
+    @FXML
+    private void back(ActionEvent event) {
+          AnchorPane cp;
+            try {
+                cp = FXMLLoader.load(getClass().getResource("ProduitFrond.fxml"));
+                produitParCategorie.getChildren().removeAll();
+                produitParCategorie.getChildren().setAll(cp);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
     }
 }

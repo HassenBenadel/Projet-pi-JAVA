@@ -96,7 +96,27 @@ public class ProduitFrondController implements Initializable {
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         p.addAll(getData());
+         setData();
+    }     
+    
+    public void setData() {
+        p.addAll(getData()); //teba3 laffichage w teba3 kol chy 
+      //select to edit
+        if(p.size() > 0) {
+            myListener = new clickListener() {
+                public void onClickListener(Produit produit) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("ProduitFrondItem.fxml"));
+                    try {
+                        Parent root = loader.load();
+                        setData();
+                        grid2.getScene().setRoot(root);
+                    } catch (IOException ex) {
+                        Logger.getLogger(ProduitFrondController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
+        }
+        //fin
         int column = 0;
         int row = 1;
         try {
@@ -154,8 +174,19 @@ public class ProduitFrondController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(ProduitFrondController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }     
-    
+    }
+
+    @FXML
+    private void refresh(ActionEvent event) {
+         AnchorPane cp;
+            try {
+                cp = FXMLLoader.load(getClass().getResource("ProduitFrond.fxml"));
+                CatEtProd.getChildren().removeAll();
+                CatEtProd.getChildren().setAll(cp);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+    }
     
     
     

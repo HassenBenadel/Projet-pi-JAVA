@@ -58,6 +58,11 @@ public class ProduitFrondItemController implements Initializable {
     @FXML
     private AnchorPane itemProduitF;
     private clickListener myListener;
+
+    @FXML
+    private void click(MouseEvent event) {
+        myListener.onClickListener(produit);
+    }
     
     /**
      * Initializes the controller class.
@@ -116,6 +121,6 @@ public class ProduitFrondItemController implements Initializable {
         favorie F =new favorie(Integer.parseInt(idProduit.getText()),idUserF);
         FavorieService fs=new FavorieService();
         fs.ajouterFavorie(F);
-        //myListener.onClickListener(produit);
         }
+    
 }
