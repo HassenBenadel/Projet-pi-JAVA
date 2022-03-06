@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package Gui;
 
-import static gui.ConnectController.client;
-import static gui.ConnectController.fournisseur;
-import static gui.ConnectController.livreur;
-import static gui.ConnectController.typecompte;
+import static Gui.ConnectController.client;
+import static Gui.ConnectController.fournisseur;
+import static Gui.ConnectController.livreur;
+import static Gui.ConnectController.typecompte;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,7 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import static gui.ConnectController.username;
+import static Gui.ConnectController.username;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;

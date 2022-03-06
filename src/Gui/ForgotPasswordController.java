@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package Gui;
 
-import static gui.ConnectController.fpmail;
+import static Gui.ConnectController.fpmail;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
