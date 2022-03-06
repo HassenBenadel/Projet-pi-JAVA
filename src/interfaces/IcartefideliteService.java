@@ -15,12 +15,12 @@ import model.CarteFidelite;
  */
 public interface IcartefideliteService {
      public ObservableList<CarteFidelite> afficher();
-    public void insert(String id);
+    public void insert(int id);
     public void update(CarteFidelite carte);
     public void supprimer(int id);
     public String convertirlespoints(CarteFidelite Carte,int nbre);
-      public CarteFidelite ChercherCartebyClient(String Num);
+      public CarteFidelite ChercherCartebyClient(int Num);
        public void regenererCarte(int num);
-       public CarteFidelite afficherbyid(String Idclient);
+       public CarteFidelite afficherbyid(int idclient);
            public void Pointparcommande(int ptajout,int num);
 }

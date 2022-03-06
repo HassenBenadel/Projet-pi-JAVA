@@ -29,17 +29,17 @@ public class PanierService {
      Connection cnx = MyConnexion.getInstance().getCnx(); // appliquer la connexion 
   
 
-    public  ObservableList<Panier> afficher(String Idclient) {
+    public  ObservableList<Panier> afficher(int Idclient) {
      ObservableList<Panier> panier=FXCollections.observableArrayList();
         System.out.println("Panier ");
         try {
 
             Statement st = cnx.createStatement();
-             ResultSet rs = st.executeQuery("Select * from Panier WHERE idclient = '" + Idclient + "'");
+             ResultSet rs = st.executeQuery("Select * from Panier WHERE id_client = '" + Idclient + "'");
             while (rs.next()) {
 
                 
-                String idclient = rs.getString(1);
+                int idclient = rs.getInt(1);
                 String id_panier = rs.getString(2);
                 Float totalpanier = rs.getFloat(3);
          
@@ -54,7 +54,7 @@ return panier;
     }
 
    
-    public void insert(String idclient,String id_panier) {
+    public void insert(int idclient,String id_panier) {
        
 
         try {
@@ -62,7 +62,7 @@ return panier;
 
             PreparedStatement statement = cnx.prepareStatement(sql);
             
-            statement.setString(1, idclient);
+            statement.setInt(1, idclient);
        
 statement.setString(2,id_panier);
 
@@ -212,18 +212,18 @@ ids.add(nom1);
     return ids;
 }
 
-       public Panier ChercherpanierbyClient(String Num)
+       public Panier ChercherpanierbyClient(int Num)
     {
         Panier p=new Panier();
         
     try{
-        String sql="Select * FROM Panier WHERE idclient = '" + Num + "'";
+        String sql="Select * FROM Panier WHERE id_client = '" + Num + "'";
            Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(sql);
              while (rs.next()) {
                 float  totalpanier = rs.getFloat(3);
                 String id_panier = rs.getString(2);
-                String idclient = rs.getString(1);
+                int idclient = rs.getInt(1);
 
 
 Panier pa= new Panier(idclient,id_panier,totalpanier);

@@ -14,23 +14,15 @@ import java.util.List;
  * @author EYA
  */
 public class Panier {
-    private String idclient;
+    private int id_client;
 private String id_panier;
 private float totalpanier;
    private List<lignec> lignes;
 
-    public Panier(String idclient, String id_panier, float totalpanier) {
-            this.idclient = idclient;
+    public Panier(int idclient, String id_panier, float totalpanier) {
+            this.id_client = idclient;
         this.id_panier = id_panier;
         this.totalpanier =totalpanier;
-    }
-
-    public String getIdclient() {
-        return idclient;
-    }
-
-    public void setIdclient(String idclient) {
-        this.idclient = idclient;
     }
 
     public String getId_panier() {
@@ -47,13 +39,6 @@ private float totalpanier;
 
     public void setTotalpanier(float totalpanier) {
         this.totalpanier = totalpanier;
-    }
-    public String getidclient() {
-        return idclient;
-    }
-
-    public void setidclient(String idclient) {
-        this.idclient = idclient;
     }
 
     public String getid_panier() {
@@ -72,8 +57,16 @@ private float totalpanier;
         this.totalpanier = totalpanier;
     }
 
-    public Panier(String idclient, String id_panier) {
-        this.idclient = idclient;
+    public int getId_client() {
+        return id_client;
+    }
+
+    public void setId_client(int id_client) {
+        this.id_client = id_client;
+    }
+
+    public Panier(int idclient, String id_panier) {
+        this.id_client = idclient;
         this.id_panier = id_panier;
         this.totalpanier = this.calculerPanier();
     }

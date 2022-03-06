@@ -13,9 +13,9 @@ import model.Commande;
  * @author EYA
  */
 public interface IcommandeService {
-      public ObservableList<Commande> afficherbyid(String iduser);
+      public ObservableList<Commande> afficherbyid(int iduser);
      public ObservableList<Commande>  afficher();
-     public void insert(String meth,String code,int carte,String iduser);
+     public void insert(String meth,String code,int carte,int iduser);
     public void update(Commande c);
     public void supprimer(int id);
 }

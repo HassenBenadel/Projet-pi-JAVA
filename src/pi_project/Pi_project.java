@@ -130,7 +130,7 @@ case 7 :
 break;
 case 8 :
     
-    crt.afficherbyid("54");
+  //  crt.afficherbyid("54");
 break;
        }
        

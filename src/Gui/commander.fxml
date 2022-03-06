@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="commander" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="1294.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.CommanderController">
+   <children>
+      <VBox blendMode="DARKEN" layoutX="119.0" layoutY="261.0" prefHeight="348.0" prefWidth="311.0">
+         <children>
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="83.0" prefWidth="325.0" text="Votre carte de fidelité:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="10.0" layoutY="28.0" prefHeight="92.0" prefWidth="324.0" text="Code de réduction :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="28.0" prefHeight="106.0" prefWidth="322.0" text="Méthode de paiement:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="390.0" layoutY="489.0" opacity="0.6" prefHeight="69.0" prefWidth="152.0" style="-fx-background-color: #7B8182;">
+         <children>
+            <RadioButton fx:id="enligne" mnemonicParsing="false" prefHeight="90.0" prefWidth="205.0" text="En ligne" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="cash" mnemonicParsing="false" text="Cash" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></RadioButton>
+         </children>
+      </VBox>
+      <Label alignment="TOP_CENTER" layoutX="104.0" layoutY="100.0" prefHeight="32.0" prefWidth="473.0" text="Passez votre commande:">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="379.0" layoutY="334.0" />
+      <BorderPane layoutX="-3.0" prefHeight="129.0" prefWidth="1199.0" style="-fx-background-color: #000000;">
+         <left>
+            <ImageView fitHeight="96.0" fitWidth="97.0" layoutX="172.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_LEFT">
+               <image>
+                  <Image url="file:/C:/Users/EYA/Desktop/Gl/Commande+fidelité/DEVaPPS(2).png" />
+               </image>
+            </ImageView>
+         </left>
+         <bottom>
+            <Label alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="363.0" text="Magasin  |  Blog  | Produit " textFill="WHITE" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font>
+            </Label>
+         </bottom>
+      </BorderPane>
+      <VBox layoutX="1195.0" prefHeight="129.0" prefWidth="99.0" style="-fx-background-color: #000000;">
+         <children>
+            <ImageView fx:id="cartecoordonnees" fitHeight="28.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" onDragDetected="#clickedbutton" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/EYA/Downloads/274753692_484370643093279_4003104838862489406_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="voirpanier" fitHeight="28.0" fitWidth="30.0" onDragDetected="#clickedbutton" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/EYA/Downloads/274756418_1631845397162871_4925711067034398751_n.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="81.0" text="Mr flen" textFill="#fffbfb">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="parametre" mnemonicParsing="false" onAction="#clickedbutton" prefHeight="30.0" prefWidth="99.0" style="-fx-background-color: #4AC7F0;" text="Paramétre" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <TextField fx:id="tfuser" layoutX="505.0" layoutY="148.0" prefHeight="37.0" prefWidth="161.0" />
+      <TextField fx:id="tfcode" layoutX="378.0" layoutY="366.0" prefHeight="49.0" prefWidth="202.0" />
+      <ComboBox fx:id="numcarte" layoutX="377.0" layoutY="279.0" opacity="0.6" prefHeight="46.0" prefWidth="202.0" style="-fx-background-color: #7B8182;" />
+      <Label layoutX="905.0" layoutY="193.0" prefHeight="42.0" prefWidth="119.0" text="Votre panier ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="-100.0" endY="402.5" layoutX="951.0" layoutY="273.0" startX="-100.0" />
+      <Button fx:id="btninsert" defaultButton="true" layoutX="650.0" layoutY="616.0" mnemonicParsing="false" onAction="#onclick" prefHeight="37.0" prefWidth="173.0" style="-fx-background-color: #4AC7F0;" text="Commander" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Line endX="100.0" layoutX="1065.0" layoutY="573.0" startX="-100.0" />
+      <Label layoutX="61.0" layoutY="192.0" prefHeight="42.0" prefWidth="251.0" text="Finialisez votre commande:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="creercarte" layoutX="365.0" layoutY="324.0" onAction="#clickedbutton" text="Creer une carte de fidelite si vous n'avez pas" />
+      <BorderPane layoutX="-2.0" layoutY="694.0" prefHeight="41.0" prefWidth="1297.0" style="-fx-background-color: #4AC7F0;">
+         <left>
+            <Label prefHeight="25.0" prefWidth="46.0" text="Help" textFill="WHITE" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </left>
+      </BorderPane>
+      <HBox layoutX="959.0" layoutY="580.0" prefHeight="56.0" prefWidth="200.0">
+         <children>
+            <Label prefHeight="60.0" prefWidth="69.0" text="Total :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="total" alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="60.0" />
+            <Label prefHeight="61.0" prefWidth="75.0" text="TND" />
+         </children>
+      </HBox>
+      <HBox layoutX="95.0" layoutY="573.0" opacity="0.94" prefHeight="69.0" prefWidth="477.0">
+         <children>
+            <ImageView fitHeight="69.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/EYA/Desktop/cadeau.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="62.0" prefWidth="360.0" text="En commandant ce panier, vous pouvez collecter jusqu'à ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="gain" prefHeight="62.0" prefWidth="83.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label layoutX="154.0" layoutY="616.0" prefHeight="42.0" prefWidth="407.0" text="points de fidélité qui peut être converti en un bon de réduction.">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listnom" layoutX="946.0" layoutY="298.0" onMouseClicked="#listclick" opacity="0.61" prefHeight="260.0" prefWidth="157.0" style="-fx-background-color: #7B8182;" />
+      <Label layoutX="1123.0" layoutY="300.0" text="Les details:" textFill="#4ac7f0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <HBox layoutX="944.0" layoutY="261.0" prefHeight="37.0" prefWidth="161.0">
+         <children>
+            <Label fx:id="nbre" alignment="CENTER" prefHeight="36.0" prefWidth="54.0" />
+            <Label prefHeight="49.0" prefWidth="77.0" text="articles" />
+         </children>
+      </HBox>
+      <HBox layoutX="1123.0" layoutY="329.0" prefHeight="27.0" prefWidth="99.0">
+         <children>
+            <Label prefHeight="32.0" prefWidth="17.0" text="X" />
+            <Label fx:id="quantit" prefHeight="42.0" prefWidth="81.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="1123.0" layoutY="356.0" prefHeight="38.0" prefWidth="133.0">
+         <children>
+            <Label fx:id="prix" alignment="CENTER" prefHeight="38.0" prefWidth="66.0">
+               <font>
+                  <Font name="Eras Bold ITC" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="38.0" prefWidth="35.0" text="TND">
+               <font>
+                  <Font name="Eras Bold ITC" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Hyperlink fx:id="coderedu" layoutX="374.0" layoutY="417.0" onAction="#codereduction" text="Vous avez un code de réduction?" />
+      <HBox layoutX="959.0" layoutY="614.0" prefHeight="56.0" prefWidth="200.0">
+         <children>
+            <Label prefHeight="56.0" prefWidth="98.0" text="Aprés reduction:">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="reduction" alignment="CENTER_RIGHT" prefHeight="56.0" prefWidth="72.0" />
+            <Label prefHeight="56.0" prefWidth="33.0" text="TND" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

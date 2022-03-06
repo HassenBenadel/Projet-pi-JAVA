@@ -45,9 +45,9 @@ public class CommandeService implements IcommandeService {
                 Float totalpanier = rs.getFloat(4);
                 Date DateCommande = rs.getDate(6);
                 String code = rs.getString(7);
-                String iduser = rs.getString(8);
-                System.out.println("Commande num " + (++count) + " Id Commande: " + id_commande + " Methode de paiement: " + methpaiement + " Total prix: " + totalprix + " Total panier: " + totalpanier + " Numero de Carte: " + NumCarte + " Date de creation : " + DateCommande + " Code de reduction: " + code + "user" + iduser); // Retreive database columns by Index 
-                Commande commande = new Commande(id_commande, methpaiement, totalprix, totalpanier, NumCarte, DateCommande, code, iduser); // Retreive database columns by Index       
+                int id_client = rs.getInt(8);
+                System.out.println("Commande num " + (++count) + " Id Commande: " + id_commande + " Methode de paiement: " + methpaiement + " Total prix: " + totalprix + " Total panier: " + totalpanier + " Numero de Carte: " + NumCarte + " Date de creation : " + DateCommande + " Code de reduction: " + code + "user" + id_client); // Retreive database columns by Index 
+                Commande commande = new Commande(id_commande, methpaiement, totalprix, totalpanier, NumCarte, DateCommande, code,id_client); // Retreive database columns by Index       
                 commandelist.add(commande);
             }
 
@@ -59,13 +59,13 @@ public class CommandeService implements IcommandeService {
     }
 
     @Override
-    public void insert(String methpaiement, String code, int carte, String iduser) {
+    public void insert(String methpaiement, String code, int carte,int id_client) {
 
         int gain = 0;
         LocalDateTime now = LocalDateTime.now();
         CodeReduction c = new CodeReduction("20", 10/*,"12345"*/);
         try {
-            String sql = "INSERT INTO commande(methpaiement, totalprix, totalpanier, NumCarte, DateCommande, code, iduser) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO commande(methpaiement, totalprix, totalpanier, NumCarte, DateCommande, code, id_client) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
 //System.out.println("Idcommande");
@@ -86,12 +86,12 @@ public class CommandeService implements IcommandeService {
             statement.setInt(4, carte);
             statement.setString(5, now.toString());
 
-            statement.setFloat(3, this.calculpanier(iduser));
-            float panier = this.calculpanier(iduser);
+            statement.setFloat(3, this.calculpanier(id_client));
+            float panier = this.calculpanier(id_client);
             Commande cmd = new Commande(methpaiement, carte, c);
             float prix = this.calculprix(panier, c);
             statement.setFloat(2, prix);
-            statement.setString(7, iduser);
+            statement.setInt(7, id_client);
             gain = (int) (prix * 20 / 100);
 
             IcartefideliteService crt = new CarteFideliteService();
@@ -145,11 +145,11 @@ public class CommandeService implements IcommandeService {
         }
     }
 
-    public float calculpanier(String iduser) {
+    public float calculpanier(int iduser) {
         {
             float total = 0;
             try {
-                String sql = "Select totalpanier FROM Panier where idclient= '" + iduser + "'";
+                String sql = "Select totalpanier FROM Panier where id_client= '" + iduser + "'";
                 Statement st = cnx.createStatement();
                 ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
@@ -179,14 +179,14 @@ public class CommandeService implements IcommandeService {
     }
 
     @Override
-    public ObservableList<Commande> afficherbyid(String idcl) {
+    public ObservableList<Commande> afficherbyid(int idcl) {
         int count = 0;
         ObservableList<Commande> commandelist = FXCollections.observableArrayList();
         System.out.println("LISTE DES COMMANDES: ");
         try {
 
             Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery("Select * from commande where iduser= '" + idcl + "'");
+            ResultSet rs = st.executeQuery("Select * from commande where id_client= '" + idcl + "'");
             while (rs.next()) {
 
                 int id_commande = rs.getInt(1);
@@ -196,7 +196,7 @@ public class CommandeService implements IcommandeService {
                 Float totalpanier = rs.getFloat(4);
                 Date DateCommande = rs.getDate(6);
                 String code = rs.getString(7);
-                String iduser = rs.getString(8);
+                int iduser = rs.getInt(8);
                 System.out.println("Commande num " + (++count) + " Id Commande: " + id_commande + " Methode de paiement: " + methpaiement + " Total prix: " + totalprix + " Total panier: " + totalpanier + " Numero de Carte: " + NumCarte + " Date de creation : " + DateCommande + " Code de reduction: " + code + "user" + iduser); // Retreive database columns by Index 
                 Commande commande = new Commande(id_commande, methpaiement, totalprix, totalpanier, NumCarte, DateCommande, code, iduser); // Retreive database columns by Index       
                 commandelist.add(commande);

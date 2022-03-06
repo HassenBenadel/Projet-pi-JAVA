@@ -14,15 +14,16 @@ import service.PanierService;
  */
 public class Commande {
     private int id_commande;
-    private String iduser;
+    private int id_client;
 
-    public String getIduser() {
-        return iduser;
+    public int getId_client() {
+        return id_client;
     }
 
-    public void setIduser(String iduser) {
-        this.iduser = iduser;
+    public void setId_client(int id_client) {
+        this.id_client = id_client;
     }
+
     private String methpaiement;
     private float totalprix;
     private float totalpanier;
@@ -60,7 +61,7 @@ public class Commande {
         this.id_commande = Id_Commande;
     }
 
-    public Commande(int id_commande, String methpaiement, Float totalprix, Float totalpanier, int NumCarte, Date DateCommande, String code,String iduser) {
+    public Commande(int id_commande, String methpaiement, Float totalprix, Float totalpanier, int NumCarte, Date DateCommande, String code,int iduser) {
        this.id_commande = id_commande;
         this.methpaiement = methpaiement;
          this.totalprix=totalprix;
@@ -68,7 +69,7 @@ public class Commande {
         this.NumCarte = NumCarte;
          this.DateCommande=DateCommande;
         this.code= code;
-        this.iduser= iduser;
+        this.id_client= iduser;
     }
 
     public int getNumCarte() {

@@ -14,14 +14,14 @@ import java.sql.Date;
  */
 public class CarteFidelite {
  private int NumCarte;
-  private String IdClient;
+  private int id_client;
   private Date Datefinvalidite;
   private Date Datecreation;
   private int Numpoint;
 
-    public CarteFidelite(int NumCarte, String IdClient, int Numpoint) {
+    public CarteFidelite(int NumCarte, int IdClient, int Numpoint) {
         this.NumCarte = NumCarte;
-        this.IdClient = IdClient;
+        this.id_client = IdClient;
         this.Numpoint = Numpoint;
     }
 
@@ -31,7 +31,7 @@ public class CarteFidelite {
     public String toString() {
         String s="";
         //s+="Votre Carte de Fidelite: \n \n \n";
-        return s  + "" + NumCarte + "\n \n Votre Id Client :           " + IdClient + "\n \n  La date de du creation :            " + Datefinvalidite + "\n \n La Date du fin validité  :            " + Datecreation + "\n \n Nombre de points actuels:            " + Numpoint ;
+        return s  + "" + NumCarte + "\n \n Votre Id Client :           " + id_client + "\n \n  La date de du creation :            " + Datefinvalidite + "\n \n La Date du fin validité  :            " + Datecreation + "\n \n Nombre de points actuels:            " + Numpoint ;
     }
 
 
@@ -40,13 +40,15 @@ public class CarteFidelite {
     public CarteFidelite() {
     }
 
-    public String getIdClient() {
-        return IdClient;
+    public int getId_client() {
+        return id_client;
     }
 
-    public void setIdClient(String IdClient) {
-        this.IdClient = IdClient;
+    public void setId_client(int id_client) {
+        this.id_client = id_client;
     }
+
+
 
 
 
@@ -62,9 +64,9 @@ public class CarteFidelite {
         return NumCarte;
     }
 
-    public CarteFidelite(int NumCarte, String IdClient, Date Datefinvalidite, Date Datecreation, int Numpoint) {
+    public CarteFidelite(int NumCarte, int IdClient, Date Datefinvalidite, Date Datecreation, int Numpoint) {
         this.NumCarte = NumCarte;
-        this.IdClient = IdClient;
+        this.id_client = IdClient;
         this.Datefinvalidite = Datefinvalidite;
         this.Datecreation = Datecreation;
         this.Numpoint = Numpoint;

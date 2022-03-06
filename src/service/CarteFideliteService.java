@@ -44,13 +44,13 @@ public class CarteFideliteService implements IcartefideliteService {
             while (rs.next()) {
 
                 int Numpoint = rs.getInt(5);
-                String IdClient = rs.getString(2);
+                int id_client = rs.getInt(2);
                 int NumCarte = rs.getInt(1);
                 Date Datefinvalidite = rs.getDate(3);
                 Date Datecreation = rs.getDate(4);
 
-                System.out.println("CarteFidelite num " + (++count) + " Numero de carte:" + NumCarte + " Id client :" + IdClient + " Date de fin de validité: " + Datefinvalidite + " Date de creation: " + Datecreation + " Nombre des points: " + Numpoint); // Retreive database columns by Index 
-                CarteFidelite carte= new CarteFidelite(NumCarte,IdClient,Datecreation,Datefinvalidite,Numpoint);
+                System.out.println("CarteFidelite num " + (++count) + " Numero de carte:" + NumCarte + " Id client :" + id_client + " Date de fin de validité: " + Datefinvalidite + " Date de creation: " + Datecreation + " Nombre des points: " + Numpoint); // Retreive database columns by Index 
+                CarteFidelite carte= new CarteFidelite(NumCarte,id_client,Datecreation,Datefinvalidite,Numpoint);
                 crtlist.add(carte);
             }
 
@@ -61,7 +61,7 @@ public class CarteFideliteService implements IcartefideliteService {
     }
 
     @Override
-    public void insert(String id) {
+    public void insert(int id) {
        
 // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd ");
         LocalDateTime now = LocalDateTime.now();
@@ -72,7 +72,7 @@ public class CarteFideliteService implements IcartefideliteService {
         int h =LocalDateTime.now().getHour();
         int min =LocalDateTime.now().getMinute();
         try {
-            String sql = "INSERT INTO CarteFidelite (IdClient, Datefinvalidite, Datecreation, Numpoint) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO CarteFidelite (id_client, Datefinvalidite, Datecreation, Numpoint) VALUES (?, ?, ?, ?)";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
            /* System.out.println("Donner Numero de la Carte de Fidelite:");
@@ -80,7 +80,7 @@ public class CarteFideliteService implements IcartefideliteService {
             statement.setString(1, n1);*/
            //   System.out.println("Donner id client:");
           //  String n2 = sc.nextLine();
-statement.setString(1, id);
+statement.setInt(1, id);
 LocalDateTime gitt = LocalDateTime.of((a+1),m,j, h, min);
             statement.setString(2,gitt.toString());
            statement.setString(3,now.toString());
@@ -105,7 +105,7 @@ System.out.print("ajout points");
     public void update(CarteFidelite carte) {
 
    
-       String sql = "update cartefidelite set IdClient='" + carte.getIdClient() + "',Numpoint='" + carte.getNumpoint() + "'WHERE NumCarte='" + carte.getNumCarte()+"'";
+       String sql = "update cartefidelite set id_client='" + carte.getId_client() + "',Numpoint='" + carte.getNumpoint() + "'WHERE NumCarte='" + carte.getNumCarte()+"'";
 
         try {
             Connection cnx = MyConnexion.getInstance().getCnx();
@@ -154,8 +154,8 @@ System.out.print("ajout points");
             {
                 pourcentage=nbre/5;
                 System.out.println(pourcentage);
-                int int_random = ThreadLocalRandom.current().nextInt();  
-                promo=nbre+"_"+int_random /*new java.util.Date().toString()*/;
+                Integer int_random = ThreadLocalRandom.current().nextInt();  
+                promo=nbre+int_random.toString() /*new java.util.Date().toString()*/;
                 System.out.println(promo);
                 code.insert(promo,pourcentage/*,Carte.getNumCarte()*/);
                  
@@ -220,22 +220,22 @@ System.out.print("ajout points");
                  }
              }
     @Override
-    public CarteFidelite ChercherCartebyClient(String Num)
+    public CarteFidelite ChercherCartebyClient(int Num)
     {
         CarteFidelite c=new CarteFidelite();
         
     try{
-        String sql="Select * FROM CarteFidelite WHERE IdClient = '" + Num + "'";
+        String sql="Select * FROM CarteFidelite WHERE id_client = '" + Num + "'";
            Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(sql);
              while (rs.next()) {
                 int Numpoint = rs.getInt(5);
-                String IdClient = rs.getString(2);
+                int id_client = rs.getInt(2);
                 int NumCarte = rs.getInt(1);
                 Date Datefinvdalidite = rs.getDate(3);
                 Date Datecreation = rs.getDate(4);
 
-CarteFidelite carte= new CarteFidelite(NumCarte,IdClient,Datecreation,Datefinvdalidite,Numpoint);
+CarteFidelite carte= new CarteFidelite(NumCarte,id_client,Datecreation,Datefinvdalidite,Numpoint);
 return carte;
              }  
     }catch(SQLException e)
@@ -249,23 +249,23 @@ return carte;
     
     
     @Override
-       public CarteFidelite afficherbyid(String Idclient) {
+       public CarteFidelite afficherbyid(int idclient) {
        CarteFidelite c=new CarteFidelite();
         
         try {
 
             Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery("Select * from CarteFidelite WHERE IdClient = '" + Idclient + "'");
+            ResultSet rs = st.executeQuery("Select * from CarteFidelite WHERE id_client = '" + idclient + "'");
           while (rs.next()) {
                 int Numpoint = rs.getInt(5);
-                String IdClient = rs.getString(2);
+                int id_client = rs.getInt(2);
                 int NumCarte = rs.getInt(1);
                 Date Datefinvdalidite = rs.getDate(3);
                 Date Datecreation = rs.getDate(4);
 
-CarteFidelite carte= new CarteFidelite(NumCarte,IdClient,Datecreation,Datefinvdalidite,Numpoint);
+CarteFidelite carte= new CarteFidelite(NumCarte,id_client,Datecreation,Datefinvdalidite,Numpoint);
 
-                System.out.println("CarteFidelite " + " Numero de carte:" + NumCarte + " Id client :" + IdClient + " Date de fin de validité: " + Datefinvdalidite + " Date de creation: " + Datecreation + " Nombre des points: " + Numpoint); // Retreive database columns by Index 
+                System.out.println("CarteFidelite " + " Numero de carte:" + NumCarte + " Id client :" + id_client + " Date de fin de validité: " + Datefinvdalidite + " Date de creation: " + Datecreation + " Nombre des points: " + Numpoint); // Retreive database columns by Index 
 return carte;
           }
 
