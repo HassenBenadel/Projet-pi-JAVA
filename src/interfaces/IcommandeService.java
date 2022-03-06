@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import javafx.collections.ObservableList;
 import model.Commande;
 
 /**
@@ -12,8 +13,9 @@ import model.Commande;
  * @author EYA
  */
 public interface IcommandeService {
-     public void afficher();
-     public void insert();
+      public ObservableList<Commande> afficherbyid(String iduser);
+     public ObservableList<Commande>  afficher();
+     public void insert(String meth,String code,int carte,String iduser);
     public void update(Commande c);
-    public void supprimer();
+    public void supprimer(int id);
 }

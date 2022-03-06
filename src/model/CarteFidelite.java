@@ -5,23 +5,21 @@
  */
 package model;
 
+import java.sql.Date;
+
 
 /**
  *
  * @author EYA
  */
 public class CarteFidelite {
- private String NumCarte;
+ private int NumCarte;
   private String IdClient;
-  private String Datefinvalidite;
-  private String Datecreation;
+  private Date Datefinvalidite;
+  private Date Datecreation;
   private int Numpoint;
 
-    public CarteFidelite(String NumCarte) {
-        this.NumCarte = NumCarte;
-    }
-
-    public CarteFidelite(String NumCarte, String IdClient, int Numpoint) {
+    public CarteFidelite(int NumCarte, String IdClient, int Numpoint) {
         this.NumCarte = NumCarte;
         this.IdClient = IdClient;
         this.Numpoint = Numpoint;
@@ -31,26 +29,15 @@ public class CarteFidelite {
 
     @Override
     public String toString() {
-        return "CarteFidelite{" + "NumCarte=" + NumCarte + ", IdClient=" + IdClient + ", Datefinvalidite=" + Datefinvalidite + ", Datecreation=" + Datecreation + ", Numpoint=" + Numpoint + '}';
+        String s="";
+        //s+="Votre Carte de Fidelite: \n \n \n";
+        return s  + "" + NumCarte + "\n \n Votre Id Client :           " + IdClient + "\n \n  La date de du creation :            " + Datefinvalidite + "\n \n La Date du fin validité  :            " + Datecreation + "\n \n Nombre de points actuels:            " + Numpoint ;
     }
 
-    public CarteFidelite(String NumCarte, String IdClient, String Datefinvalidite, String Datecreation, int Numpoint) {
-        this.NumCarte = NumCarte;
-        this.IdClient = IdClient;
-        this.Datefinvalidite = Datefinvalidite;
-        this.Datecreation = Datecreation;
-        this.Numpoint = Numpoint;
-    }
+
+    
 
     public CarteFidelite() {
-    }
-
-    public String getNumCarte() {
-        return NumCarte;
-    }
-
-    public void setNumCarte(String NumCarte) {
-        this.NumCarte = NumCarte;
     }
 
     public String getIdClient() {
@@ -61,21 +48,7 @@ public class CarteFidelite {
         this.IdClient = IdClient;
     }
 
-    public String getDatefinvalidite() {
-        return Datefinvalidite;
-    }
 
-    public void setDatefinvalidite(String Datefinvalidite) {
-        this.Datefinvalidite = Datefinvalidite;
-    }
-
-    public String getDatecreation() {
-        return Datecreation;
-    }
-
-    public void setDatecreation(String Datecreation) {
-        this.Datecreation = Datecreation;
-    }
 
     public int getNumpoint() {
         return Numpoint;
@@ -85,10 +58,42 @@ public class CarteFidelite {
         this.Numpoint = Numpoint;
     }
 
-    public CarteFidelite(String Datecreation,String Datefinvalidite) {
+    public int getNumCarte() {
+        return NumCarte;
+    }
+
+    public CarteFidelite(int NumCarte, String IdClient, Date Datefinvalidite, Date Datecreation, int Numpoint) {
+        this.NumCarte = NumCarte;
+        this.IdClient = IdClient;
+        this.Datefinvalidite = Datefinvalidite;
         this.Datecreation = Datecreation;
+        this.Numpoint = Numpoint;
+    }
+
+    public void setNumCarte(int NumCarte) {
+        this.NumCarte = NumCarte;
+    }
+
+    public Date getDatefinvalidite() {
+        return Datefinvalidite;
+    }
+
+    public void setDatefinvalidite(Date Datefinvalidite) {
         this.Datefinvalidite = Datefinvalidite;
     }
+
+    public Date getDatecreation() {
+        return Datecreation;
+    }
+
+    public void setDatecreation(Date Datecreation) {
+        this.Datecreation = Datecreation;
+    }
+
+   /* public CarteFidelite(String Datecreation,String Datefinvalidite) {
+        this.Datecreation = Datecreation;
+        this.Datefinvalidite = Datefinvalidite;
+    }*/
 
  
 }

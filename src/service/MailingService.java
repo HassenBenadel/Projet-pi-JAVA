@@ -27,7 +27,7 @@ public class MailingService {
 
 
  
-    public static void sendMail(String recepient) throws Exception {
+    public static void sendMail(String recepient,String code,int pourcentage) throws Exception {
         // TODO code application logic here
         Properties properties=new Properties();
         properties.put("mail.smtp.auth","true");
@@ -36,7 +36,7 @@ public class MailingService {
         properties.put("mail.smtp.port","587");
         
         String myacount="eyabensalem0902@gmail.com";
-        String password="";
+        String password="sefirinkizi1605";
         
         Session session=Session.getInstance(properties,new Authenticator(){
         @Override
@@ -46,20 +46,21 @@ public class MailingService {
             
         }
     });
-        Message message=prepareMessage(session,myacount);
+        
+        Message message=prepareMessage(session,myacount,code,pourcentage);
         Transport.send(message);
         System.out.println("done");
     }
-    private static Message prepareMessage(Session session, String myacount){
-        Commande cmd=new Commande(19,"cash","14");
+    private static Message prepareMessage(Session session, String myacount,String code,int pourcentage){
+        
        Message message=new MimeMessage(session);
         try{ 
         message.setFrom(new InternetAddress(myacount));
         message.setRecipient(Message.RecipientType.TO,new InternetAddress("eyabensalem0902@gmail.com"));
        
-        message.setSubject("Facture N");
+        message.setSubject("Code réduction");
                 
-                message.setText("Bonjour Commande d'id: " + cmd.getId_Commande() +  " Methode de paiement : " + cmd.getMethpaiement() + " prix total: " + cmd.getTotalprix() );
+                message.setText("Votre code promo est disponible tapez "+ code + " pour l'utiliser et obtenir jusqu'a "+pourcentage + " % de reduction sur l'achat");
 
                
                 return message;

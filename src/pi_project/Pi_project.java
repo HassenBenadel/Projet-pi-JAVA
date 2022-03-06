@@ -18,6 +18,7 @@ import model.Commande;
 import service.CarteFideliteService;
 import service.CommandeService;
 import service.MailingService;
+import service.PanierService;
 public class Pi_project {
 
     /**
@@ -35,10 +36,10 @@ public class Pi_project {
     public static void main(String[] args) throws Exception {
         Connection cnx = MyConnexion.getInstance().getCnx(); // Create a conncetion with the database
         System.out.println("connexion établie avec succes");
-        IcommandeService cmd= new CommandeService(); // Create a new commandeService
+        PanierService p= new PanierService(); // Create a new commandeService
         IcartefideliteService crt= new CarteFideliteService(); // Create a new commandeService
  
-        CarteFidelite carte=new CarteFidelite("14","54",63);
+     //   CarteFidelite carte=new CarteFidelite("88","54",0);
 		
         int x,m;
           Scanner sc = new Scanner(System.in);
@@ -62,22 +63,22 @@ switch(x){
 
 case 1 :
  
-    cmd.insert();
-    
+   
+  //  p.afficher();
 break;
 case 2 :
-   Commande c=new Commande(165,"cash","100");
+   //Commande c=new Commande("165","cash",100);
 
-    cmd.update(c);
+   // p.supprimer(id_panier);
 break;
 case 3 :
-    cmd.supprimer();
+  //  cmd.supprimer();
 break;
 case 4 :
-    cmd.afficher();
+  //  cmd.afficher();
 break;
 case 5 :
-    MailingService.sendMail("eyabensalem@gmail.com");
+    //MailingService.sendMail("eyabensalem@gmail.com");
 break;
        }
        
@@ -104,28 +105,28 @@ break;
 switch(m){
 
 case 1 :
-    crt.insert();
+   // crt.insert();
 break;
 case 2 :
 
-    crt.update(carte);
+    //crt.update(carte);
 break;
 case 3 :
-    crt.supprimer();
+   // crt.supprimer();
 break;
 case 4 :
     crt.afficher();
 break;
 case 5 :
-    crt.convertirlespoints(carte);
+  //  crt.convertirlespoints(carte);
 break;
 case 6 :
     
-    crt.ChercherCartebyClient("54");
+  //  crt.ChercherCartebyClient("54");
 break;
 case 7 :
-    
-    crt.regenererCarte(carte);
+  //  
+  //  crt.regenererCarte(carte);
 break;
 case 8 :
     

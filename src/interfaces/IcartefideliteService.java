@@ -5,20 +5,22 @@
  */
 package interfaces;
 
+import javafx.collections.ObservableList;
 import model.CarteFidelite;
-import model.CodeReduction;
+
 
 /**
  *
  * @author EYA
  */
 public interface IcartefideliteService {
-     public void afficher();
-    public void insert();
+     public ObservableList<CarteFidelite> afficher();
+    public void insert(String id);
     public void update(CarteFidelite carte);
-    public void supprimer();
-    public String convertirlespoints(CarteFidelite Carte);
-    public void ChercherCartebyClient(String IdClient);
-       public void regenererCarte(CarteFidelite Carte);
-       public void afficherbyid(String Idclient);
+    public void supprimer(int id);
+    public String convertirlespoints(CarteFidelite Carte,int nbre);
+      public CarteFidelite ChercherCartebyClient(String Num);
+       public void regenererCarte(int num);
+       public CarteFidelite afficherbyid(String Idclient);
+           public void Pointparcommande(int ptajout,int num);
 }

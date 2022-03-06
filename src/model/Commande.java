@@ -5,56 +5,100 @@
  */
 package model;
 
+import java.sql.Date;
+import service.PanierService;
+
 /**
  *
  * @author EYA
  */
 public class Commande {
-    private int Id_Commande;
+    private int id_commande;
+    private String iduser;
+
+    public String getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(String iduser) {
+        this.iduser = iduser;
+    }
     private String methpaiement;
     private float totalprix;
     private float totalpanier;
-    private String NumCarte;
-    private CodeReduction code;
+    private int NumCarte;
+    private CodeReduction c;
+    private String code;
+    private Date DateCommande;
 
-    public Commande(int Id_Commande, String methpaiement) {
-        this.Id_Commande = Id_Commande;
+    public Commande(int Id_commande, String methpaiement) {
+        this.id_commande = Id_commande;
         this.methpaiement = methpaiement;
-        this.totalprix =this.calculprix();
-        this.totalpanier = this.calculpanier();
+       // this.totalprix =this.calculprix();
+        //this.totalpanier = this.calculpanier();
     }
 
-    public Commande(int Id_Commande, String methpaiement, String NumCarte) {
-        this.Id_Commande = Id_Commande;
+    public Commande(int id_commande, String methpaiement, int NumCarte) {
+        this.id_commande = id_commande;
         this.methpaiement = methpaiement;
-       this.totalpanier = this.calculpanier();
+       //this.totalpanier = this.calculpanier();
         this.NumCarte = NumCarte;
-         this.totalprix =this.calculprix();
+         //this.totalprix =this.calculprix();
         
     }
 
-    public Commande(int Id_Commande, String methpaiement,String NumCarte, CodeReduction code) {
-        this.Id_Commande = Id_Commande;
+    public Commande(String methpaiement,int NumCarte, CodeReduction c) {
+        //this.id_commande = Id_Commande;
         this.methpaiement = methpaiement;
-        this.totalpanier = this.calculpanier();
+            //this.totalprix =panier;
+           //this.totalprix =this.calculprix();
         this.NumCarte = NumCarte;
-        this.code = code;
+        this.c = c;
     }
 
     public Commande(int Id_Commande) {
-        this.Id_Commande = Id_Commande;
+        this.id_commande = Id_Commande;
+    }
+
+    public Commande(int id_commande, String methpaiement, Float totalprix, Float totalpanier, int NumCarte, Date DateCommande, String code,String iduser) {
+       this.id_commande = id_commande;
+        this.methpaiement = methpaiement;
+         this.totalprix=totalprix;
+        this.totalpanier = totalpanier;
+        this.NumCarte = NumCarte;
+         this.DateCommande=DateCommande;
+        this.code= code;
+        this.iduser= iduser;
+    }
+
+    public int getNumCarte() {
+        return NumCarte;
+    }
+
+    public void setNumCarte(int NumCarte) {
+        this.NumCarte = NumCarte;
+    }
+
+
+
+    public Date getDateCommande() {
+        return DateCommande;
+    }
+
+    public void setDateCommande(Date datecommande) {
+        this.DateCommande = datecommande;
     }
 
  
 
 
 
-    public int getId_Commande() {
-        return Id_Commande;
+    public int getId_commande() {
+        return id_commande;
     }
 
-    public void setId_Commande(int Id_Commande) {
-        this.Id_Commande = Id_Commande;
+    public void setId_commande(int id_commande) {
+        this.id_commande = id_commande;
     }
 
     public String getMethpaiement() {
@@ -65,32 +109,29 @@ public class Commande {
         this.methpaiement = methpaiement;
     }
 
-    public float calculprix()
-    { float prix=0;
-     try{ 
-        prix=this.totalpanier;
-        System.out.println(this.code.getPourcentage());
-        float reduction= prix*(this.code.getPourcentage() ) / 100;
-       prix=prix - reduction ;
-   System.out.println(prix);
-     }catch(Exception e)
-     {
-         
-     }
-       return prix;
+
+
+    public CodeReduction getC() {
+        return c;
     }
 
-    public float calculpanier()
+    public void setC(CodeReduction c) {
+        this.c = c;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public float calculpanier(String idpanier)
     {
-              Panier panier = new Panier();
-                panier.ajouterArticle(1, 2, 50);
-		panier.ajouterArticle(2, 2, 100);
-		panier.ajouterArticle(3, 1, 150);
-		panier.ajouterArticle(1, 3, 50);
-		System.out.println(panier.calculerPanier());
-		panier.supprimerArticle(2);
-		System.out.println(panier.calculerPanier());
-                float totalcommande=panier.calculerPanier();
+              PanierService panier = new PanierService();
+             
+                float totalcommande=panier.calcultotal(idpanier);
                 return totalcommande;
     }
     
@@ -112,7 +153,7 @@ public class Commande {
 
     @Override
     public String toString() {
-        return "Commande{" + "Id_Commande=" + Id_Commande + ", methpaiement=" + methpaiement + ", totalprix=" + totalprix + ", totalpanier=" + totalpanier + '}';
+        return "Commande{" + "Id_Commande=" + id_commande + ", methpaiement=" + methpaiement + ", totalprix=" + totalprix + ", totalpanier=" + totalpanier + '}';
     }
      
 }

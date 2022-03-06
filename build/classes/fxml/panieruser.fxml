@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="affpanier" prefHeight="957.0" prefWidth="1294.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.PanieruserController">
+   <children>
+      <Button fx:id="calculbut" layoutX="1025.0" layoutY="599.0" mnemonicParsing="false" onAction="#clickcommande" prefHeight="25.0" prefWidth="240.0" style="-fx-background-color: #4AC7F0;" text="Commander" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <ScrollPane fx:id="scroll" layoutX="21.0" layoutY="225.0" prefHeight="708.0" prefWidth="972.0" style="-fx-background-color: #7B8182;">
+         <content>
+            <GridPane fx:id="grid" prefHeight="15.0" prefWidth="80.0">
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <Label layoutX="39.0" layoutY="164.0" prefHeight="42.0" prefWidth="73.0" text="Panier ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="1001.0" layoutY="171.0" prefHeight="42.0" prefWidth="119.0" text="Votre panier ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" layoutX="1141.0" layoutY="523.0" startX="-100.0" />
+      <BorderPane layoutY="-3.0" prefHeight="129.0" prefWidth="1216.0" style="-fx-background-color: #000000;">
+         <left>
+            <ImageView fitHeight="96.0" fitWidth="97.0" layoutX="172.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_LEFT">
+               <image>
+                  <Image url="file:/C:/Users/EYA/Desktop/Gl/Commande+fidelité/DEVaPPS(2).png" />
+               </image>
+            </ImageView>
+         </left>
+         <bottom>
+            <Label alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="313.0" text="Magasin  |  Blog  | Produit " textFill="WHITE" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font>
+            </Label>
+         </bottom>
+      </BorderPane>
+      <VBox layoutX="1216.0" layoutY="-3.0" prefHeight="129.0" prefWidth="99.0" style="-fx-background-color: #000000;">
+         <children>
+            <ImageView fx:id="cartecoordonnees" fitHeight="35.0" fitWidth="31.0" onDragDetected="#clickedbutton" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #4AC7F0; -fx-effect: #4AC7F0;">
+               <image>
+                  <Image url="file:/C:/Users/EYA/Downloads/274753692_484370643093279_4003104838862489406_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="voirpanier" fitHeight="28.0" fitWidth="30.0" onDragDetected="#clickedbutton" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/EYA/Downloads/274756418_1631845397162871_4925711067034398751_n.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="81.0" text="Mr flen" textFill="#fffbfb">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="parametre" mnemonicParsing="false" onAction="#clickedbutton" prefHeight="30.0" prefWidth="99.0" style="-fx-background-color: #4AC7F0;" text="Paramétre" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <HBox layoutX="1045.0" layoutY="523.0" prefHeight="56.0" prefWidth="200.0">
+         <children>
+            <Label prefHeight="60.0" prefWidth="69.0" text="Total :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="total" alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="60.0" />
+            <Label prefHeight="61.0" prefWidth="75.0" text="TND" />
+         </children>
+      </HBox>
+      <ListView fx:id="listnom" layoutX="1001.0" layoutY="225.0" onMouseClicked="#listclick" prefHeight="260.0" prefWidth="157.0" />
+      <Label layoutX="1170.0" layoutY="225.0" text="Les details:" textFill="#4ac7f0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <HBox layoutX="1167.0" layoutY="254.0" prefHeight="27.0" prefWidth="99.0">
+         <children>
+            <Label prefHeight="32.0" prefWidth="17.0" text="X" />
+            <Label fx:id="quantit" prefHeight="27.0" prefWidth="56.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="1040.0" layoutY="485.0" prefHeight="37.0" prefWidth="161.0">
+         <children>
+            <Label fx:id="nbre" alignment="CENTER" prefHeight="37.0" prefWidth="49.0" />
+            <Label prefHeight="49.0" prefWidth="77.0" text="articles" />
+         </children>
+      </HBox>
+      <HBox layoutX="1158.0" layoutY="298.0" prefHeight="38.0" prefWidth="161.0">
+         <children>
+            <Label fx:id="prix" alignment="CENTER" prefHeight="38.0" prefWidth="76.0">
+               <font>
+                  <Font name="Eras Bold ITC" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="44.0" prefWidth="66.0" text="TND">
+               <font>
+                  <Font name="Eras Bold ITC" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

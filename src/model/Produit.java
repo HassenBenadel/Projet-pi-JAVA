@@ -7,44 +7,123 @@ package model;
 
 /**
  *
- * @author EYA
+ * @author hadir
  */
 public class Produit {
-    private int codeArticle;
-	private int qteArticle;
-	private int prixArticle;
-	
-	public int getCodeArticle() {
-		return codeArticle;
-	}
-	public void setCodeArticle(int code) {
-		this.codeArticle = code;
-	}
-	public int getQteArticle() {
-		return qteArticle;
-	}
-	public void setQteArticle(int qte) {
-		this.qteArticle = qte;
-	}
-	public int getPrixArticle() {
-		return prixArticle;
-	}
-	public void setPrixArticle(int prix) {
-		this.prixArticle = prix;
-	}	
-	Produit(int code, int qte, int prix)
-	{
-		this.setCodeArticle(code);
-		this.setQteArticle(qte);
-		this.setPrixArticle(prix);
-	}	
-	public void ajouterQuantite(int qte)
-	{
-		this.qteArticle += qte;
-	}
-	public int getPrixLigne()
-	{
-		int prix = this.getPrixArticle() * this.getQteArticle();
-		return prix;
-	}
+    private int idP;
+    private int reference;
+    private  String nomProduit;
+    private int Quantite;
+    private int prix;
+    private String image;
+    
+
+    public Produit(int reference, String nomProduit, int Quantite, int prix) {
+        this.reference = reference;
+        this.nomProduit = nomProduit;
+        this.Quantite = Quantite;
+        this.prix = prix;
+    }
+    public Produit()
+    {
+        
+    }
+
+    public Produit(int reference, String nomProduit, int Quantite, int prix, String image) {
+        this.reference = reference;
+        this.nomProduit = nomProduit;
+        this.Quantite = Quantite;
+        this.prix = prix;
+        this.image = image;
+    }
+    
+
+    public int getReference() {
+        return reference;
+    }
+
+    public void setReference(int reference) {
+        this.reference = reference;
+    }
+
+    public String getNomProduit() {
+        return nomProduit;
+    }
+
+    public void setNomProduit(String nomProduit) {
+        this.nomProduit = nomProduit;
+    }
+
+    public int getQuantite() {
+        return Quantite;
+    }
+
+    public void setQuantite(int Quantite) {
+        this.Quantite = Quantite;
+    }
+
+    public int getPrix() {
+        return prix;
+    }
+
+    public void setPrix(int prix) {
+        this.prix = prix;
+    }
+
+    @Override
+    public String toString() {
+        return "Produit{" + "idP=" + idP + ", reference=" + reference + ", nomProduit=" + nomProduit + ", Quantite=" + Quantite + ", prix=" + prix + ", image=" + image + '}';
+    }
+
+
+    public int getIdP() {
+        return idP;
+    }
+
+    public void setIdP(int idP) {
+        this.idP = idP;
+    }
+
+    public Produit(int idP, int Quantite, int prix) {
+        this.idP = idP;
+        this.Quantite = Quantite;
+        this.prix = prix;
+    }
+
+    public Produit(int idP, int Quantite, int prix, String image) {
+        this.idP = idP;
+        this.Quantite = Quantite;
+        this.prix = prix;
+        this.image = image;
+    }
+    
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Produit(int idP, int reference, String nomProduit, int Quantite, int prix, String image) {
+        this.idP = idP;
+        this.reference = reference;
+        this.nomProduit = nomProduit;
+        this.Quantite = Quantite;
+        this.prix = prix;
+        this.image = image;
+    }
+    
+    
+    public float getbyid(int code)
+{
+    if(this.getIdP() == code)
+    {
+        return this.getPrix();
+    }
+        return 0;
+}
+    
+    
 }

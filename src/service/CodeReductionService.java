@@ -7,7 +7,9 @@ package service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 import util.MyConnexion;
 
@@ -24,19 +26,18 @@ public class CodeReductionService {
             String sql = "INSERT INTO codereduction VALUES (?, ?)";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
-          
+          System.out.println("jout");
  
-            statement.setString(1, code);
+          statement.setString(1, code);
           //  statement.setString(3, numcarte);
             statement.setInt(2, pourcentage);
-
-           
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("Votre code promo est disponible tapez "+ code + " pour l'utiliser et obtenir jusqu'a "+pourcentage + " % de reduction sur l'achat");
             }
         } catch (SQLException e) {
+             e.printStackTrace();
         }
     }
     
@@ -55,7 +56,21 @@ public class CodeReductionService {
                 System.out.println("A Code reduction was deleted successfully!");
             }
         } catch (SQLException e) {
+            e.printStackTrace();
         }
+    }
+    public int pourcentagecode(String code) 
+    {
+        int p=0;
+        try{
+            String sql="Select pourcentage From codereduction WHERE code = '" + code + "'";
+               Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+             while (rs.next()) {
+                p=rs.getInt(1);
+        }}catch(SQLException e) {
+        }
+        return p;
     }
     
 }
