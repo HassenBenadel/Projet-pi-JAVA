@@ -42,6 +42,24 @@ public class ClientService {
 
     }
 
+    public int getIduserByIdClient(Client cl) {
+
+        String sql = "Select id_user   from client where id_client = " + cl.getId_client();
+        try {
+
+            Connection cnx = MaConnexion.getInstance().getCnx();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0 ;
+
+    }
+
     /*public int getIdByEmail(String email) {
         String sql = "Select id_user from utilisateur where email ='" + email + "'";
         
@@ -57,7 +75,6 @@ public class ClientService {
         }
         return 0;
     }*/
-
  /*  public int getIdUserbymail(String email ) {
         
         String sql = "Select id_user from utilisateur where email='" + email+"'";
@@ -154,6 +171,7 @@ public class ClientService {
 
             Connection cnx = MaConnexion.getInstance().getCnx();
             Statement st = cnx.createStatement();
+            System.out.println(sql);
             st.executeUpdate(sql);
             st.executeUpdate("insert into client (id_user) Values(" + findIdClientByMail(cl.getEmail()) + ")");
             System.out.println("ajout dans utilisateur executé avec succes");
@@ -164,22 +182,6 @@ public class ClientService {
 
     }
 
-    /* public void mailmodify(Client cl) {
-
-        String sql = "Update utilisateur set email ='" + cl.getEmail() + "'Where id_user = ( Select id_user FROM client WHERE id_client =" + cl.getId_client() + ")";
-        try {
-            Connection cnx = MaConnexion.getInstance().getCnx();
-            Statement st = cnx.createStatement();
-            int rs = st.executeUpdate(sql);
-            if (rs > 0) {
-                System.out.println("modfication mail avec succes");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }*/
     public void modifierClient(Client cl) {
 
         String img = cl.getImage();

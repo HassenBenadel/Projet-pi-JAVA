@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gui;
+package gui;
 
-import static Gui.ConnectController.client;
-import static Gui.ConnectController.fournisseur;
-import static Gui.ConnectController.livreur;
-import static Gui.ConnectController.typecompte;
+import static gui.ConnectController.client;
+import static gui.ConnectController.fournisseur;
+import static gui.ConnectController.livreur;
+import static gui.ConnectController.typecompte;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,15 +16,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import static Gui.ConnectController.username;
+import static gui.ConnectController.username;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import service.ClientService;
 import service.FournisseurService;
 import service.LivreurService;
@@ -56,6 +63,12 @@ public class ProfileController implements Initializable {
     private Label phone;
     @FXML
     private ImageView userimg;
+    @FXML
+    private Label secteuract;
+    @FXML
+    private Label secteurres;
+    @FXML
+    private Hyperlink sectorbtn;
 
     /**
      * Initializes the controller class.
@@ -106,6 +119,9 @@ public class ProfileController implements Initializable {
             town.setText(livreur.getVille());
             country.setText(livreur.getPays());
             phone.setText(String.valueOf(livreur.getTelephone()));
+            secteuract.setText("SecteurD'activité");
+            secteurres.setText(livreur.getSecteur_activite());
+            sectorbtn.setText("Modifier");
 
             try {
                 String path = livreur.getImage();
@@ -146,6 +162,13 @@ public class ProfileController implements Initializable {
             ls.modifierLivreur(livreur);
 
         }
+        try {
+            AnchorPane profile = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+            profilescene.getChildren().removeAll();
+            profilescene.getChildren().setAll(profile);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
     }
 
@@ -174,6 +197,13 @@ public class ProfileController implements Initializable {
             LivreurService ls = new LivreurService();
             ls.modifierLivreur(livreur);
 
+        }
+        try {
+            AnchorPane profile = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+            profilescene.getChildren().removeAll();
+            profilescene.getChildren().setAll(profile);
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
 
     }
@@ -204,6 +234,13 @@ public class ProfileController implements Initializable {
             ls.modifierLivreur(livreur);
 
         }
+        try {
+            AnchorPane profile = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+            profilescene.getChildren().removeAll();
+            profilescene.getChildren().setAll(profile);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
     }
 
@@ -232,6 +269,13 @@ public class ProfileController implements Initializable {
             LivreurService ls = new LivreurService();
             ls.modifierLivreur(livreur);
 
+        }
+        try {
+            AnchorPane profile = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+            profilescene.getChildren().removeAll();
+            profilescene.getChildren().setAll(profile);
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
 
     }
@@ -262,6 +306,13 @@ public class ProfileController implements Initializable {
             ls.modifierLivreur(livreur);
 
         }
+        try {
+            AnchorPane profile = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+            profilescene.getChildren().removeAll();
+            profilescene.getChildren().setAll(profile);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
     }
 
@@ -291,6 +342,14 @@ public class ProfileController implements Initializable {
             ls.modifierLivreur(livreur);
 
         }
+        try {
+            AnchorPane profile = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+            profilescene.getChildren().removeAll();
+            profilescene.getChildren().setAll(profile);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     @FXML
@@ -302,6 +361,38 @@ public class ProfileController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void changesector(ActionEvent event) {
+        List<String> choices = new ArrayList<>();
+        choices.add("SmartPhones");
+        choices.add("LAPTOP");
+        choices.add("Gamer PC");
+        choices.add("Accesoires");
+        choices.add("Composant Externe");
+        ChoiceDialog<String> dialog = new ChoiceDialog<>("Smartphones", choices);
+        dialog.setTitle("Choix du secteur");
+        dialog.setHeaderText("Choisissez votre secteur d'activité");
+        dialog.setContentText("Secteur d'activité");
+        Optional<String> result = dialog.showAndWait();
+
+        String secteur = result.get();
+
+        if (typecompte.equals("livreur")) {
+
+            livreur.setSecteur_activite(secteur);
+            LivreurService ls = new LivreurService();
+            ls.modifierLivreur(livreur);
+        }
+        try {
+            AnchorPane profile = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+            profilescene.getChildren().removeAll();
+            profilescene.getChildren().setAll(profile);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
     }
 
 }

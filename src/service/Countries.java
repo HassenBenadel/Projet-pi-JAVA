@@ -5,33 +5,34 @@
  */
 package service;
 
-import java.net.InetAddress;
-import java.net.NetworkInterface;
+import java.util.Locale;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author hasse
  */
-public class MacAddress {
-    
-     public String getMacAddress() {
-        String mac = "";
+public class Countries {
 
-        try {
-            InetAddress address = InetAddress.getLocalHost();
-            NetworkInterface ni = NetworkInterface.getByInetAddress(address);
-            byte[] hardwareAddress = ni.getHardwareAddress();
-            String[] hexadecimal = new String[hardwareAddress.length];
-            for (int i = 0; i < hardwareAddress.length; i++) {
-                hexadecimal[i] = String.format("%02X", hardwareAddress[i]);
-            }
-            mac= String.join("-", hexadecimal);
-            
+    public ObservableList<String> getAllCountries() {
+        ObservableList<String> pays = FXCollections.observableArrayList();
+        String[] countries = Locale.getISOCountries();
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        // Loop each country 
+        for (int i = 0; i < countries.length; i++) {
+
+            String country = countries[i];
+            Locale locale = new Locale("en", country);
+
+            // Get the country name by calling getDisplayCountry()
+            String countryName = locale.getDisplayCountry();
+            pays.add(countryName);
         }
-        return mac;
+        return pays;
+
     }
+
     
+
 }

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.Fournisseur;
 import model.Livreur;
 import util.MaConnexion;
 
@@ -20,27 +21,7 @@ public class LivreurService {
 
     PasswordService ps = new PasswordService();
 
-    /* public void afficherLivreur() {
-
-        String sql = "Select * from utilisateur where typecompte='Livreur'";
-
-        try {
-
-            Connection cnx = MaConnexion.getInstance().getCnx();
-            Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-
-            while (rs.next()) {
-                System.out.println(rs.getInt(1) + " -- " + rs.getString(2) + " -- " + rs.getString(3) + " -- " + rs.getString(4) + " -- " + rs.getInt(5) + " -- "
-                        + rs.getString(6) + " -- " + rs.getString(7) + " -- " + rs.getString(8) + " -- " + rs.getString(9) + " -- "
-                        + rs.getString(10) + " -- " + rs.getInt(11));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }*/
+ 
     public Livreur selectLivreurByEmail(String email) {
 
         String sql = " Select l.id_livreur, u.id_user , u.nom , u.prenom ,u.email , u.telephone ,u.image ,u.pays ,u.ville ,u.password , u.typecompte , l.secteuractivite "
@@ -63,6 +44,23 @@ public class LivreurService {
             e.printStackTrace();
         }
         return null;
+
+    }
+     public int getIduserByIdLivreur(Livreur lv) {
+
+        String sql = "Select id_user   from client where id_livreur = " + lv.getId_livreur();
+        try {
+
+            Connection cnx = MaConnexion.getInstance().getCnx();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0 ;
 
     }
 
@@ -133,7 +131,7 @@ public class LivreurService {
         String image = img.replace("\\", "\\\\");
 
         String sql = "UPDATE utilisateur SET nom = '" + lv.getNom() + "', prenom = '" + lv.getPrenom() + "', email = '" + lv.getEmail() + "', telephone = " + lv.getTelephone()
-                + ", image = '" + image + "', pays = '" + lv.getPays() + "', password = '" + lv.getPassword()
+                + ", image = '" + image + "', pays = '" + lv.getPays()+"', ville= '" + lv.getVille() + "', password = '" + lv.getPassword()
                 + " 'Where id_user = ( Select id_user FROM livreur WHERE id_livreur =" + lv.getId_livreur() + ")";
 
         String sql_livreur = "UPDATE livreur SET SecteurActivite = '" + lv.getSecteur_activite() + "'";

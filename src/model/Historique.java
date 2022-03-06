@@ -12,13 +12,13 @@ package model;
 public class Historique {
 
     private String ipAddress;
-    private String town;
-    private String country;
+    private String macAddress;
+    private String operatingSystem;
 
-    public Historique(String ipAdress, String town, String country) {
-        this.ipAddress = ipAdress;
-        this.town = town;
-        this.country = country;
+    public Historique(String ipAddress, String macAddress, String operatingSystem) {
+        this.ipAddress = ipAddress;
+        this.macAddress = macAddress;
+        this.operatingSystem = operatingSystem;
     }
 
     public String getIpAddress() {
@@ -29,20 +29,20 @@ public class Historique {
         this.ipAddress = ipAddress;
     }
 
-    public String getTown() {
-        return town;
+    public String getMacAddress() {
+        return macAddress;
     }
 
-    public void setTown(String town) {
-        this.town = town;
+    public void setMacAddress(String macAddress) {
+        this.macAddress = macAddress;
     }
 
-    public String getCountry() {
-        return country;
+    public String getOperatingSystem() {
+        return operatingSystem;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setOperatingSystem(String operatingSystem) {
+        this.operatingSystem = operatingSystem;
     }
 
 }

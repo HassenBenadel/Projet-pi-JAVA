@@ -42,6 +42,25 @@ public class FournisseurService {
 
     }
 
+    public int getIduserByIdFournisseur(Fournisseur fr) {
+
+        String sql = "Select id_user   from fournisseur where id_fournisseur = " + fr.getId_fournisseur();
+        try {
+
+            Connection cnx = MaConnexion.getInstance().getCnx();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+
+    }
+
+
     /*public int getIdFournisseur(String email) {
 
         String sql = "Select id_fournisseur from fournisseur where id_user=(select id_user from utilisateur where email='" + email + "')";
@@ -73,7 +92,7 @@ public class FournisseurService {
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                System.out.println(rs.getInt(1)+" "+rs.getInt(2));
+                System.out.println(rs.getInt(1) + " " + rs.getInt(2));
 
                 Fournisseur fr = new Fournisseur(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11));
                 return fr;
@@ -154,7 +173,7 @@ public class FournisseurService {
         String image = img.replace("\\", "\\\\");
 
         String sql = "UPDATE utilisateur SET nom = '" + fr.getNom() + "', prenom = '" + fr.getPrenom() + "', email = '" + fr.getEmail() + "', telephone = " + fr.getTelephone()
-                + ", image = '" + image + "', pays = '" + fr.getPays() + "', password = '" + fr.getPassword()
+                + ", image = '" + image + "', pays = '" + fr.getPays() + "', ville = '" + fr.getVille() + "', password = '" + fr.getPassword()
                 + " 'Where id_user = ( Select id_user FROM fournisseur WHERE id_fournisseur =" + fr.getId_fournisseur() + ")";
 
         try {

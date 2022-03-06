@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gui;
+package gui;
 
 import java.io.IOException;
 import java.net.URL;
@@ -74,6 +74,7 @@ public class ConnectController implements Initializable {
         AnchorPane profile;
 
         boolean verify;
+        boolean bantest;
         Connect m = new Connect();
         verify = m.verify(email.getText(), password.getText());
 
@@ -85,29 +86,39 @@ public class ConnectController implements Initializable {
             alert.showAndWait();
 
         } else {
+
             try {
 
                 UtilisateurService us = new UtilisateurService();
-                username = us.getNomByEmail(email.getText()) + " " + us.getPreomByEmail(email.getText());
-                typecompte = us.getTypecompteByEmail(email.getText());
+                bantest = us.compareDate(email.getText());
+                if (bantest == false) {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("connection impossible");
+                    alert.setContentText("Vous ne pouvez pas accéder  à votre compte car vous étes banni  ");
+                    alert.showAndWait();
 
-                if (typecompte.equals("client")) {
-                    ClientService cs = new ClientService();
-                    client = cs.selectClientByEmail(email.getText());
-                    System.out.println(client.getId_client());
+                } else {
 
-                } else if (typecompte.equals("fournisseur")) {
-                    FournisseurService fs = new FournisseurService();
-                    fournisseur = fs.selectFournisseurByEmail(email.getText());
+                    username = us.getNomByEmail(email.getText()) + " " + us.getPreomByEmail(email.getText());
+                    typecompte = us.getTypecompteByEmail(email.getText());
 
-                } else if (typecompte.equals("livreur")) {
-                    LivreurService ls = new LivreurService();
-                    livreur = ls.selectLivreurByEmail(email.getText());
+                    if (typecompte.equals("client")) {
+                        ClientService cs = new ClientService();
+                        client = cs.selectClientByEmail(email.getText());
+
+                    } else if (typecompte.equals("fournisseur")) {
+                        FournisseurService fs = new FournisseurService();
+                        fournisseur = fs.selectFournisseurByEmail(email.getText());
+
+                    } else if (typecompte.equals("livreur")) {
+                        LivreurService ls = new LivreurService();
+                        livreur = ls.selectLivreurByEmail(email.getText());
+                    }
+
+                    profile = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                    sceneconnect.getChildren().removeAll();
+                    sceneconnect.getChildren().setAll(profile);
                 }
-
-                profile = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-                sceneconnect.getChildren().removeAll();
-                sceneconnect.getChildren().setAll(profile);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

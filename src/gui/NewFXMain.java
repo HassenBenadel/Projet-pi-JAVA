@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gui;
+package gui;
 
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollBar;
 import javafx.stage.Stage;
 
 /**
@@ -24,10 +23,6 @@ public class NewFXMain extends Application {
 
         Parent root;
         try {
-            ScrollBar sc = new ScrollBar();
-            sc.setMin(0);
-            sc.setMax(100);
-            sc.setValue(50);
 
             root = FXMLLoader.load(getClass().getResource("Connect.fxml"));
 

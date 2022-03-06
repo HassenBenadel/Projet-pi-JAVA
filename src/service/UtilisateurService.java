@@ -6,13 +6,13 @@
 package service;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import javafx.collections.ObservableList;
-import model.Client;
 import util.MaConnexion;
 
 /**
@@ -20,6 +20,26 @@ import util.MaConnexion;
  * @author hasse
  */
 public class UtilisateurService {
+
+    public boolean verifyMailExistance(String email) {
+        String sql = "select email from utilisateur where email='" + email + "'";
+        try {
+
+            Connection cnx = MaConnexion.getInstance().getCnx();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+
+    }
 
     public String getTypecompteByEmail(String email) {
         String sql = " Select typecompte from utilisateur where email='" + email + "'";
@@ -129,6 +149,39 @@ public class UtilisateurService {
 
     }
 
+    public boolean compareDate(String email) {
+        Date datedb = getDatebyEmail(email);
+        if (datedb == null) {
+            return true;
+        } else {
+            Date date = Date.valueOf(datedb.toString());
+            Date now = Date.valueOf(LocalDate.now());
+            boolean test = now.after(date);
+            return test;
+
+        }
+
+    }
+
+    public Date getDatebyEmail(String email) {
+        String sql = " Select banexpiration from utilisateur where email='" + email + "'";
+
+        try {
+
+            Connection cnx = MaConnexion.getInstance().getCnx();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                return (rs.getDate(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
     public ObservableList<String> getUsersEmail(ObservableList<String> items) {
 
         String sql = "select email from utilisateur";
@@ -204,10 +257,9 @@ public class UtilisateurService {
         }
     }
 
-    public void banUtilisateur(String email) {
-        LocalDateTime dayplusone = LocalDateTime.now().plusDays(1);
-        System.out.println(dayplusone);
-        String sql = "UPDATE utilisateur SET ban = 1 AND banexpiration='"+dayplusone+"'";
+    public void banUtilisateur(String email, int nbrofdays) {
+        LocalDateTime bandays = LocalDateTime.now().plusDays(nbrofdays);
+        String sql = "UPDATE utilisateur SET ban = 1 , banexpiration='" + bandays + "' where email='"+email+"'";
         try {
 
             Connection cnx = MaConnexion.getInstance().getCnx();

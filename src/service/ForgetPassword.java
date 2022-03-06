@@ -20,6 +20,8 @@ import model.Utilisateur;
 
 public class ForgetPassword {
 
+    PasswordService ps = new PasswordService();
+
     public int generateCode() {
         int upperbound = 10001;
 
@@ -86,10 +88,9 @@ public class ForgetPassword {
         }
     }
 
+    public void modifypassword(String email, String password) {
 
-public void modifypassword(String email, String password) {
-
-        String sql = "Update utilisateur SET password='" + password + "'where email='" + email + "'";
+        String sql = "Update utilisateur SET password='" + ps.passwordEncryption(password) + "'where email='" + email + "'";
 
         try {
             Connection cnx = MaConnexion.getInstance().getCnx();
@@ -102,7 +103,6 @@ public void modifypassword(String email, String password) {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
 
     }
 
