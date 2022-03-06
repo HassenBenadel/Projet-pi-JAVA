@@ -1,0 +1,52 @@
+.post-item {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 10px;
+    -fx-border-color: grey;
+    -fx-border-width: 0.5px;
+}
+
+.post-item-btn {
+    -fx-background-color: transparent;
+}
+
+.blogList-mesBlogs-btn {
+    -fx-background-color: #000E12;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 16.4;
+}
+
+.post-item-scrollPane {
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.blogList-navBar-btn {
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-border-radius: 20px;
+}
+
+.blog-search-Background {
+    -fx-background-color: #B9B9B9;
+    -fx-background-radius: 16.4;
+}
+
+.circle-btn {
+    -fx-background-color: #000E12;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 30;
+}
+
+.transparent {
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.textFields {
+    -fx-border-color: #000E12;
+    -fx-border-width: 0px 0px 2px 0px;
+}
+
+.comboBox {
+    -fx-text-fill: white;
+    -fx-background-color: #000E12;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 16.4;
+}
